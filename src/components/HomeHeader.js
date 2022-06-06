@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, TextInput, FlatList} from 'react-native';
 
 import {COLORS, FONTS, SIZES, assets, PadsData} from '../constants';
-import PadsExploreList from './PadsExploreList';
+import PadsExploreCard from './PadsExploreCard';
 
 const HomeHeader = ({onSearch}) => {
   return (
@@ -17,17 +17,17 @@ const HomeHeader = ({onSearch}) => {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        <View style={{width: 30, height: 20}}>
+        <View style={{width: 25, height: 20}}>
           <View
             style={{
-              borderBottomWidth: 1,
+              borderBottomWidth: 2,
               borderBottomColor: COLORS.white,
-              marginBottom: 10,
+              marginBottom: 5,
             }}></View>
           <View
             style={{
-              width: 20,
-              borderBottomWidth: 1,
+              width: 15,
+              borderBottomWidth: 2,
               borderBottomColor: COLORS.white,
             }}></View>
         </View>
@@ -97,12 +97,21 @@ const HomeHeader = ({onSearch}) => {
         </View> */}
         <FlatList
           data={PadsData}
-          renderItem={({item}) => <PadsExploreList data={item} />}
+          renderItem={({item}) => <PadsExploreCard data={item} />}
           keyExtractor={item => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
         />
       </View>
+      <Text
+        style={{
+          marginTop: SIZES.small,
+          fontFamily: FONTS.regular,
+          fontSize: SIZES.small,
+          color: COLORS.white,
+        }}>
+        Top IDO's
+      </Text>
     </View>
   );
 };

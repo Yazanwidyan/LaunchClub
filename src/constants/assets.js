@@ -15,6 +15,10 @@ import nft06 from '../assets/images/nft06.jpeg';
 import nft07 from '../assets/images/nft07.jpeg';
 
 import pad01 from '../assets/images/pad01.png';
+import pad02 from '../assets/images/pad02.jpg';
+import pad03 from '../assets/images/pad03.jpg';
+import pad04 from '../assets/images/pad04.jpeg';
+import pad05 from '../assets/images/pad05.jpg';
 
 import person01 from '../assets/images/person01.png';
 import person02 from '../assets/images/person02.png';
@@ -39,6 +43,10 @@ export default {
   nft07,
 
   pad01,
+  pad02,
+  pad03,
+  pad04,
+  pad05,
 
   person01,
   person02,

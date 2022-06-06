@@ -1,8 +1,7 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {COLORS} from '../constants';
 import React from 'react';
 
-const PadsExploreList = ({data}) => {
+const PadsExploreCard = ({data}) => {
   return (
     <View
       style={{
@@ -10,17 +9,17 @@ const PadsExploreList = ({data}) => {
         borderColor: '#2F2F2A',
         padding: 4,
         borderRadius: 18,
-        marginHorizontal: 10,
+        marginHorizontal: 6,
       }}>
       <Image
         source={data.image}
         resizeMode="contain"
-        style={{width: 50, height: 50, borderRadius: 18}}
+        style={{width: 60, height: 60, borderRadius: 18}}
       />
     </View>
   );
 };
 
-export default PadsExploreList;
+export default PadsExploreCard;
 
 const styles = StyleSheet.create({});

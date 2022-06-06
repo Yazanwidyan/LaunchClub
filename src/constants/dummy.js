@@ -7,26 +7,26 @@ const PadsData = [
   },
   {
     id: 'pad-02',
-    image: assets.pad01,
+    image: assets.pad02,
   },
   {
     id: 'pad-03',
-    image: assets.pad01,
+    image: assets.pad03,
   },
   {
     id: 'pad-04',
-    image: assets.pad01,
+    image: assets.pad04,
   },
   {
     id: 'pad-05',
-    image: assets.pad01,
+    image: assets.pad05,
   },
 ];
 
 const NFTData = [
   {
     id: 'NFT-01',
-    name: 'Abstracto #312',
+    name: 'Verve',
     creator: 'Putri Intan',
     likes: 4.25,
     description:
