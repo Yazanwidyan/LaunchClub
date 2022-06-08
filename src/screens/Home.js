@@ -1,56 +1,52 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View, SafeAreaView, FlatList} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {setTheme} from '../redux/actions';
+import {COLORS} from '../constants/theme';
+import Header from '../components/common/Header';
 
-import {IDOCard, HomeHeader, FocusedStatusBar} from '../components';
-import {COLORS, NFTData} from '../constants';
+const Home = ({navigation}) => {
+  const navigate = useNavigation();
+  const {theme} = useSelector(state => state.themeReducer);
+  const dispatch = useDispatch();
 
-const Home = () => {
-  const [nftData, setNftData] = useState(NFTData);
-
-  const handleSearch = value => {
-    if (value.length === 0) {
-      setNftData(NFTData);
-    }
-
-    const filteredData = NFTData.filter(item =>
-      item.name.toLowerCase().includes(value.toLowerCase()),
-    );
-
-    if (filteredData.length === 0) {
-      setNftData(NFTData);
+  const changeTheme = () => {
+    if (theme == 'light') {
+      dispatch(setTheme('dark'));
     } else {
-      setNftData(filteredData);
+      dispatch(setTheme('light'));
     }
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <FocusedStatusBar backgroundColor={COLORS.primary} />
-      <View style={{flex: 1}}>
-        <View style={{zIndex: 0}}>
-          <FlatList
-            data={nftData}
-            renderItem={({item}) => <IDOCard data={item} />}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
-          />
-        </View>
-
+    <>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor:
+            theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+        }}>
+        <Header toggleDrawer={() => navigation.toggleDrawer()} />
         <View
           style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            zIndex: -1,
+            padding: 20,
+            flex: 1,
           }}>
-          <View style={{height: 300, backgroundColor: COLORS.primary}} />
-          <View style={{flex: 1, backgroundColor: COLORS.white}} />
+          <TouchableOpacity onPress={changeTheme}>
+            <Text style={{color: theme == 'light' ? 'black' : 'white'}}>
+              Change theme {theme}
+            </Text>
+          </TouchableOpacity>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </>
   );
 };
 
