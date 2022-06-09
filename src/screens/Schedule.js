@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Test2 = () => {
+const Schedule = () => {
   return (
     <View>
-      <Text>Test2</Text>
+      <Text>Schedule</Text>
     </View>
   );
 };
 
-export default Test2;
+export default Schedule;
 
 const styles = StyleSheet.create({});

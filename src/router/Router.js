@@ -6,10 +6,13 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSelector, useDispatch} from 'react-redux';
 import Home from '../screens/Home';
-import Test from '../screens/Test';
-import Test2 from '../screens/Test2';
 import CustomDrawer from '../components/common/CustomDrawer';
 import {COLORS} from '../constants/theme';
+import CustomTabs from '../components/common/CustomTabs';
+import Launchpads from '../screens/Launchpads';
+import Schedule from '../screens/Schedule';
+import IDO from '../screens/IDO';
+import Notifications from '../screens/Notifications';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,13 +23,16 @@ const Router = () => {
   const TabsStack = () => {
     return (
       <Tab.Navigator
+        tabBar={props => <CustomTabs {...props} />}
         screenOptions={{
           headerShown: false,
         }}
         initialRouteName="Home">
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Test" component={Test} />
-        <Tab.Screen name="Test2" component={Test2} />
+        <Tab.Screen name="Launchpads" component={Launchpads} />
+        <Tab.Screen name="Schedule" component={Schedule} />
+        <Tab.Screen name="IDO" component={IDO} />
+        <Tab.Screen name="Notifications" component={Notifications} />
       </Tab.Navigator>
     );
   };

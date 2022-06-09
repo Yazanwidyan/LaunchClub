@@ -6,10 +6,11 @@ export const COLORS = {
   secondaryDark: '#1A1A1A',
   white: '#FFF',
   gray: '#858992',
+  black: '#000000',
 };
 
 export const SIZES = {
-  base: 8,
+  base: 10,
   small: 12,
   font: 14,
   medium: 16,

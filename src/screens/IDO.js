@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Test = () => {
+const IDO = () => {
   return (
     <View>
-      <Text>Test</Text>
+      <Text>IDO</Text>
     </View>
   );
 };
 
-export default Test;
+export default IDO;
 
 const styles = StyleSheet.create({});
