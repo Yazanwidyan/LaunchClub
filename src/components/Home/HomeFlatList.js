@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import React from 'react';
 import HomeLaunchpadItem from './HomeLaunchpadItem';
-import HomeIDOItem from './HomeIDOItem';
+import IDOItem from '../IDO/IDOItem';
 
 const HomeFlatList = ({data, dataType}) => {
   return (
@@ -21,7 +21,7 @@ const HomeFlatList = ({data, dataType}) => {
           case 'launchpad':
             return <HomeLaunchpadItem item={item} />;
           case 'ido':
-            return <HomeIDOItem item={item} />;
+            return <IDOItem item={item} />;
           default:
             break;
         }

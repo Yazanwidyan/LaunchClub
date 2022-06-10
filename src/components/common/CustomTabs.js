@@ -93,7 +93,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                     : COLORS.gray
                 }
               />
-            ) : label == 'IDO' ? (
+            ) : label == 'IDOs' ? (
               <Icon
                 name="flame-outline"
                 size={23}

@@ -40,7 +40,7 @@ const Router = () => {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Launchpads" component={Launchpads} />
         <Tab.Screen name="Schedule" component={Schedule} />
-        <Tab.Screen name="IDO" component={IDO} />
+        <Tab.Screen name="IDOs" component={IDO} />
         <Tab.Screen name="Notifications" component={Notifications} />
       </Tab.Navigator>
     );

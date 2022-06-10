@@ -1,14 +1,16 @@
 export const COLORS = {
   primary: '#76A9FF',
-  background: '#ffff',
+  background: '#f2f3f5',
   backgroundDark: '#202122',
-  secondary: '#f2f3f5',
+  secondary: '#ffff',
   secondaryDark: '#1A1A1A',
   white: '#FFF',
   gray: '#858992',
   black: '#000000',
   black100: '#121212',
   white100: '#f0f0f0',
+  line: '#E3E3E3',
+  lineDark: '#2F2F2F',
 };
 
 export const SIZES = {
