@@ -10,6 +10,7 @@ export const COLORS = {
 };
 
 export const SIZES = {
+  xSmall: 8,
   base: 10,
   small: 12,
   font: 14,

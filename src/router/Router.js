@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,6 +20,15 @@ const Tab = createBottomTabNavigator();
 
 const Router = () => {
   const {theme} = useSelector(state => state.themeReducer);
+
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+    },
+  };
+
   const TabsStack = () => {
     return (
       <Tab.Navigator
@@ -45,7 +54,7 @@ const Router = () => {
         }
         barStyle={theme == 'light' ? 'dark-content' : 'light-content'}
       />
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Drawer.Navigator
           screenOptions={{
             headerShown: false,

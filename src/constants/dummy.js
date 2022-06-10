@@ -4,6 +4,7 @@ const PadsData = [
   {
     id: 'pad-01',
     image: assets.pad01,
+    name: 'sssss',
   },
   {
     id: 'pad-02',
@@ -23,7 +24,7 @@ const PadsData = [
   },
 ];
 
-const NFTData = [
+const IDOData = [
   {
     id: 'NFT-01',
     name: 'Verve',
@@ -214,4 +215,4 @@ const NFTData = [
   },
 ];
 
-export {NFTData, PadsData};
+export {IDOData, PadsData};

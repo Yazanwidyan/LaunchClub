@@ -1,7 +1,7 @@
 import {SET_DARK_THEME} from './actions';
 
 const initialState = {
-  theme: 'light',
+  theme: 'dark',
 };
 
 const themeReducer = (state = initialState, {type, payload}) => {

@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS, SIZES} from '../../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 const CustomTabs = ({state, descriptors, navigation}) => {
   const {theme} = useSelector(state => state.themeReducer);
@@ -15,7 +15,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
         paddingHorizontal: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-        height: 80,
+        height: 70,
       }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
@@ -60,7 +60,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             {label == 'Home' ? (
               <Icon
                 name="home-outline"
-                size={27}
+                size={23}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -72,7 +72,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Launchpads' ? (
               <Icon
                 name="rocket-outline"
-                size={27}
+                size={23}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -84,7 +84,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Schedule' ? (
               <Icon
                 name="ios-calendar-sharp"
-                size={27}
+                size={23}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -96,7 +96,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'IDO' ? (
               <Icon
                 name="flame-outline"
-                size={27}
+                size={23}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -108,7 +108,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Notifications' ? (
               <Icon
                 name="md-notifications-outline"
-                size={27}
+                size={23}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -121,7 +121,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             <Text
               style={{
                 marginTop: 7,
-                fontSize: SIZES.base,
+                fontSize: SIZES.small,
                 color: isFocused
                   ? theme == 'dark'
                     ? COLORS.white
