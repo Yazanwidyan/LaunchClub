@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {COLORS, SIZES} from '../constants/theme';
@@ -22,20 +23,34 @@ const Home = ({navigation}) => {
     <>
       <SafeAreaView style={{flex: 1}}>
         <Header toggleDrawer={() => navigation.toggleDrawer()} />
-        <View style={styles.mainContainer}>
-          <View style={{flex: 1, backgroundColor: 'red', paddingBottom: 20}}>
-            <CustomText size={SIZES.large}>ExploreLaunchpads</CustomText>
-            <HomeFlatList dataType="launchpad" data={PadsData} />
+        <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+          <View style={styles.mainContainer}>
+            <View style={{flex: 1}}>
+              <CustomText size={SIZES.large} style={styles.titleText}>
+                Explore Launchpads
+              </CustomText>
+              <HomeFlatList dataType="launchpad" data={PadsData} />
+            </View>
+            <View style={{flex: 2}}>
+              <CustomText size={SIZES.large} style={styles.titleText}>
+                Top IDOs
+              </CustomText>
+              <HomeFlatList dataType="ido" data={IDOData} />
+            </View>
+            <View style={{flex: 2}}>
+              <CustomText size={SIZES.large} style={styles.titleText}>
+                New Projects
+              </CustomText>
+              <HomeFlatList dataType="ido" data={IDOData} />
+            </View>
+            <View style={{flex: 2}}>
+              <CustomText size={SIZES.large} style={styles.titleText}>
+                Author's Choice
+              </CustomText>
+              <HomeFlatList dataType="ido" data={IDOData} />
+            </View>
           </View>
-          <View style={{flex: 2}}>
-            <CustomText size={SIZES.large}>Top IDOs</CustomText>
-            <HomeFlatList dataType="ido" data={IDOData} />
-          </View>
-          <View style={{flex: 2}}>
-            <CustomText size={SIZES.large}>New Projects</CustomText>
-            <HomeFlatList dataType="ido" data={IDOData} />
-          </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </>
   );
@@ -45,7 +60,8 @@ export default Home;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    padding: 20,
     flex: 1,
+    marginTop: 10,
   },
+  titleText: {paddingHorizontal: 20},
 });

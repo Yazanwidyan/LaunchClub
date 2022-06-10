@@ -7,6 +7,8 @@ export const COLORS = {
   white: '#FFF',
   gray: '#858992',
   black: '#000000',
+  black100: '#121212',
+  white100: '#f0f0f0',
 };
 
 export const SIZES = {
@@ -32,12 +34,23 @@ export const SHADOWS = {
     shadowColor: COLORS.gray,
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 7,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
 
-    elevation: 3,
+    elevation: 11,
+  },
+  dark: {
+    shadowColor: COLORS.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 11,
   },
   medium: {
     shadowColor: COLORS.gray,
@@ -49,16 +62,5 @@ export const SHADOWS = {
     shadowRadius: 4.65,
 
     elevation: 7,
-  },
-  dark: {
-    shadowColor: COLORS.gray,
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-
-    elevation: 14,
   },
 };

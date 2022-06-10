@@ -7,8 +7,15 @@ const HomeFlatList = ({data, dataType}) => {
   return (
     <FlatList
       horizontal
-      showsHorizontalScrollIndicator={false}
       data={data}
+      contentContainerStyle={{
+        alignItems: 'center',
+        padding: 20,
+      }}
+      showsHorizontalScrollIndicator={false}
+      ListFooterComponent={() => {
+        return <Text></Text>;
+      }}
       renderItem={({item}) => {
         switch (dataType) {
           case 'launchpad':

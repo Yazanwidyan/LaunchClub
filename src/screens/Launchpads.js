@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import React from 'react';
+import Header from '../components/common/Header';
 
 const Launchpads = () => {
   return (
-    <View>
+    <SafeAreaView style={{flex: 1}}>
+      <Header title={'Launchpads'} />
       <Text>Launchpads</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 

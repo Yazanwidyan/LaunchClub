@@ -60,7 +60,11 @@ const Router = () => {
             headerShown: false,
           }}
           drawerContent={props => <CustomDrawer {...props} />}>
-          <Drawer.Screen name="TabsStack" component={TabsStack} />
+          <Drawer.Screen
+            options={{gestureEnabled: false}}
+            name="TabsStack"
+            component={TabsStack}
+          />
         </Drawer.Navigator>
       </NavigationContainer>
     </>

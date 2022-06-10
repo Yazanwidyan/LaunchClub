@@ -9,7 +9,11 @@ const CustomText = props => {
   return (
     <Text
       style={{
-        color: theme == 'light' ? COLORS.black : COLORS.white,
+        color: props.grayText
+          ? COLORS.gray
+          : theme == 'light'
+          ? COLORS.black
+          : COLORS.white,
         ...props.style,
         fontSize: props.size,
       }}>

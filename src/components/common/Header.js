@@ -1,36 +1,42 @@
 import {StyleSheet, Image, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {COLORS, assets} from '../../constants';
+import {COLORS, assets, SIZES} from '../../constants';
+import CustomText from '../UI/CustomText';
 
-const Header = ({toggleDrawer}) => {
+const Header = ({toggleDrawer, title}) => {
   const {theme} = useSelector(state => state.themeReducer);
   return (
     <View
       style={{
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-        height: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingTop: 40,
-        padding: 20,
+        justifyContent: title ? 'center' : 'space-between',
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        height: 60,
       }}>
-      <TouchableOpacity onPress={toggleDrawer} style={{width: 25, height: 20}}>
-        <View
-          style={{
-            borderBottomWidth: 2,
-            borderBottomColor: COLORS.white,
-            marginBottom: 5,
-          }}></View>
-        <View
-          style={{
-            width: 15,
-            borderBottomWidth: 2,
-            borderBottomColor: COLORS.white,
-          }}></View>
-      </TouchableOpacity>
+      {toggleDrawer && (
+        <TouchableOpacity onPress={toggleDrawer}>
+          <View
+            style={{
+              borderBottomWidth: 3,
+              width: 30,
+              borderBottomColor:
+                theme === 'light' ? COLORS.black : COLORS.white,
+              marginBottom: 5,
+            }}></View>
+          <View
+            style={{
+              width: 20,
+              borderBottomWidth: 3,
+              borderBottomColor:
+                theme === 'light' ? COLORS.black : COLORS.white,
+            }}></View>
+        </TouchableOpacity>
+      )}
+      {title && <CustomText size={SIZES.large}>{title}</CustomText>}
 
       {/* <View style={{width: 45, height: 45}}>
           <Image
