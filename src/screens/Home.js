@@ -17,7 +17,7 @@ import CustomText from '../components/UI/CustomText';
 
 const Home = ({navigation}) => {
   const navigate = useNavigation();
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <>

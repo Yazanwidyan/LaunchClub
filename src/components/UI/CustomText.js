@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {COLORS} from '../../constants';
 
 const CustomText = props => {
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <Text

@@ -16,7 +16,7 @@ const CustomTextInput = ({
   const [hidePassword, setHidePassword] = useState(password);
   const [isFocused, setIsFocused] = useState(false);
 
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <View style={{marginBottom: 20}}>

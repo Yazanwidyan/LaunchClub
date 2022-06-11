@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 
 const CustomTabs = ({state, descriptors, navigation}) => {
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
   return (
     <View
       style={{

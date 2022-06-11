@@ -6,7 +6,7 @@ import CustomText from '../UI/CustomText';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const IDOItem = ({item, twoCol}) => {
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <View

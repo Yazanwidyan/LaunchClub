@@ -4,7 +4,7 @@ import {assets, COLORS, SHADOWS} from '../../constants';
 import {useSelector} from 'react-redux';
 
 const ExploreLaunchpads = ({item}) => {
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <View

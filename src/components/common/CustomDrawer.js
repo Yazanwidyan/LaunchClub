@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {useSelector, useDispatch} from 'react-redux';
-import {setTheme} from '../../redux/actions';
+import {setTheme} from '../../redux/actions/actions';
 import {COLORS} from '../../constants/theme';
 
 const CustomDrawer = props => {
-  const {theme} = useSelector(state => state.themeReducer);
+  const {theme} = useSelector(state => state.theme);
   const dispatch = useDispatch();
 
   const changeTheme = () => {
