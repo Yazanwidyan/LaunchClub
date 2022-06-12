@@ -1,5 +1,10 @@
 import assets from './assets';
 
+const tabs_details = [
+  {id: 1, label: 'open'},
+  {id: 2, label: 'closed'},
+];
+
 const PadsData = [
   {
     id: 'pad-01',
@@ -110,4 +115,4 @@ const IDOData = [
   },
 ];
 
-export {IDOData, PadsData};
+export {IDOData, PadsData, tabs_details};
