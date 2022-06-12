@@ -1,8 +1,9 @@
 import assets from './assets';
 
 const tabs_details = [
-  {id: 1, label: 'open'},
-  {id: 2, label: 'closed'},
+  {id: 1, label: 'Open'},
+  {id: 2, label: 'Upcomming'},
+  {id: 3, label: 'Closed'},
 ];
 
 const PadsData = [

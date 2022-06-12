@@ -14,6 +14,7 @@ import Schedule from '../screens/Schedule';
 import IDO from '../screens/IDO';
 import Notifications from '../screens/Notifications';
 import LaunchpadDetails from '../screens/LaunchpadDetails';
+import Animation from '../Animation';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,9 +37,10 @@ const Router = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Launchpads">
+        initialRouteName="Animation">
         <Stack.Screen name="LaunchpadsStack" component={Launchpads} />
         <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
+        <Stack.Screen name="Animation" component={Animation} />
       </Stack.Navigator>
     );
   };

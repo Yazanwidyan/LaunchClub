@@ -1,3 +1,6 @@
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get('window');
+
 export const COLORS = {
   primary: '#76A9FF',
   background: '#f2f3f5',
@@ -21,6 +24,8 @@ export const SIZES = {
   medium: 16,
   large: 18,
   extraLarge: 24,
+  width,
+  height,
 };
 
 export const FONTS = {
