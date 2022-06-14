@@ -15,6 +15,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconWeb from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
+
 import {
   COLORS,
   PadsData,
@@ -25,7 +27,7 @@ import {
 } from './constants';
 import CustomText from './components/UI/CustomText';
 
-const HEADER_HEIGHT = 350;
+const HEADER_HEIGHT = 300;
 
 const tabs_detail = tabs_details.map(tabs_details => ({
   ...tabs_details,
@@ -46,53 +48,43 @@ const TabIndicator = () => {
   );
 };
 
-const Tabs = ({scrollX, onTabPress}) => {
+const Tabs = ({tabIndicatorIndex, onTabPress}) => {
   const [measureLayout, setMeasureLayout] = useState([]);
   const containerRef = useRef();
-  const refss = useRef();
-  const [tabIndicatorIndex, setTabIndicatorIndex] = useState(0);
   const {theme} = useSelector(state => state.theme);
 
-  useEffect(() => {
-    console.log(refss.current);
+  // useEffect(() => {
 
-    let ml = [];
-    tabs_detail.forEach(tabs_details => {
-      tabs_details?.ref?.current?.measureLayout(
-        containerRef.current,
-        (x, y, width, height) => {
-          ml.push({
-            x,
-            y,
-            width,
-            height,
-          });
+  //   let ml = [];
+  //   tabs_detail.forEach(tabs_details => {
+  //     tabs_details?.ref?.current?.measureLayout(
+  //       containerRef.current,
+  //       (x, y, width, height) => {
+  //         ml.push({
+  //           x,
+  //           y,
+  //           width,
+  //           height,
+  //         });
 
-          if (ml.length === tabs_details.length) {
-            setMeasureLayout(ml);
-          }
-        },
-      );
-    });
-  }, [containerRef.current]);
+  //         if (ml.length === tabs_details.length) {
+  //           setMeasureLayout(ml);
+  //         }
+  //       },
+  //     );
+  //   });
+  // }, [containerRef.current]);
 
   return (
     <View ref={containerRef} style={{flex: 1, flexDirection: 'row'}}>
       {/* tab indicator */}
 
       <TabIndicator />
-      {/* {measureLayout.length > 0 && (
-      )} */}
-
-      {/* tabs */}
-
       {tabs_detail.map((item, index) => {
         return (
           <TouchableOpacity
             onPress={() => onTabPress(index)}
-            onPressIn={() => setTabIndicatorIndex(index)}
             key={`Tab-${index}`}
-            ref={refss}
             style={{
               flex: 1,
               paddingHorizontal: 15,
@@ -140,9 +132,11 @@ const Animation = () => {
   const flatListRef = useRef();
   const navigation = useNavigation();
   const {theme} = useSelector(state => state.theme);
+  const [tabIndicatorIndex, setTabIndicatorIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const scrollY = useRef(new Animated.Value(0)).current;
   const onTabPress = useCallback(tabIndex => {
+    setTabIndicatorIndex(tabIndex);
     flatListRef?.current?.scrollToOffset({
       offset: tabIndex * SIZES.width,
     });
@@ -160,7 +154,11 @@ const Animation = () => {
           style={{
             height: 60,
           }}>
-          <Tabs onTabPress={onTabPress} scrollX={scrollX} />
+          <Tabs
+            tabIndicatorIndex={tabIndicatorIndex}
+            onTabPress={onTabPress}
+            scrollX={scrollX}
+          />
         </View>
 
         {/* divider */}
@@ -278,45 +276,19 @@ const Animation = () => {
               {
                 translateY: scrollY.interpolate({
                   inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-                  outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75],
+                  outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.55],
                 }),
               },
               {
                 scale: scrollY.interpolate({
                   inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-                  outputRange: [2, 1, 0.75],
+                  outputRange: [2, 1, 0.9],
                 }),
               },
             ],
           }}
         />
         {/* createo card */}
-
-        <Animated.View
-          style={{
-            position: 'absolute',
-            bottom: -10,
-            zIndex: 39,
-            left: 30,
-            right: 30,
-            height: 160,
-            width: 160,
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [0, 170, 250],
-                  outputRange: [0, 0, 100],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-          }}>
-          <Image
-            style={{width: '100%', height: '100%', borderRadius: 100}}
-            source={assets.pad01}
-            resizeMode="contain"
-          />
-        </Animated.View>
       </View>
     );
   };
@@ -370,16 +342,16 @@ const Animation = () => {
             transform: [
               {
                 translateY: scrollY.interpolate({
-                  inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 50],
-                  outputRange: [50, 0],
+                  inputRange: [HEADER_HEIGHT - 130, HEADER_HEIGHT - 83],
+                  outputRange: [70, 0],
                   extrapolate: 'clamp',
                 }),
               },
             ],
           }}>
           <Image
-            style={{width: 50, height: 50, borderRadius: 100}}
-            source={assets.pad01}
+            style={{width: 45, height: 45, borderRadius: 100}}
+            source={assets.nft04}
             resizeMode="contain"
           />
         </Animated.View>
@@ -417,10 +389,10 @@ const Animation = () => {
             marginBottom: 20,
           }}>
           <CustomText style={{marginBottom: 5}} size={SIZES.font}>
-            by bluzilla
+            by name
           </CustomText>
           <CustomText style={{marginBottom: 5}} size={SIZES.extraLarge}>
-            BSCPAD
+            name
           </CustomText>
           <View
             style={{
@@ -481,6 +453,63 @@ const Animation = () => {
           <View>
             {/* header */}
             {renderRecipeCardHeader()}
+            <Animated.View
+              style={{
+                position: 'absolute',
+                left: 30,
+                zIndex: 55,
+                top: '30%',
+                right: 30,
+                height: 160,
+                width: 160,
+                opacity: scrollY.interpolate({
+                  inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 70],
+                  outputRange: [1, 0],
+                }),
+                transform: [
+                  {
+                    translateY: scrollY.interpolate({
+                      inputRange: [0, 170, 250],
+                      outputRange: [0, 0, 0],
+                      extrapolate: 'clamp',
+                    }),
+                  },
+                  {
+                    translateX: scrollY.interpolate({
+                      inputRange: [0, 170, 250],
+                      outputRange: [0, 90, 100],
+                      extrapolate: 'clamp',
+                    }),
+                  },
+                  {
+                    scale: scrollY.interpolate({
+                      inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+                      outputRange: [2, 1, 0],
+                    }),
+                  },
+                ],
+              }}>
+              <Image
+                style={{width: '100%', height: '100%', borderRadius: 100}}
+                source={assets.nft04}
+                resizeMode="contain"
+              />
+            </Animated.View>
+            <LinearGradient
+              colors={[
+                'transparent',
+                'transparent',
+                theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+              ]}
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                height: 300,
+                width: 500,
+              }}
+            />
 
             {/* info */}
 
