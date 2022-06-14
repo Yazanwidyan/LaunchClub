@@ -22,7 +22,10 @@ const Home = ({navigation}) => {
   return (
     <>
       <SafeAreaView style={{flex: 1}}>
-        <Header toggleDrawer={() => navigation.toggleDrawer()} />
+        <Header
+          title={'LaunchClub'}
+          toggleDrawer={() => navigation.toggleDrawer()}
+        />
         <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
             <View style={{flex: 1}}>

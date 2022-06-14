@@ -12,31 +12,29 @@ const Header = ({toggleDrawer, title}) => {
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         flexDirection: 'row',
-        justifyContent: title ? 'center' : 'space-between',
+        justifyContent: title && toggleDrawer ? 'space-between' : 'center',
         paddingTop: 50,
         paddingHorizontal: 20,
         height: 90,
       }}>
       {toggleDrawer && (
-        <TouchableOpacity onPress={toggleDrawer}>
-          <View
-            style={{
-              borderBottomWidth: 3,
-              width: 30,
-              borderBottomColor:
-                theme === 'light' ? COLORS.black : COLORS.white,
-              marginBottom: 5,
-            }}></View>
-          <View
-            style={{
-              width: 20,
-              borderBottomWidth: 3,
-              borderBottomColor:
-                theme === 'light' ? COLORS.black : COLORS.white,
-            }}></View>
+        <TouchableOpacity style={{marginRight: -17}} onPress={toggleDrawer}>
+          <View style={{flexDirection: 'row'}}>
+            <CustomText style={{marginRight: 5}} size={5}>
+              {theme == 'light' ? '⚫' : '⚪'}
+            </CustomText>
+            <CustomText size={5}>{theme == 'light' ? '⚫' : '⚪'} </CustomText>
+          </View>
+          <View style={{flexDirection: 'row', marginTop: 5}}>
+            <CustomText style={{marginRight: 5}} size={5}>
+              {theme == 'light' ? '⚫' : '⚪'}
+            </CustomText>
+            <CustomText size={5}>{theme == 'light' ? '⚫' : '⚪'} </CustomText>
+          </View>
         </TouchableOpacity>
       )}
       {title && <CustomText size={SIZES.large}>{title}</CustomText>}
+      {title && toggleDrawer && <CustomText></CustomText>}
     </View>
   );
 };
