@@ -14,6 +14,7 @@ import Schedule from '../screens/Schedule';
 import IDO from '../screens/IDO';
 import Notifications from '../screens/Notifications';
 import LaunchpadDetails from '../screens/LaunchpadDetails';
+import IDODetails from '../screens/IDODetails';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -30,16 +31,19 @@ const Router = () => {
     },
   };
 
-  const LaunchpadsStack = () => {
+  const HomeStack = () => {
     return (
-      <Stack.Navigator
+      <Drawer.Navigator
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="LaunchpadsStack">
-        <Stack.Screen name="LaunchpadsStack" component={Launchpads} />
-        <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
-      </Stack.Navigator>
+        drawerContent={props => <CustomDrawer {...props} />}>
+        <Drawer.Screen
+          options={{gestureEnabled: false}}
+          name="HomeStack"
+          component={Home}
+        />
+      </Drawer.Navigator>
     );
   };
 
@@ -49,10 +53,9 @@ const Router = () => {
         tabBar={props => <CustomTabs {...props} />}
         screenOptions={{
           headerShown: false,
-        }}
-        initialRouteName="Home">
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Launchpads" component={LaunchpadsStack} />
+        }}>
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Launchpads" component={Launchpads} />
         <Tab.Screen name="Schedule" component={Schedule} />
         <Tab.Screen name="IDOs" component={IDO} />
         <Tab.Screen name="Notifications" component={Notifications} />
@@ -67,23 +70,19 @@ const Router = () => {
         backgroundColor={'transparent'}
         barStyle={theme == 'light' ? 'dark-content' : 'light-content'}
       />
+
       <NavigationContainer theme={MyTheme}>
-        <Drawer.Navigator
+        <Stack.Navigator
           screenOptions={{
             headerShown: false,
-          }}
-          drawerContent={props => <CustomDrawer {...props} />}>
-          <Drawer.Screen
-            options={{gestureEnabled: false}}
-            name="TabsStack"
-            component={TabsStack}
-          />
-        </Drawer.Navigator>
+          }}>
+          <Stack.Screen name="TabsStack" component={TabsStack} />
+          <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
+          <Stack.Screen name="IDODetails" component={IDODetails} />
+        </Stack.Navigator>
       </NavigationContainer>
     </>
   );
 };
 
 export default Router;
-
-const styles = StyleSheet.create({});

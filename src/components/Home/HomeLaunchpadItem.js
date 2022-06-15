@@ -23,7 +23,7 @@ const ExploreLaunchpads = ({item}) => {
         borderRadius: 10,
       }}
       onPress={() => {
-        navigation.navigate('LaunchpadDetails');
+        navigation.navigate('LaunchpadDetails', {item: item});
       }}>
       <View>
         <Image

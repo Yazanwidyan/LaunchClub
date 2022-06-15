@@ -20,7 +20,7 @@ const LaunchpadItem = ({item, index}) => {
       }}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('LaunchpadDetails');
+          navigation.navigate('LaunchpadDetails', {item: item});
         }}>
         <View
           style={{

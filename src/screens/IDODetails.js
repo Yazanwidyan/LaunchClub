@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Animated,
   FlatList,
-  Modal,
 } from 'react-native';
 
 import {useSelector} from 'react-redux';
@@ -20,21 +19,46 @@ import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, assets, tabs_details, SIZES, IDOData} from '../constants';
 import CustomText from '../components/UI/CustomText';
 import MoreLess from '../components/UI/MoreLess';
-import CustomTextInput from '../components/UI/CustomTextInput';
-import IDOItem from '../components/IDO/IDOItem';
-import useToggle from '../components/common/hooks/useToggle';
-import BottomSheet from '../components/UI/BottomSheet';
+import Divider from '../components/UI/Divider';
 
 const HEADER_HEIGHT = 180;
 
-const tabs_detail = tabs_details.map(tabs_details => ({
-  ...tabs_details,
-  ref: React.createRef(),
-}));
+const LaunchpadsCard = ({image, name}) => {
+  return (
+    <View
+      style={{
+        padding: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+      }}>
+      <Image
+        style={{width: 50, height: 50, borderRadius: 50, marginRight: 20}}
+        source={image}
+      />
+      <View>
+        <CustomText size={SIZES.large}>{name}</CustomText>
+        <CustomText>Click here to apply</CustomText>
+      </View>
+    </View>
+  );
+};
 
-const LaunchpadDetails = () => {
-  const [tabIndicatorIndex, setTabIndicatorIndex] = useState(0);
-  const [open, setOpen] = useToggle(false);
+const InfoCard = ({title, subtitle}) => {
+  return (
+    <View
+      style={{
+        padding: 20,
+        justifyContent: 'center',
+      }}>
+      <View>
+        <CustomText grayText>{title}</CustomText>
+        <CustomText size={SIZES.large}>{subtitle}</CustomText>
+      </View>
+    </View>
+  );
+};
+
+const IDODetails = () => {
   const {theme} = useSelector(state => state.theme);
   const navigation = useNavigation();
   const route = useRoute();
@@ -44,104 +68,40 @@ const LaunchpadDetails = () => {
     setData(route.params.item);
   }, []);
 
-  const flatListRef = useRef();
-  const scrollX = useRef(new Animated.Value(0)).current;
   const scrollY = useRef(new Animated.Value(0)).current;
 
-  const onTabPress = useCallback(tabIndex => {
-    setTabIndicatorIndex(tabIndex);
-    flatListRef?.current?.scrollToOffset({
-      offset: tabIndex * SIZES.width,
-    });
-  });
-  const renderCardHeader = () => {
-    return (
-      <View
-        style={{
-          marginTop: -1000,
-          paddingTop: 1000,
-          alignItems: 'center',
-          overflow: 'hidden',
-        }}>
-        <Animated.Image
-          source={data.image}
-          resizeMode="cover"
-          style={{
-            height: HEADER_HEIGHT,
-            width: '110%',
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-                  outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.55],
-                }),
-              },
-              {
-                scale: scrollY.interpolate({
-                  inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-                  outputRange: [2, 1, 0.9],
-                }),
-              },
-            ],
-          }}
-        />
-      </View>
-    );
-  };
   const renderContent = () => {
     return (
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          {tabs_detail.map((item, index) => {
-            return (
-              <TouchableOpacity
-                onPress={() => onTabPress(index)}
-                key={`Tab-${index}`}
-                style={{
-                  flex: 1,
-                  paddingHorizontal: 15,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text
-                  style={{
-                    fontSize: index == tabIndicatorIndex ? 17 : 14,
-                    color:
-                      index == tabIndicatorIndex
-                        ? theme == 'light'
-                          ? COLORS.black
-                          : COLORS.white
-                        : COLORS.gray,
-                  }}>
-                  {item.label}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+      <>
+        <View
+          style={{
+            marginHorizontal: 20,
+            borderRadius: 15,
+            marginBottom: 10,
+            backgroundColor:
+              theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+          }}>
+          <View
+            style={{
+              padding: 20,
+              justifyContent: 'center',
+            }}>
+            <CustomText>Click here to apply</CustomText>
+          </View>
+          <Divider />
+          <LaunchpadsCard name={'BSCPAD'} image={assets.pad01} />
+          <Divider />
         </View>
-        <View style={{width: SIZES.width, paddingHorizontal: 20}}>
-          <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
-          <FlatList
-            data={IDOData}
-            numColumns={2}
-            contentContainerStyle={{
-              marginVertical: 10,
-              paddingHorizontal: 20,
-            }}
-            showsVerticalScrollIndicator={false}
-            ListFooterComponent={() => {
-              return <Text></Text>;
-            }}
-            renderItem={({item, index}) => {
-              return <IDOItem twoCol item={item} index={index} />;
-            }}
-            keyExtractor={item => item.id}
-          />
+        <View
+          style={{
+            marginHorizontal: 20,
+            borderRadius: 15,
+            backgroundColor:
+              theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+          }}>
+          <InfoCard title={'Sale network'} subtitle={'solana, smart chain'} />
         </View>
-      </View>
+      </>
     );
   };
 
@@ -174,37 +134,6 @@ const LaunchpadDetails = () => {
               outputRange: [0, 1],
             }),
           }}></Animated.View>
-
-        <Animated.View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            paddingBottom: 10,
-            opacity: scrollY.interpolate({
-              inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 50],
-              outputRange: [0, 1],
-            }),
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [HEADER_HEIGHT - 130, HEADER_HEIGHT - 83],
-                  outputRange: [70, 0],
-                  extrapolate: 'clamp',
-                }),
-              },
-            ],
-          }}>
-          <Image
-            style={{width: 45, height: 45, borderRadius: 100}}
-            source={data.image}
-            resizeMode="contain"
-          />
-        </Animated.View>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={{
@@ -275,10 +204,44 @@ const LaunchpadDetails = () => {
       </View>
     );
   };
+  const renderCardHeader = () => {
+    return (
+      <View
+        style={{
+          marginTop: -1000,
+          paddingTop: 1000,
+          alignItems: 'center',
+          overflow: 'hidden',
+        }}>
+        <Animated.Image
+          source={data.image}
+          resizeMode="cover"
+          style={{
+            height: HEADER_HEIGHT,
+            width: '110%',
+            transform: [
+              {
+                translateY: scrollY.interpolate({
+                  inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+                  outputRange: [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.55],
+                }),
+              },
+              {
+                scale: scrollY.interpolate({
+                  inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+                  outputRange: [2, 1, 0.9],
+                }),
+              },
+            ],
+          }}
+        />
+      </View>
+    );
+  };
 
   const renderRecipeInfo = () => {
     return (
-      <View style={{paddingHorizontal: 20, marginTop: 80}}>
+      <View style={{paddingHorizontal: 20, marginTop: 20}}>
         <View
           style={{
             marginBottom: 20,
@@ -297,22 +260,6 @@ const LaunchpadDetails = () => {
             }}>
             <IconWeb name="web" color={'white'} size={23} />
           </View>
-          <TouchableOpacity
-            onPress={() => setOpen(true)}
-            style={{
-              position: 'absolute',
-              right: 0,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{color: 'white'}}>More Details</Text>
-            <BottomSheet
-              show={open}
-              onDismiss={() => {
-                setOpen(false);
-              }}
-              enableBackdropDismiss></BottomSheet>
-          </TouchableOpacity>
         </View>
         <MoreLess>
           cnewkjcenw jdnekjndkejnddujewd dewhudwei jlsajxje oijdoewjido jghhgjhb
@@ -363,52 +310,10 @@ const LaunchpadDetails = () => {
         ListHeaderComponent={
           <View>
             {renderCardHeader()}
-            <Animated.View
-              style={{
-                position: 'absolute',
-                zIndex: 1,
-                left: 30,
-                top: 110,
-                right: 30,
-                height: 130,
-                width: 130,
-                opacity: scrollY.interpolate({
-                  inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 90],
-                  outputRange: [1, 0],
-                }),
-                transform: [
-                  {
-                    translateY: scrollY.interpolate({
-                      inputRange: [0, 60, 90],
-                      outputRange: [0, -10, -20],
-                      extrapolate: 'clamp',
-                    }),
-                  },
-                  {
-                    translateX: scrollY.interpolate({
-                      inputRange: [0, 60, 90],
-                      outputRange: [0, 90, 100],
-                      extrapolate: 'clamp',
-                    }),
-                  },
-                  {
-                    scale: scrollY.interpolate({
-                      inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-                      outputRange: [1, 1, -0.3],
-                    }),
-                  },
-                ],
-              }}>
-              <Image
-                style={{width: '100%', height: '100%', borderRadius: 100}}
-                source={data.image}
-                resizeMode="contain"
-              />
-            </Animated.View>
             <LinearGradient
               colors={[
                 'transparent',
-                theme == 'light' ? COLORS.background : '#2021227F',
+                'transparent',
                 theme == 'light' ? COLORS.background : COLORS.backgroundDark,
               ]}
               style={{
@@ -416,7 +321,7 @@ const LaunchpadDetails = () => {
                 left: 0,
                 right: 0,
                 top: 0,
-                height: 180,
+                height: 185,
                 width: '100%',
               }}
             />
@@ -435,4 +340,4 @@ const LaunchpadDetails = () => {
     </View>
   );
 };
-export default LaunchpadDetails;
+export default IDODetails;
