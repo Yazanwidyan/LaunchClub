@@ -38,19 +38,25 @@ const Home = ({navigation}) => {
               <CustomText size={SIZES.large} style={styles.titleText}>
                 Top IDOs
               </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
+              <View style={{marginLeft: -10}}>
+                <HomeFlatList dataType="ido" data={IDOData} />
+              </View>
             </View>
             <View style={{flex: 2}}>
               <CustomText size={SIZES.large} style={styles.titleText}>
                 New Projects
               </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
+              <View style={{marginLeft: -10}}>
+                <HomeFlatList dataType="ido" data={IDOData} />
+              </View>
             </View>
             <View style={{flex: 2}}>
               <CustomText size={SIZES.large} style={styles.titleText}>
                 Author's Choice
               </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
+              <View style={{marginLeft: -10}}>
+                <HomeFlatList dataType="ido" data={IDOData} />
+              </View>
             </View>
           </View>
         </ScrollView>

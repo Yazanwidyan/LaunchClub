@@ -12,12 +12,18 @@ import {useSelector, useDispatch} from 'react-redux';
 import {setTheme} from '../../redux/actions/actions';
 import {COLORS, SIZES} from '../../constants/theme';
 import HeartIcon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
-const DrawerCustomItem = ({name, icon}) => {
+const DrawerCustomItem = ({name, icon, route}) => {
   const {theme} = useSelector(state => state.theme);
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={{flexDirection: 'row', paddingVertical: 20}}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate(route);
+      }}
+      style={{flexDirection: 'row', paddingVertical: 20}}>
       <HeartIcon
         name={icon}
         size={20}
@@ -62,7 +68,11 @@ const CustomDrawer = props => {
             <CustomText size={SIZES.extraLarge}>Farion Wick</CustomText>
             <CustomText grayText>farionwick@gmail.com</CustomText>
           </View>
-          <DrawerCustomItem name="Watchlist" icon="ios-heart-outline" />
+          <DrawerCustomItem
+            route="Watchlist"
+            name="Watchlist"
+            icon="ios-heart-outline"
+          />
           <DrawerCustomItem name="Profile" icon="ios-heart-outline" />
           <DrawerCustomItem name="Contact Us" icon="ios-heart-outline" />
           <DrawerCustomItem name="Settings" icon="ios-heart-outline" />

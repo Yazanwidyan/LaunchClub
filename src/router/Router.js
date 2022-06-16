@@ -10,11 +10,12 @@ import CustomDrawer from '../components/common/CustomDrawer';
 import {COLORS} from '../constants/theme';
 import CustomTabs from '../components/common/CustomTabs';
 import Launchpads from '../screens/Launchpads';
-import Schedule from '../screens/Schedule';
+import Calendars from '../screens/Calendars';
 import IDO from '../screens/IDO';
 import Notifications from '../screens/Notifications';
 import LaunchpadDetails from '../screens/LaunchpadDetails';
 import IDODetails from '../screens/IDODetails';
+import Watchlist from '../screens/Watchlist';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,7 +57,7 @@ const Router = () => {
         }}>
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Launchpads" component={Launchpads} />
-        <Tab.Screen name="Schedule" component={Schedule} />
+        <Tab.Screen name="Calendar" component={Calendars} />
         <Tab.Screen name="IDOs" component={IDO} />
         <Tab.Screen name="Notifications" component={Notifications} />
       </Tab.Navigator>
@@ -79,6 +80,7 @@ const Router = () => {
           <Stack.Screen name="TabsStack" component={TabsStack} />
           <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
           <Stack.Screen name="IDODetails" component={IDODetails} />
+          <Stack.Screen name="Watchlist" component={Watchlist} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

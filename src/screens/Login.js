@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Schedule = () => {
+const Login = () => {
   return (
     <View>
-      <Text>Schedule</Text>
+      <Text>Login</Text>
     </View>
   );
 };
 
-export default Schedule;
+export default Login;
 
 const styles = StyleSheet.create({});

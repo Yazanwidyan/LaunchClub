@@ -18,13 +18,14 @@ const IDO = () => {
         contentContainerStyle={{
           marginVertical: 10,
           paddingHorizontal: 20,
+          alignItems: 'center',
         }}
         showsVerticalScrollIndicator={false}
         ListFooterComponent={() => {
           return <Text></Text>;
         }}
         renderItem={({item, index}) => {
-          return <IDOItem twoCol item={item} index={index} />;
+          return <IDOItem item={item} index={index} />;
         }}
         keyExtractor={item => item.id}
       />

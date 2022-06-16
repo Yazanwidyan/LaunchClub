@@ -9,7 +9,7 @@ import {
   Modal,
 } from 'react-native';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconWeb from 'react-native-vector-icons/MaterialCommunityIcons';
 import LikeIcon from 'react-native-vector-icons/AntDesign';
@@ -24,6 +24,7 @@ import CustomTextInput from '../components/UI/CustomTextInput';
 import IDOItem from '../components/IDO/IDOItem';
 import useToggle from '../components/common/hooks/useToggle';
 import BottomSheet from '../components/UI/BottomSheet';
+import {addToWatchlist} from '../redux/actions/actions';
 
 const HEADER_HEIGHT = 180;
 
@@ -36,6 +37,9 @@ const LaunchpadDetails = () => {
   const [tabIndicatorIndex, setTabIndicatorIndex] = useState(0);
   const [open, setOpen] = useToggle(false);
   const {theme} = useSelector(state => state.theme);
+  const watchlist = useSelector(state => state.watchlist);
+
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const route = useRoute();
   const [data, setData] = useState(route.params.item);
@@ -54,6 +58,11 @@ const LaunchpadDetails = () => {
       offset: tabIndex * SIZES.width,
     });
   });
+
+  const addRemoveWatchlist = data => {
+    dispatch(addToWatchlist(data));
+  };
+
   const renderCardHeader = () => {
     return (
       <View
@@ -95,6 +104,13 @@ const LaunchpadDetails = () => {
           flex: 1,
         }}>
         <View style={{flex: 1, flexDirection: 'row'}}>
+          {watchlist.map(item => {
+            return (
+              <View>
+                <CustomText>{item.id}</CustomText>
+              </View>
+            );
+          })}
           {tabs_detail.map((item, index) => {
             return (
               <TouchableOpacity
@@ -124,22 +140,23 @@ const LaunchpadDetails = () => {
         </View>
         <View style={{width: SIZES.width, paddingHorizontal: 20}}>
           <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
-          <FlatList
-            data={IDOData}
-            numColumns={2}
-            contentContainerStyle={{
-              marginVertical: 10,
-              paddingHorizontal: 20,
-            }}
-            showsVerticalScrollIndicator={false}
-            ListFooterComponent={() => {
-              return <Text></Text>;
-            }}
-            renderItem={({item, index}) => {
-              return <IDOItem twoCol item={item} index={index} />;
-            }}
-            keyExtractor={item => item.id}
-          />
+          <View style={{alignItems: 'center'}}>
+            <FlatList
+              data={IDOData}
+              numColumns={2}
+              contentContainerStyle={{
+                alignItems: 'center',
+              }}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={() => {
+                return <Text>dsdsd</Text>;
+              }}
+              renderItem={({item, index}) => {
+                return <IDOItem item={item} index={index} />;
+              }}
+              keyExtractor={item => item.id}
+            />
+          </View>
         </View>
       </View>
     );
@@ -210,10 +227,9 @@ const LaunchpadDetails = () => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            height: 35,
-            width: 35,
+            height: 40,
+            width: 40,
             borderRadius: 18,
-            borderWidth: 1,
             borderColor: COLORS.gray,
             backgroundColor:
               theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
@@ -221,7 +237,7 @@ const LaunchpadDetails = () => {
           <ChevronIcon
             name="chevron-left"
             color={theme === 'light' ? COLORS.secondaryDark : COLORS.secondary}
-            size={30}
+            size={35}
           />
         </TouchableOpacity>
         <View
@@ -234,40 +250,33 @@ const LaunchpadDetails = () => {
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              height: 35,
-              width: 35,
+              height: 40,
+              width: 40,
               marginHorizontal: 10,
               borderRadius: 18,
-              borderWidth: 1,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <LikeIcon
-              name="like2"
-              size={20}
-              color={
-                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
-              }
-            />
+            <LikeIcon name="like1" size={22} color={COLORS.blue} />
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => addRemoveWatchlist(data)}
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              height: 35,
-              width: 35,
+              height: 40,
+              width: 40,
               borderRadius: 18,
-              borderWidth: 1,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
             <HeartIcon
-              name="ios-heart-outline"
-              size={20}
+              name="ios-heart-sharp"
+              size={22}
               color={
-                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                watchlist.some(e => e.id === data.id) ? COLORS.red : COLORS.gray
               }
             />
           </TouchableOpacity>

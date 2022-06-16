@@ -9,9 +9,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router />
-        </PersistGate>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+        <Router />
+        {/* </PersistGate> */}
       </PaperProvider>
     </Provider>
   );

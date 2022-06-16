@@ -10,7 +10,7 @@ const persistedReducer = persistReducer(
 );
 
 const store = createStore(
-  persistedReducer,
+  reducers,
   compose(
     applyMiddleware(Thunk),
     typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
@@ -18,5 +18,5 @@ const store = createStore(
       : f => f,
   ),
 );
-const persistor = persistStore(store);
-export {store, persistor};
+// const persistor = persistStore(store);
+export {store};

@@ -81,7 +81,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                     : COLORS.gray
                 }
               />
-            ) : label == 'Schedule' ? (
+            ) : label == 'Calendar' ? (
               <Icon
                 name="ios-calendar-sharp"
                 size={23}

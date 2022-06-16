@@ -6,14 +6,14 @@ import CustomText from '../UI/CustomText';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-const IDOItem = ({item, twoCol}) => {
+const IDOItem = ({item}) => {
   const {theme} = useSelector(state => state.theme);
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       style={{
-        width: twoCol ? '48%' : 190,
+        width: 190,
         height: 200,
         marginBottom: 20,
         backgroundColor:
@@ -21,7 +21,7 @@ const IDOItem = ({item, twoCol}) => {
         borderRadius: 10,
         padding: 7,
         paddingTop: 14,
-        marginRight: 12,
+        marginHorizontal: 10,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}

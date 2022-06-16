@@ -14,6 +14,8 @@ export const COLORS = {
   white100: '#f0f0f0',
   line: '#E3E3E3',
   lineDark: '#2F2F2F',
+  red: '#FF3743',
+  blue: '#2568f5',
 };
 
 export const SIZES = {
