@@ -60,7 +60,9 @@ const LaunchpadDetails = () => {
   });
 
   const addRemoveWatchlist = data => {
-    dispatch(addToWatchlist(data));
+    const payload = {...data, category: 'launchpads'};
+
+    dispatch(addToWatchlist(payload));
   };
 
   const renderCardHeader = () => {
@@ -104,13 +106,6 @@ const LaunchpadDetails = () => {
           flex: 1,
         }}>
         <View style={{flex: 1, flexDirection: 'row'}}>
-          {watchlist.map(item => {
-            return (
-              <View>
-                <CustomText>{item.id}</CustomText>
-              </View>
-            );
-          })}
           {tabs_detail.map((item, index) => {
             return (
               <TouchableOpacity
@@ -149,7 +144,7 @@ const LaunchpadDetails = () => {
               }}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
-                return <Text>dsdsd</Text>;
+                return <Text></Text>;
               }}
               renderItem={({item, index}) => {
                 return <IDOItem item={item} index={index} />;

@@ -8,14 +8,14 @@ import {
   FlatList,
 } from 'react-native';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconWeb from 'react-native-vector-icons/MaterialCommunityIcons';
 import LikeIcon from 'react-native-vector-icons/AntDesign';
 import HeartIcon from 'react-native-vector-icons/Ionicons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-
+import {addToWatchlist} from '../redux/actions/actions';
 import {COLORS, assets, tabs_details, SIZES, IDOData} from '../constants';
 import CustomText from '../components/UI/CustomText';
 import MoreLess from '../components/UI/MoreLess';
@@ -63,10 +63,18 @@ const IDODetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [data, setData] = useState(route.params.item);
+  const dispatch = useDispatch();
+  const watchlist = useSelector(state => state.watchlist);
 
   useEffect(() => {
     setData(route.params.item);
   }, []);
+
+  const addRemoveWatchlist = data => {
+    const payload = {...data, category: 'idos'};
+
+    dispatch(addToWatchlist(payload));
+  };
 
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -139,10 +147,9 @@ const IDODetails = () => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            height: 35,
-            width: 35,
+            height: 40,
+            width: 40,
             borderRadius: 18,
-            borderWidth: 1,
             borderColor: COLORS.gray,
             backgroundColor:
               theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
@@ -163,40 +170,33 @@ const IDODetails = () => {
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              height: 35,
-              width: 35,
+              height: 40,
+              width: 40,
               marginHorizontal: 10,
               borderRadius: 18,
-              borderWidth: 1,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <LikeIcon
-              name="like2"
-              size={20}
-              color={
-                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
-              }
-            />
+            <LikeIcon name="like1" size={22} color={COLORS.blue} />
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => addRemoveWatchlist(data)}
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              height: 35,
-              width: 35,
+              height: 40,
+              width: 40,
               borderRadius: 18,
-              borderWidth: 1,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
             <HeartIcon
-              name="ios-heart-outline"
-              size={20}
+              name="ios-heart-sharp"
+              size={22}
               color={
-                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                watchlist.some(e => e.id === data.id) ? COLORS.red : COLORS.gray
               }
             />
           </TouchableOpacity>
