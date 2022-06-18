@@ -1,10 +1,10 @@
 import {StyleSheet, Image, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {COLORS, assets, SIZES} from '../../constants';
+import {COLORS, assets, SIZES, FONTS} from '../../constants';
 import CustomText from '../UI/CustomText';
 
-const Header = ({toggleDrawer, title}) => {
+const Header = ({title, brand}) => {
   const {theme} = useSelector(state => state.theme);
   return (
     <View
@@ -12,29 +12,33 @@ const Header = ({toggleDrawer, title}) => {
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         flexDirection: 'row',
-        justifyContent: title && toggleDrawer ? 'space-between' : 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingTop: 50,
         paddingHorizontal: 20,
-        height: 90,
+        height: 100,
       }}>
-      {toggleDrawer && (
-        <TouchableOpacity style={{marginRight: -17}} onPress={toggleDrawer}>
-          <View style={{flexDirection: 'row'}}>
-            <CustomText style={{marginRight: 5}} size={5}>
-              {theme == 'light' ? '⚫' : '⚪'}
-            </CustomText>
-            <CustomText size={5}>{theme == 'light' ? '⚫' : '⚪'} </CustomText>
-          </View>
-          <View style={{flexDirection: 'row', marginTop: 5}}>
-            <CustomText style={{marginRight: 5}} size={5}>
-              {theme == 'light' ? '⚫' : '⚪'}
-            </CustomText>
-            <CustomText size={5}>{theme == 'light' ? '⚫' : '⚪'} </CustomText>
-          </View>
-        </TouchableOpacity>
+      {brand ? (
+        <>
+          <Image
+            source={assets.badge}
+            style={{
+              width: 50,
+              height: 30,
+              resizeMode: 'contain',
+              marginTop: -5,
+              marginLeft: -20,
+            }}
+          />
+          <CustomText font={FONTS.bold} size={SIZES.extraLarge}>
+            {title}
+          </CustomText>
+        </>
+      ) : (
+        <CustomText font={FONTS.bold} size={SIZES.large}>
+          {title}
+        </CustomText>
       )}
-      {title && <CustomText size={SIZES.large}>{title}</CustomText>}
-      {title && toggleDrawer && <CustomText></CustomText>}
     </View>
   );
 };

@@ -7,35 +7,36 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {COLORS, SIZES} from '../constants/theme';
+import {COLORS, FONTS, SIZES} from '../constants/theme';
 import Header from '../components/common/Header';
-import {IDOData, PadsData} from '../constants';
+import {assets, IDOData, PadsData} from '../constants';
 import HomeFlatList from '../components/Home/HomeFlatList';
 import CustomText from '../components/UI/CustomText';
 
-const Home = ({navigation}) => {
-  const navigate = useNavigation();
-  const {theme} = useSelector(state => state.theme);
-
+const Home = () => {
   return (
     <>
       <SafeAreaView style={{flex: 1}}>
-        <Header
-          title={'LaunchClub'}
-          toggleDrawer={() => navigation.toggleDrawer()}
-        />
+        <Header brand title={'LaunchClub'} />
         <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
             <View style={{flex: 1}}>
-              <CustomText size={SIZES.large} style={styles.titleText}>
+              <CustomText
+                size={SIZES.large}
+                font={FONTS.bold}
+                style={styles.titleText}>
                 Explore Launchpads
               </CustomText>
               <HomeFlatList dataType="launchpad" data={PadsData} />
             </View>
             <View style={{flex: 2}}>
-              <CustomText size={SIZES.large} style={styles.titleText}>
+              <CustomText
+                size={SIZES.large}
+                font={FONTS.bold}
+                style={styles.titleText}>
                 Top IDOs
               </CustomText>
               <View style={{marginLeft: -10}}>
@@ -43,7 +44,10 @@ const Home = ({navigation}) => {
               </View>
             </View>
             <View style={{flex: 2}}>
-              <CustomText size={SIZES.large} style={styles.titleText}>
+              <CustomText
+                size={SIZES.large}
+                font={FONTS.bold}
+                style={styles.titleText}>
                 New Projects
               </CustomText>
               <View style={{marginLeft: -10}}>
@@ -51,7 +55,10 @@ const Home = ({navigation}) => {
               </View>
             </View>
             <View style={{flex: 2}}>
-              <CustomText size={SIZES.large} style={styles.titleText}>
+              <CustomText
+                size={SIZES.large}
+                font={FONTS.bold}
+                style={styles.titleText}>
                 Author's Choice
               </CustomText>
               <View style={{marginLeft: -10}}>

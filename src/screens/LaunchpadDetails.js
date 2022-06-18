@@ -17,7 +17,14 @@ import HeartIcon from 'react-native-vector-icons/Ionicons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {COLORS, assets, tabs_details, SIZES, IDOData} from '../constants';
+import {
+  COLORS,
+  assets,
+  tabs_details,
+  SIZES,
+  IDOData,
+  FONTS,
+} from '../constants';
 import CustomText from '../components/UI/CustomText';
 import MoreLess from '../components/UI/MoreLess';
 import CustomTextInput from '../components/UI/CustomTextInput';
@@ -290,7 +297,10 @@ const LaunchpadDetails = () => {
           <CustomText style={{marginBottom: 5}} size={SIZES.font}>
             by name
           </CustomText>
-          <CustomText style={{marginBottom: 5}} size={SIZES.extraLarge}>
+          <CustomText
+            font={FONTS.bold}
+            style={{marginBottom: 5}}
+            size={SIZES.extraLarge}>
             name
           </CustomText>
           <View
@@ -329,23 +339,33 @@ const LaunchpadDetails = () => {
             marginBottom: 40,
           }}>
           <View style={{alignItems: 'center'}}>
-            <CustomText size={SIZES.large}>2.1k</CustomText>
+            <CustomText font={FONTS.bold} size={SIZES.large}>
+              2.1k
+            </CustomText>
             <CustomText grayText>likes</CustomText>
           </View>
           <View style={{alignItems: 'center'}}>
-            <CustomText size={SIZES.large}>2.1k</CustomText>
+            <CustomText font={FONTS.bold} size={SIZES.large}>
+              2.1k
+            </CustomText>
             <CustomText grayText>watchlist</CustomText>
           </View>
           <View style={{alignItems: 'center'}}>
-            <CustomText size={SIZES.large}>BSC</CustomText>
+            <CustomText font={FONTS.bold} size={SIZES.large}>
+              BSC
+            </CustomText>
             <CustomText grayText>chain</CustomText>
           </View>
           <View style={{alignItems: 'center'}}>
-            <CustomText size={SIZES.large}>2.1k</CustomText>
+            <CustomText font={FONTS.bold} size={SIZES.large}>
+              2.1k
+            </CustomText>
             <CustomText grayText>likes</CustomText>
           </View>
           <View style={{alignItems: 'center'}}>
-            <CustomText size={SIZES.large}>2.1k</CustomText>
+            <CustomText font={FONTS.bold} size={SIZES.large}>
+              2.1k
+            </CustomText>
             <CustomText grayText>likes</CustomText>
           </View>
         </View>

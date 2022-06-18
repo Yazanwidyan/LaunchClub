@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import {COLORS, FONTS, SIZES} from '../../constants';
+import {assets, COLORS, FONTS, SIZES} from '../../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 
@@ -105,17 +105,26 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                     : COLORS.gray
                 }
               />
-            ) : label == 'Notifications' ? (
-              <Icon
-                name="md-notifications-outline"
-                size={23}
-                color={
-                  isFocused
-                    ? theme == 'dark'
-                      ? COLORS.white
-                      : COLORS.black
-                    : COLORS.gray
-                }
+            ) : label == 'Profile' ? (
+              // <Icon
+              //   name="person-circle-outline"
+              //   size={23}
+              //   color={
+              //     isFocused
+              //       ? theme == 'dark'
+              //         ? COLORS.white
+              //         : COLORS.black
+              //       : COLORS.gray
+              //   }
+              // />
+              <Image
+                source={assets.nft01}
+                style={{
+                  width: 26,
+                  height: 26,
+                  resizeMode: 'cover',
+                  borderRadius: 30,
+                }}
               />
             ) : null}
             <Text

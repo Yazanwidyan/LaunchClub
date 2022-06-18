@@ -35,7 +35,7 @@ const Calendars = () => {
         ListHeaderComponent={
           <View style={{marginVertical: 20}}>
             <Calendar
-              style={{...SHADOWS.dark}}
+              style={theme == 'light' ? {...SHADOWS.light} : {...SHADOWS.dark}}
               theme={{
                 textSectionTitleColor: COLORS.primary,
                 arrowColor: theme == 'light' ? COLORS.black : COLORS.white,

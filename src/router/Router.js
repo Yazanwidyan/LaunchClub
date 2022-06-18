@@ -16,6 +16,7 @@ import Notifications from '../screens/Notifications';
 import LaunchpadDetails from '../screens/LaunchpadDetails';
 import IDODetails from '../screens/IDODetails';
 import Watchlist from '../screens/Watchlist';
+import Profile from '../screens/Profile';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,23 +32,6 @@ const Router = () => {
       background: theme == 'light' ? COLORS.background : COLORS.backgroundDark,
     },
   };
-
-  const HomeStack = () => {
-    return (
-      <Drawer.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        drawerContent={props => <CustomDrawer {...props} />}>
-        <Drawer.Screen
-          options={{gestureEnabled: false}}
-          name="HomeStack"
-          component={Home}
-        />
-      </Drawer.Navigator>
-    );
-  };
-
   const TabsStack = () => {
     return (
       <Tab.Navigator
@@ -55,11 +39,11 @@ const Router = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Launchpads" component={Launchpads} />
         <Tab.Screen name="Calendar" component={Calendars} />
         <Tab.Screen name="IDOs" component={IDO} />
-        <Tab.Screen name="Notifications" component={Notifications} />
+        <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
     );
   };

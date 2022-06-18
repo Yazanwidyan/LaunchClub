@@ -4,10 +4,10 @@ const {width, height} = Dimensions.get('window');
 export const COLORS = {
   primary: '#76A9FF',
   background: '#f2f3f5',
-  backgroundDark: '#202122',
+  backgroundDark: '#141D26',
   secondary: '#ffff',
-  secondaryDark: '#1A1A1A',
-  white: '#FFF',
+  secondaryDark: '#101820',
+  white: '#FFFFFFDE',
   gray: '#858992',
   black: '#000000',
   black100: '#121212',
@@ -25,17 +25,17 @@ export const SIZES = {
   font: 14,
   medium: 16,
   large: 18,
-  extraLarge: 24,
+  extraLarge: 21,
   width,
   height,
 };
 
 export const FONTS = {
-  bold: 'InterBold',
-  semiBold: 'InterSemiBold',
-  medium: 'InterMedium',
-  regular: 'InterRegular',
-  light: 'InterLight',
+  bold: 'Poppins-Bold',
+  semiBold: 'Poppins-SemiBold',
+  medium: 'Poppins-Medium',
+  regular: 'Poppins-Regular',
+  light: 'Poppins-Light',
 };
 
 export const SHADOWS = {
