@@ -13,7 +13,7 @@ const IDOItem = ({item}) => {
   return (
     <TouchableOpacity
       style={{
-        width: 190,
+        width: SIZES.width / 2.4,
         height: 200,
         marginBottom: 20,
         backgroundColor:
@@ -21,7 +21,7 @@ const IDOItem = ({item}) => {
         borderRadius: 10,
         padding: 7,
         paddingTop: 14,
-        marginHorizontal: 10,
+        marginHorizontal: 15,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}
@@ -41,7 +41,8 @@ const IDOItem = ({item}) => {
           position: 'absolute',
           right: 10,
           top: '57%',
-          backgroundColor: theme == 'light' ? COLORS.white : COLORS.black100,
+          backgroundColor:
+            theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
           borderRadius: 10,
           paddingHorizontal: 10,
           paddingVertical: 5,
@@ -51,10 +52,10 @@ const IDOItem = ({item}) => {
         <CustomText size={SIZES.xSmall}> Ending in </CustomText>
         <CustomText size={SIZES.base}> 12h 30m </CustomText>
       </View>
-      <View style={{paddingVertical: 20, paddingHorizontal: 5}}>
+      <View style={{paddingVertical: 25, paddingHorizontal: 5}}>
         <CustomText size={SIZES.medium}>
-          {item.name.substring(0, 18)}
-          {item.name.length > 17 ? '...' : null}
+          {item.name.substring(0, 14)}
+          {item.name.length > 15 ? '...' : null}
         </CustomText>
         <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
           <Icon name="like2" size={13} color={COLORS.gray} /> {item.likes}

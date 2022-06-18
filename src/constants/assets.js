@@ -19,6 +19,9 @@ import pad02 from '../assets/images/pad02.jpg';
 import pad03 from '../assets/images/pad03.jpg';
 import pad04 from '../assets/images/pad04.jpeg';
 import pad05 from '../assets/images/pad05.jpg';
+import pad06 from '../assets/images/pad06.jpg';
+import pad07 from '../assets/images/pad07.jpg';
+import pad08 from '../assets/images/pad08.jpg';
 
 import person01 from '../assets/images/person01.png';
 import person02 from '../assets/images/person02.png';
@@ -47,6 +50,9 @@ export default {
   pad03,
   pad04,
   pad05,
+  pad06,
+  pad07,
+  pad08,
 
   person01,
   person02,

@@ -14,9 +14,9 @@ const Header = ({title, brand}) => {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 50,
+        paddingTop: 30,
         paddingHorizontal: 20,
-        height: 100,
+        height: 80,
       }}>
       {brand ? (
         <>
@@ -26,7 +26,7 @@ const Header = ({title, brand}) => {
               width: 50,
               height: 30,
               resizeMode: 'contain',
-              marginTop: -5,
+              marginTop: -7,
               marginLeft: -20,
             }}
           />

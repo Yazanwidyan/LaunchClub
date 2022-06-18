@@ -231,16 +231,12 @@ const LaunchpadDetails = () => {
             justifyContent: 'center',
             height: 40,
             width: 40,
-            borderRadius: 18,
+            borderRadius: 50,
             borderColor: COLORS.gray,
             backgroundColor:
               theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
           }}>
-          <ChevronIcon
-            name="chevron-left"
-            color={theme === 'light' ? COLORS.secondaryDark : COLORS.secondary}
-            size={35}
-          />
+          <ChevronIcon name="chevron-left" color={COLORS.gray} size={35} />
         </TouchableOpacity>
         <View
           style={{
@@ -248,40 +244,45 @@ const LaunchpadDetails = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <TouchableOpacity
+          <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               height: 40,
               width: 40,
               marginHorizontal: 10,
-              borderRadius: 18,
+              borderRadius: 50,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <LikeIcon name="like1" size={22} color={COLORS.blue} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => addRemoveWatchlist(data)}
+            <LikeIcon
+              style={{marginTop: -2}}
+              name="like1"
+              size={20}
+              color={COLORS.gray}
+            />
+          </View>
+          <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               height: 40,
               width: 40,
-              borderRadius: 18,
+              borderRadius: 50,
               borderColor: COLORS.gray,
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
             <HeartIcon
+              onPress={() => addRemoveWatchlist(data)}
               name="ios-heart-sharp"
               size={22}
               color={
                 watchlist.some(e => e.id === data.id) ? COLORS.red : COLORS.gray
               }
             />
-          </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -295,13 +296,13 @@ const LaunchpadDetails = () => {
             marginBottom: 20,
           }}>
           <CustomText style={{marginBottom: 5}} size={SIZES.font}>
-            by name
+            by {data.owner ? data.owner : data.name}
           </CustomText>
           <CustomText
             font={FONTS.bold}
             style={{marginBottom: 5}}
             size={SIZES.extraLarge}>
-            name
+            {data.name}
           </CustomText>
           <View
             style={{
@@ -309,7 +310,26 @@ const LaunchpadDetails = () => {
               width: '50%',
               justifyContent: 'space-between',
             }}>
-            <IconWeb name="web" color={'white'} size={23} />
+            <IconWeb
+              name="web"
+              color={theme == 'light' ? COLORS.black : COLORS.white}
+              size={23}
+            />
+            <IconWeb
+              name="web"
+              color={theme == 'light' ? COLORS.black : COLORS.white}
+              size={23}
+            />
+            <IconWeb
+              name="web"
+              color={theme == 'light' ? COLORS.black : COLORS.white}
+              size={23}
+            />
+            <IconWeb
+              name="web"
+              color={theme == 'light' ? COLORS.black : COLORS.white}
+              size={23}
+            />
           </View>
           <TouchableOpacity
             onPress={() => setOpen(true)}

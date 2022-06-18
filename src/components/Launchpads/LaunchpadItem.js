@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import CustomText from '../UI/CustomText';
-import {COLORS, SIZES} from '../../constants';
+import {COLORS, FONTS, SIZES} from '../../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconLike from 'react-native-vector-icons/AntDesign';
 import {useSelector, useDispatch} from 'react-redux';
@@ -14,7 +14,8 @@ const LaunchpadItem = ({item, index}) => {
   return (
     <View
       style={{
-        borderBottomColor: theme == 'light' ? COLORS.line : COLORS.lineDark,
+        borderBottomColor:
+          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderBottomWidth: 1,
         marginBottom: 30,
       }}>
@@ -31,7 +32,9 @@ const LaunchpadItem = ({item, index}) => {
             paddingHorizontal: 10,
           }}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <CustomText style={{marginRight: 20}}>{index + 1}</CustomText>
+            <CustomText font={FONTS.semiBold} style={{marginRight: 20}}>
+              {index + 1}
+            </CustomText>
             <View
               style={{
                 width: 50,
@@ -46,7 +49,9 @@ const LaunchpadItem = ({item, index}) => {
               />
             </View>
             <View>
-              <CustomText style={{marginBottom: 5}}>{item.name}</CustomText>
+              <CustomText font={FONTS.semiBold} style={{marginBottom: 5}}>
+                {item.name}
+              </CustomText>
               <CustomText grayText>
                 <IconLike name="like2" size={13} color={COLORS.gray} />{' '}
                 {item.likes}
@@ -59,14 +64,15 @@ const LaunchpadItem = ({item, index}) => {
               alignItems: 'center',
             }}>
             <View style={{marginHorizontal: 20}}>
-              <CustomText style={{textAlign: 'right', marginBottom: 5}}>
+              <CustomText
+                font={FONTS.semiBold}
+                style={{textAlign: 'right', marginBottom: 5}}>
                 ${item.price}
               </CustomText>
               <CustomText size={SIZES.base} style={{textAlign: 'right'}}>
                 MCap {item.mCap}
               </CustomText>
             </View>
-            <Icon name="ios-heart-outline" color={'white'} size={23} />
           </View>
         </View>
       </TouchableOpacity>

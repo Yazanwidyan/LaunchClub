@@ -9,15 +9,22 @@ const IDO = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header title={'IDOs'} />
-      <View style={{paddingHorizontal: 20, marginBottom: 20}}>
-        <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
-      </View>
       <FlatList
+        ListHeaderComponentStyle={{alignSelf: 'stretch'}}
+        ListHeaderComponent={
+          <View
+            style={{
+              paddingHorizontal: 10,
+              marginBottom: 20,
+            }}>
+            <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
+          </View>
+        }
         data={IDOData}
         numColumns={2}
         contentContainerStyle={{
           marginVertical: 10,
-          paddingHorizontal: 20,
+          paddingHorizontal: 10,
           alignItems: 'center',
         }}
         showsVerticalScrollIndicator={false}

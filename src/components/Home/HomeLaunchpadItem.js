@@ -12,14 +12,12 @@ const ExploreLaunchpads = ({item}) => {
   return (
     <TouchableOpacity
       style={{
-        width: 110,
-        height: 110,
+        width: 70,
+        height: 70,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
-        padding: 5,
         marginRight: 12,
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.backgroundDark,
+        padding: 5,
         borderRadius: 10,
       }}
       onPress={() => {

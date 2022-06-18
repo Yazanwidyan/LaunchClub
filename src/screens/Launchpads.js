@@ -9,10 +9,16 @@ const Launchpads = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header title={'Launchpads'} />
-      <View style={{paddingHorizontal: 20, marginBottom: 20}}>
-        <CustomTextInput iconName={'magnify'} placeholder="Search Launchpads" />
-      </View>
+
       <FlatList
+        ListHeaderComponent={
+          <View style={{paddingHorizontal: 20, marginBottom: 20}}>
+            <CustomTextInput
+              iconName={'magnify'}
+              placeholder="Search Launchpads"
+            />
+          </View>
+        }
         data={PadsData}
         contentContainerStyle={{
           marginVertical: 10,
