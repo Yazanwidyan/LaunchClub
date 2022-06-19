@@ -13,15 +13,16 @@ const IDOItem = ({item}) => {
   return (
     <TouchableOpacity
       style={{
-        width: SIZES.width / 2.4,
+        width: SIZES.width / 2.5,
         height: 200,
         marginBottom: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderRadius: 10,
-        padding: 7,
-        paddingTop: 14,
-        marginHorizontal: 15,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        paddingBottom: 20,
+        marginHorizontal: 7,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}
@@ -31,35 +32,30 @@ const IDOItem = ({item}) => {
         style={{
           width: '100%',
           height: '60%',
-          borderTopRightRadius: 10,
-          borderTopLeftRadius: 10,
+          borderRadius: 10,
         }}
         source={item.image}
       />
-      <View
-        style={{
-          position: 'absolute',
-          right: 10,
-          top: '57%',
-          backgroundColor:
-            theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-          borderRadius: 10,
-          paddingHorizontal: 10,
-          paddingVertical: 5,
-          ...SHADOWS.dark,
-          alignItems: 'center',
-        }}>
-        <CustomText size={SIZES.xSmall}> Ending in </CustomText>
-        <CustomText size={SIZES.base}> 12h 30m </CustomText>
-      </View>
-      <View style={{paddingVertical: 25, paddingHorizontal: 5}}>
-        <CustomText size={SIZES.medium}>
-          {item.name.substring(0, 14)}
-          {item.name.length > 15 ? '...' : null}
-        </CustomText>
-        <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
-          <Icon name="like2" size={13} color={COLORS.gray} /> {item.likes}
-        </CustomText>
+      <View style={{paddingVertical: 20}}>
+        <View>
+          <CustomText size={SIZES.medium}>
+            {item.name.substring(0, 16)}
+            {item.name.length > 17 ? '...' : null}
+          </CustomText>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
+            10h 30m
+          </CustomText>
+          <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
+            <Icon name="like2" size={13} color={COLORS.gray} /> {item.likes}
+          </CustomText>
+        </View>
       </View>
     </TouchableOpacity>
   );

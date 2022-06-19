@@ -35,7 +35,6 @@ const Calendars = () => {
         ListHeaderComponent={
           <View style={{marginVertical: 20}}>
             <Calendar
-              style={theme == 'light' ? {...SHADOWS.light} : {...SHADOWS.dark}}
               theme={{
                 textSectionTitleColor: COLORS.primary,
                 arrowColor: theme == 'light' ? COLORS.black : COLORS.white,
@@ -43,7 +42,7 @@ const Calendars = () => {
                 monthTextColor: theme == 'light' ? COLORS.black : COLORS.white,
                 dayTextColor: theme == 'light' ? COLORS.black : COLORS.white,
                 calendarBackground:
-                  theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+                  theme == 'light' ? COLORS.background : COLORS.backgroundDark,
               }}
               markedDates={date}
               initialDate={'2022-06-16'}
@@ -54,7 +53,7 @@ const Calendars = () => {
           </View>
         }
         ListFooterComponent={<View style={{marginVertical: 50}}></View>}
-        contentContainerStyle={{paddingHorizontal: 20, alignItems: 'center'}}
+        contentContainerStyle={{alignItems: 'center'}}
         numColumns={2}
         data={IDOData}
         showsVerticalScrollIndicator={false}

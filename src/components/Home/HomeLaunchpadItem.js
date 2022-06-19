@@ -12,8 +12,8 @@ const ExploreLaunchpads = ({item}) => {
   return (
     <TouchableOpacity
       style={{
-        width: 70,
-        height: 70,
+        width: 80,
+        height: 80,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
         marginRight: 12,

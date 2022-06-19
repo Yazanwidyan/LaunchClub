@@ -107,23 +107,6 @@ const Profile = () => {
             <Divider />
             <OptionsCard path="Gems" name="Collect Gems" icon="diamond" />
           </View>
-
-          <View
-            style={{
-              marginHorizontal: 20,
-              borderRadius: 15,
-              marginBottom: 10,
-              backgroundColor:
-                theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-            }}>
-            <OptionsCard path="ContactUs" name="Contact Us" icon="mail" />
-            <Divider />
-            <OptionsCard
-              path="FAQ"
-              name="Helps & FAQs"
-              icon="questioncircleo"
-            />
-          </View>
           <View
             style={{
               marginHorizontal: 20,

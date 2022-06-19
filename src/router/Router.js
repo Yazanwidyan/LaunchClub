@@ -17,6 +17,7 @@ import LaunchpadDetails from '../screens/LaunchpadDetails';
 import IDODetails from '../screens/IDODetails';
 import Watchlist from '../screens/Watchlist';
 import Profile from '../screens/Profile';
+import Gems from '../screens/Gems';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -32,6 +33,21 @@ const Router = () => {
       background: theme == 'light' ? COLORS.background : COLORS.backgroundDark,
     },
   };
+
+  const ProfileStack = () => {
+    return (
+      <Stack.Navigator
+        initialRouteName="ProfileStack"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="ProfileStack" component={Profile} />
+        <Stack.Screen name="Watchlist" component={Watchlist} />
+        <Stack.Screen name="Gems" component={Gems} />
+      </Stack.Navigator>
+    );
+  };
+
   const TabsStack = () => {
     return (
       <Tab.Navigator
@@ -43,7 +59,7 @@ const Router = () => {
         <Tab.Screen name="Launchpads" component={Launchpads} />
         <Tab.Screen name="Calendar" component={Calendars} />
         <Tab.Screen name="IDOs" component={IDO} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profile" component={ProfileStack} />
       </Tab.Navigator>
     );
   };
@@ -64,7 +80,7 @@ const Router = () => {
           <Stack.Screen name="TabsStack" component={TabsStack} />
           <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
           <Stack.Screen name="IDODetails" component={IDODetails} />
-          <Stack.Screen name="Watchlist" component={Watchlist} />
+          <Stack.Screen name="Gems" component={Gems} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
