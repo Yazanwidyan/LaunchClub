@@ -18,6 +18,8 @@ import IDODetails from '../screens/IDODetails';
 import Watchlist from '../screens/Watchlist';
 import Profile from '../screens/Profile';
 import Gems from '../screens/Gems';
+import Search from '../screens/Search';
+import Splash from '../screens/Splash';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -34,20 +36,6 @@ const Router = () => {
     },
   };
 
-  const ProfileStack = () => {
-    return (
-      <Stack.Navigator
-        initialRouteName="ProfileStack"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="ProfileStack" component={Profile} />
-        <Stack.Screen name="Watchlist" component={Watchlist} />
-        <Stack.Screen name="Gems" component={Gems} />
-      </Stack.Navigator>
-    );
-  };
-
   const TabsStack = () => {
     return (
       <Tab.Navigator
@@ -56,10 +44,10 @@ const Router = () => {
           headerShown: false,
         }}>
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Launchpads" component={Launchpads} />
+        <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Calendar" component={Calendars} />
-        <Tab.Screen name="IDOs" component={IDO} />
-        <Tab.Screen name="Profile" component={ProfileStack} />
+        <Tab.Screen name="Watchlist" component={Watchlist} />
+        <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
     );
   };
@@ -76,7 +64,9 @@ const Router = () => {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-          }}>
+          }}
+          initialRouteName="Splash">
+          <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="TabsStack" component={TabsStack} />
           <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
           <Stack.Screen name="IDODetails" component={IDODetails} />

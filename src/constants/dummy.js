@@ -81,7 +81,7 @@ const PadsData = [
 const IDOData = [
   {
     id: 'NFT-01',
-    name: 'Verve',
+    name: 'Verve sajs  akusajsa nsnas shsh',
     price: 0.0023,
     mCap: '$1.62 M',
     likes: 4,
@@ -112,7 +112,7 @@ const IDOData = [
   },
   {
     id: 'NFT-05',
-    name: 'Colorful circles',
+    name: 'Colorful circlessas sjjs sisisnsnsj  shakuhsaku',
     price: 0.0023,
     mCap: '$1.62 M',
 

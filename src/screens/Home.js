@@ -36,20 +36,24 @@ const Home = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  padding: 20,
+                  padding: 15,
                   marginVertical: 20,
                   borderRadius: 10,
                   backgroundColor:
                     theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
                 }}>
                 <View>
-                  <CustomText style={{color: COLORS.primary}}>
+                  <CustomText
+                    size={SIZES.small}
+                    style={{color: COLORS.primary, marginBottom: 5}}>
                     LaunchClub Gems
                   </CustomText>
-                  <CustomText font={FONTS.bold} size={SIZES.large}>
+                  <CustomText font={FONTS.bold} size={SIZES.medium}>
                     Your total Gems 0
                   </CustomText>
-                  <CustomText>Collect more LaunchClub Gems here</CustomText>
+                  <CustomText size={SIZES.base}>
+                    Collect more LaunchClub Gems here
+                  </CustomText>
                 </View>
                 <ChevronIcon
                   name="chevron-right"
@@ -59,7 +63,7 @@ const Home = () => {
               </TouchableOpacity>
             </View>
 
-            <View style={{flex: 1}}>
+            <View>
               <CustomText
                 size={SIZES.medium}
                 font={FONTS.bold}
@@ -68,7 +72,7 @@ const Home = () => {
               </CustomText>
               <HomeFlatList dataType="launchpad" data={PadsData} />
             </View>
-            <View style={{flex: 2}}>
+            <View>
               <CustomText
                 size={SIZES.medium}
                 font={FONTS.bold}
@@ -79,7 +83,7 @@ const Home = () => {
                 <HomeFlatList dataType="ido" data={IDOData} />
               </View>
             </View>
-            <View style={{flex: 2}}>
+            <View>
               <CustomText
                 size={SIZES.medium}
                 font={FONTS.bold}
@@ -90,7 +94,7 @@ const Home = () => {
                 <HomeFlatList dataType="ido" data={IDOData} />
               </View>
             </View>
-            <View style={{flex: 2}}>
+            <View>
               <CustomText
                 size={SIZES.large}
                 font={FONTS.bold}
@@ -114,5 +118,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  titleText: {paddingHorizontal: 20},
+  titleText: {paddingHorizontal: 20, marginTop: 5},
 });

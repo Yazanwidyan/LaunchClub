@@ -16,20 +16,29 @@ const Header = ({title, brand}) => {
         alignItems: 'center',
         paddingTop: 30,
         paddingHorizontal: 20,
-        height: 80,
+        height: 90,
       }}>
       {brand ? (
         <>
-          <Image
-            source={assets.badge}
+          <View
             style={{
-              width: 50,
-              height: 30,
-              resizeMode: 'contain',
-              marginTop: -7,
-              marginLeft: -20,
-            }}
-          />
+              width: 31,
+              height: 31,
+              backgroundColor: COLORS.primary,
+              borderRadius: 40,
+              marginHorizontal: 10,
+              marginTop: -5,
+            }}>
+            <Image
+              source={assets.logo}
+              style={{
+                width: 112,
+                height: 112,
+                marginTop: -38,
+                marginLeft: -43,
+              }}
+            />
+          </View>
           <CustomText font={FONTS.bold} size={SIZES.extraLarge}>
             {title}
           </CustomText>

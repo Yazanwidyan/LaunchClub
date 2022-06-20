@@ -11,33 +11,25 @@ import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import CustomText from '../components/UI/CustomText';
 import Header from '../components/common/Header';
-import {COLORS, SIZES} from '../constants';
+import {COLORS, IDOData, PadsData, SIZES} from '../constants';
 import Divider from '../components/UI/Divider';
 import LaunchpadItem from '../components/Launchpads/LaunchpadItem';
 import IDOItem from '../components/IDO/IDOItem';
+import CustomTextInput from '../components/UI/CustomTextInput';
 
 const active_tabs = ['launchpads', 'idos'];
 
-const Watchlist = () => {
-  const watchlist = useSelector(state => state.watchlist);
-  const [data, setData] = useState([]);
+const Search = () => {
   const [activeTab, setActiveTab] = useState('launchpads');
   const {theme} = useSelector(state => state.theme);
 
-  useEffect(() => {
-    const list = watchlist.filter(item => item.category == activeTab);
-    setData(list);
-  }, []);
-
   const selectActiveTab = category => {
-    const list = watchlist.filter(item => item.category == category);
-    setData(list);
     setActiveTab(category);
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Header title={'Watchlist'} />
+      <Header title={'Search'} />
       <Divider />
       <View
         style={{
@@ -75,21 +67,58 @@ const Watchlist = () => {
       <View>
         {activeTab == 'launchpads' && (
           <FlatList
-            data={data}
-            contentContainerStyle={{marginVertical: 10}}
+            ListHeaderComponent={
+              <View style={{paddingHorizontal: 20, marginBottom: 20}}>
+                <CustomTextInput
+                  iconName={'magnify'}
+                  placeholder="Search Launchpads"
+                />
+              </View>
+            }
+            data={PadsData}
+            contentContainerStyle={{
+              marginVertical: 10,
+            }}
+            showsVerticalScrollIndicator={false}
+            ListFooterComponent={() => {
+              return <Text></Text>;
+            }}
             renderItem={({item, index}) => {
               return <LaunchpadItem item={item} index={index} />;
             }}
+            keyExtractor={item => item.id}
           />
         )}
         {activeTab == 'idos' && (
           <FlatList
-            data={data}
+            ListHeaderComponentStyle={{alignSelf: 'stretch'}}
+            ListHeaderComponent={
+              <View
+                style={{
+                  paddingHorizontal: 10,
+                  marginBottom: 20,
+                }}>
+                <CustomTextInput
+                  iconName={'magnify'}
+                  placeholder="Search IDOs"
+                />
+              </View>
+            }
+            data={IDOData}
             numColumns={2}
-            contentContainerStyle={{alignItems: 'center', marginVertical: 10}}
+            contentContainerStyle={{
+              marginVertical: 10,
+              paddingHorizontal: 10,
+              alignItems: 'center',
+            }}
+            showsVerticalScrollIndicator={false}
+            ListFooterComponent={() => {
+              return <Text></Text>;
+            }}
             renderItem={({item, index}) => {
               return <IDOItem item={item} index={index} />;
             }}
+            keyExtractor={item => item.id}
           />
         )}
       </View>
@@ -97,6 +126,6 @@ const Watchlist = () => {
   );
 };
 
-export default Watchlist;
+export default Search;
 
 const styles = StyleSheet.create({});

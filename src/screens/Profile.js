@@ -103,8 +103,6 @@ const Profile = () => {
               backgroundColor:
                 theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <OptionsCard path="Watchlist" name="Watchlist" icon="hearto" />
-            <Divider />
             <OptionsCard path="Gems" name="Collect Gems" icon="diamond" />
           </View>
           <View

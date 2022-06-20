@@ -1,6 +1,6 @@
 import {StyleSheet, Image, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {COLORS, SHADOWS, SIZES} from '../../constants';
+import {COLORS, FONTS, SHADOWS, SIZES} from '../../constants';
 import {useSelector} from 'react-redux';
 import CustomText from '../UI/CustomText';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -13,16 +13,16 @@ const IDOItem = ({item}) => {
   return (
     <TouchableOpacity
       style={{
-        width: SIZES.width / 2.5,
-        height: 200,
+        width: SIZES.width / 2.4,
+        height: 300,
         marginBottom: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderRadius: 10,
         paddingHorizontal: 10,
-        paddingVertical: 10,
+        paddingTop: 20,
         paddingBottom: 20,
-        marginHorizontal: 7,
+        marginHorizontal: 6,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}
@@ -36,11 +36,11 @@ const IDOItem = ({item}) => {
         }}
         source={item.image}
       />
-      <View style={{paddingVertical: 20}}>
-        <View>
-          <CustomText size={SIZES.medium}>
-            {item.name.substring(0, 16)}
-            {item.name.length > 17 ? '...' : null}
+      <View style={{paddingVertical: 30, paddingHorizontal: 10}}>
+        <View style={{height: 50}}>
+          <CustomText size={SIZES.small} font={FONTS.bold}>
+            {item.name.substring(0, 40)}
+            {item.name.length > 40 ? '...' : null}
           </CustomText>
         </View>
         <View

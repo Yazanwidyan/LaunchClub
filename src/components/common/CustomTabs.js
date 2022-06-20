@@ -1,8 +1,9 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import {assets, COLORS, FONTS, SIZES} from '../../constants';
+import {assets, COLORS, FONTS, SHADOWS, SIZES} from '../../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
+import CustomText from '../UI/CustomText';
 
 const CustomTabs = ({state, descriptors, navigation}) => {
   const {theme} = useSelector(state => state.theme);
@@ -69,9 +70,9 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                     : COLORS.gray
                 }
               />
-            ) : label == 'Launchpads' ? (
+            ) : label == 'Search' ? (
               <Icon
-                name="rocket-outline"
+                name="search-outline"
                 size={23}
                 color={
                   isFocused
@@ -93,9 +94,9 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                     : COLORS.gray
                 }
               />
-            ) : label == 'IDOs' ? (
+            ) : label == 'Watchlist' ? (
               <Icon
-                name="flame-outline"
+                name="heart-outline"
                 size={23}
                 color={
                   isFocused
@@ -127,10 +128,10 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                 }}
               />
             ) : null}
-            <Text
+            <CustomText
+              size={SIZES.small}
               style={{
                 marginTop: 7,
-                fontSize: SIZES.small,
                 color: isFocused
                   ? theme == 'dark'
                     ? COLORS.white
@@ -138,7 +139,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                   : COLORS.gray,
               }}>
               {label}
-            </Text>
+            </CustomText>
           </TouchableOpacity>
         );
       })}

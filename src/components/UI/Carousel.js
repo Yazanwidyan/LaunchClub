@@ -11,11 +11,10 @@ import {
 import {assets, COLORS, SHADOWS} from '../../constants';
 
 const {width, height} = Dimensions.get('screen');
-const ITEM_WIDTH = width;
-const ITEM_HEIGHT = ITEM_WIDTH * 0.6;
+const ITEM_WIDTH = width * 0.9;
+const ITEM_HEIGHT = ITEM_WIDTH * 0.5;
 
 const images = [
-  assets.nft01,
   assets.nft02,
   assets.nft03,
   assets.nft04,
@@ -57,32 +56,33 @@ const Carousel = () => {
             <View
               style={{
                 width,
+                marginTop: 30,
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: COLORS.backgroundDark,
               }}>
-              <View>
-                <View
+              <View
+                style={{
+                  width: ITEM_WIDTH,
+                  height: ITEM_HEIGHT,
+                  overflow: 'hidden',
+                  alignItems: 'center',
+                  borderRadius: 10,
+                }}>
+                <Animated.Image
                   style={{
-                    width: ITEM_WIDTH,
+                    width: ITEM_WIDTH * 1.4,
                     height: ITEM_HEIGHT,
-                    overflow: 'hidden',
-                    alignItems: 'center',
-                  }}>
-                  <Animated.Image
-                    style={{
-                      width: ITEM_WIDTH,
-                      height: ITEM_HEIGHT,
-                      resizeMode: 'cover',
-                      transform: [
-                        {
-                          translateX,
-                        },
-                      ],
-                    }}
-                    source={item.photo}
-                  />
-                </View>
+                    resizeMode: 'contain',
+                    borderRadius: 10,
+                    transform: [
+                      {
+                        translateX,
+                      },
+                    ],
+                  }}
+                  source={item.photo}
+                />
               </View>
             </View>
           );
