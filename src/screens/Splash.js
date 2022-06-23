@@ -21,8 +21,8 @@ const Splash = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Image style={{width: 210, height: 210}} source={assets.logo} />
-      <CustomText style={{marginTop: -70}} font={FONTS.bold} size={38}>
+      <Image style={{width: 85, height: 85}} source={assets.LaunchClubSplash} />
+      <CustomText style={{color: 'white'}} font={FONTS.bold} size={38}>
         LaunchClub
       </CustomText>
     </View>

@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {assets, COLORS, SHADOWS} from '../../constants';
+import {useSelector, useDispatch} from 'react-redux';
 
 const {width, height} = Dimensions.get('screen');
 const ITEM_WIDTH = width * 0.9;
@@ -29,6 +30,7 @@ const data = images.map((image, index) => ({
 
 const Carousel = () => {
   const scrollx = React.useRef(new Animated.Value(0)).current;
+  const {theme} = useSelector(state => state.theme);
 
   return (
     <View>
@@ -59,7 +61,8 @@ const Carousel = () => {
                 marginTop: 30,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: COLORS.backgroundDark,
+                backgroundColor:
+                  theme == 'light' ? COLORS.background : COLORS.backgroundDark,
               }}>
               <View
                 style={{

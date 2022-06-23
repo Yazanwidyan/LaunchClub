@@ -37,7 +37,7 @@ const Search = () => {
           justifyContent: 'space-around',
           padding: 20,
           backgroundColor:
-            theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+            theme == 'light' ? COLORS.background : COLORS.backgroundDark,
         }}>
         {active_tabs.map(item => {
           return (

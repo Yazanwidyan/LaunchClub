@@ -34,36 +34,59 @@ const days2 = [
 const Gems = () => {
   const {theme} = useSelector(state => state.theme);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
-        <Header title="LaunchClub Gems" />
+        <View>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{
+              position: 'absolute',
+              left: 17,
+              top: 38,
+              zIndex: 500,
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 40,
+              width: 40,
+              borderRadius: 50,
+              borderColor: COLORS.gray,
+              backgroundColor:
+                theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
+            }}>
+            <ChevronIcon name="chevron-left" color={COLORS.gray} size={35} />
+          </TouchableOpacity>
+          <Header title="LaunchClub Gems" />
+        </View>
+
         <View style={{paddingHorizontal: 20}}>
           <View
             style={{
               marginTop: 40,
               alignSelf: 'center',
               backgroundColor: COLORS.primary,
-              height: 130,
-              width: 200,
-              alignItems: 'center',
+              height: 180,
+              width: '100%',
               justifyContent: 'center',
               borderRadius: 10,
-              padding: 30,
+              padding: 20,
             }}>
-            <CustomText size={SIZES.medium} font={FONTS.semiBold}>
+            <CustomText
+              style={{color: 'white'}}
+              size={SIZES.medium}
+              font={FONTS.semiBold}>
               Current Gems
             </CustomText>
-            <CustomText size={50} font={FONTS.bold}>
+            <CustomText style={{color: 'white'}} size={50} font={FONTS.bold}>
               0
             </CustomText>
+            <CustomText style={{color: 'white'}} size={SIZES.medium}>
+              Collect LaunchClub Gems to get a chance in free IDO spot 🎉🎉
+            </CustomText>
           </View>
-
-          <CustomText size={SIZES.large} style={{marginVertical: 20}}>
-            Collect LaunchClub Gems to get a chance in free IDO spot
-          </CustomText>
-          <CustomText grayText size={SIZES.medium}>
+          <CustomText grayText size={SIZES.medium} style={{marginVertical: 20}}>
             Collect your Gems every day
           </CustomText>
           <View
@@ -74,12 +97,13 @@ const Gems = () => {
             {days.map(({day, points}) => {
               return (
                 <View
+                  key={day}
                   style={{
                     marginVertical: 10,
                     height: 150,
                     width: 90,
                     padding: 10,
-                    marginRight: 10,
+                    marginRight: 5,
                     borderRadius: 10,
                     alignItems: 'center',
                     justifyContent: 'space-around',
@@ -90,7 +114,7 @@ const Gems = () => {
                   }}>
                   <CustomText>Day {day}</CustomText>
                   <Image
-                    source={assets.nft04}
+                    source={assets.gem}
                     style={{width: 30, height: 30, borderRadius: 50}}
                   />
                   <CustomText>+ {points}</CustomText>
@@ -106,12 +130,13 @@ const Gems = () => {
             {days2.map(({day, points}) => {
               return (
                 <View
+                  key={day}
                   style={{
                     marginVertical: 10,
                     height: 150,
                     width: 90,
                     padding: 10,
-                    marginRight: 10,
+                    marginRight: 5,
                     borderRadius: 10,
                     alignItems: 'center',
                     justifyContent: 'space-around',
@@ -122,7 +147,7 @@ const Gems = () => {
                   }}>
                   <CustomText>Day {day}</CustomText>
                   <Image
-                    source={assets.nft04}
+                    source={assets.gem}
                     style={{width: 30, height: 30, borderRadius: 50}}
                   />
                   <CustomText>+ {points}</CustomText>

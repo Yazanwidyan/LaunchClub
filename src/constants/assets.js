@@ -6,6 +6,9 @@ import left from '../assets/icons/left.png';
 import search from '../assets/icons/search.png';
 
 import logo from '../assets/images/logo-white.png';
+import LaunchClublogo from '../assets/images/LaunchclubLogo.png';
+import LaunchClubSplash from '../assets/images/LaunchclubSplash.png';
+import gem from '../assets/images/Gem.png';
 
 import nft01 from '../assets/images/nft01.png';
 import nft02 from '../assets/images/nft02.jpeg';
@@ -38,6 +41,9 @@ export default {
   like,
 
   logo,
+  LaunchClubSplash,
+  LaunchClublogo,
+  gem,
   nft01,
   nft02,
   nft03,

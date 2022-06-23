@@ -9,37 +9,38 @@ const Header = ({title, brand}) => {
   return (
     <View
       style={{
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+        backgroundColor: brand
+          ? theme == 'light'
+            ? COLORS.secondary
+            : COLORS.secondaryDark
+          : theme == 'light'
+          ? COLORS.background
+          : COLORS.backgroundDark,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 30,
         paddingHorizontal: 20,
-        height: 90,
+        height: 80,
       }}>
       {brand ? (
         <>
-          <View
+          <Image
+            source={assets.LaunchClublogo}
             style={{
-              width: 31,
-              height: 31,
-              backgroundColor: COLORS.primary,
-              borderRadius: 40,
-              marginHorizontal: 10,
+              resizeMode: 'contain',
+              width: 33,
+              height: 33,
+              marginHorizontal: 5,
               marginTop: -5,
-            }}>
-            <Image
-              source={assets.logo}
-              style={{
-                width: 112,
-                height: 112,
-                marginTop: -38,
-                marginLeft: -43,
-              }}
-            />
-          </View>
-          <CustomText font={FONTS.bold} size={SIZES.extraLarge}>
+            }}
+          />
+          <CustomText
+            style={{
+              letterSpacing: -0.4,
+            }}
+            font={FONTS.bold}
+            size={23}>
             {title}
           </CustomText>
         </>
