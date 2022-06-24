@@ -49,10 +49,10 @@ const IDOItem = ({item}) => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
-            10h 30m
+          <CustomText size={SIZES.small} style={{marginTop: 5}}>
+            <Icon name="clockcircleo" size={13} color={COLORS.gray} /> 10h 30m
           </CustomText>
-          <CustomText grayText size={SIZES.small} style={{marginTop: 5}}>
+          <CustomText size={SIZES.small} style={{marginTop: 5}}>
             <Icon name="like2" size={13} color={COLORS.gray} /> {item.likes}
           </CustomText>
         </View>

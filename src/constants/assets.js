@@ -5,7 +5,6 @@ import heart from '../assets/icons/heart.png';
 import left from '../assets/icons/left.png';
 import search from '../assets/icons/search.png';
 
-import logo from '../assets/images/logo-white.png';
 import LaunchClublogo from '../assets/images/LaunchclubLogo.png';
 import LaunchClubSplash from '../assets/images/LaunchclubSplash.png';
 import gem from '../assets/images/Gem.png';
@@ -40,7 +39,6 @@ export default {
   search,
   like,
 
-  logo,
   LaunchClubSplash,
   LaunchClublogo,
   gem,

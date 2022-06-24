@@ -10,7 +10,7 @@ const Splash = () => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('TabsStack');
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (
@@ -21,8 +21,14 @@ const Splash = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Image style={{width: 85, height: 85}} source={assets.LaunchClubSplash} />
-      <CustomText style={{color: 'white'}} font={FONTS.bold} size={38}>
+      <Image
+        style={{width: 75, height: 75, marginBottom: 10}}
+        source={assets.LaunchClubSplash}
+      />
+      <CustomText
+        style={{color: 'white', letterSpacing: -1}}
+        font={FONTS.bold}
+        size={38}>
         LaunchClub
       </CustomText>
     </View>
