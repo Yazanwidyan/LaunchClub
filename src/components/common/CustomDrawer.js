@@ -20,6 +20,7 @@ const DrawerCustomItem = ({name, icon, route}) => {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       onPress={() => {
         navigation.navigate(route);
       }}
@@ -79,7 +80,7 @@ const CustomDrawer = props => {
           <DrawerCustomItem name="Helps & FAQs" icon="ios-heart-outline" />
         </View>
         <View style={{flex: 1}}>
-          <TouchableOpacity onPress={changeTheme}>
+          <TouchableOpacity onPress={changeTheme} activeOpacity={0.7}>
             <Text style={{color: theme == 'light' ? 'black' : 'white'}}>
               Change theme {theme == 'light' ? 'dark' : 'light'}
             </Text>

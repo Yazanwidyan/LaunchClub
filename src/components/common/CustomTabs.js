@@ -13,7 +13,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 20,
+        paddingHorizontal: 16,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         height: 70,
@@ -50,6 +50,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
 
         return (
           <TouchableOpacity
+            activeOpacity={0.7}
             key={index}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}

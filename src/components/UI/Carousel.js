@@ -12,7 +12,7 @@ import {assets, COLORS, SHADOWS} from '../../constants';
 import {useSelector, useDispatch} from 'react-redux';
 
 const {width, height} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.9;
+const ITEM_WIDTH = width * 0.92;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.5;
 
 const images = [

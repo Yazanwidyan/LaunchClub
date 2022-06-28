@@ -84,7 +84,7 @@ const BottomSheet = ({show, onDismiss, enableBackdropDismiss, children}) => {
                   theme == 'light' ? COLORS.background : COLORS.backgroundDark,
               },
             ]}>
-            <TouchableOpacity onPress={onDismiss}>
+            <TouchableOpacity activeOpacity={0.7} onPress={onDismiss}>
               <ChevronIcon
                 name="chevron-down"
                 color={

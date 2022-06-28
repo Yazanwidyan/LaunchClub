@@ -22,7 +22,7 @@ const Splash = () => {
         justifyContent: 'center',
       }}>
       <Image
-        style={{width: 75, height: 75, marginBottom: 10}}
+        style={{width: 130, height: 130, marginBottom: 10}}
         source={assets.LaunchClubSplash}
       />
       <CustomText

@@ -13,6 +13,7 @@ const ExploreLaunchpads = ({item}) => {
   return (
     <View style={{alignItems: 'center', marginRight: 10}}>
       <TouchableOpacity
+        activeOpacity={0.7}
         style={{
           width: 80,
           height: 80,

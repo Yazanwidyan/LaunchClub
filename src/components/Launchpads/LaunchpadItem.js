@@ -20,6 +20,7 @@ const LaunchpadItem = ({item, index}) => {
         marginBottom: 30,
       }}>
       <TouchableOpacity
+        activeOpacity={0.7}
         onPress={() => {
           navigation.navigate('LaunchpadDetails', {item: item});
         }}>

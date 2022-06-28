@@ -29,8 +29,9 @@ const Home = () => {
         <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
             <Carousel />
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{paddingHorizontal: 16}}>
               <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => navigation.navigate('Gems')}
                 style={{
                   flexDirection: 'row',
@@ -45,7 +46,7 @@ const Home = () => {
                 <View>
                   <CustomText
                     size={SIZES.small}
-                    style={{color: COLORS.primary, marginBottom: 5}}>
+                    style={{color: COLORS.gray, marginBottom: 5}}>
                     LaunchClub Gems
                   </CustomText>
                   <CustomText font={FONTS.bold} size={SIZES.medium}>
@@ -118,5 +119,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  titleText: {paddingHorizontal: 20, marginTop: 5},
+  titleText: {paddingHorizontal: 16, marginTop: 5},
 });

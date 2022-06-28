@@ -25,6 +25,7 @@ const OptionsCard = ({icon, name, path}) => {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       onPress={() => navigation.navigate(path)}
       style={{
         padding: 20,
@@ -88,7 +89,10 @@ const Profile = () => {
           />
           <CustomText size={SIZES.large}>Farion Wick</CustomText>
           <CustomText grayText>FarionWick@gmail.com</CustomText>
-          <TouchableOpacity style={{marginBottom: 50}} onPress={changeTheme}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={{marginBottom: 50}}
+            onPress={changeTheme}>
             <Text style={{color: theme == 'light' ? 'black' : 'white'}}>
               Change theme {theme == 'light' ? 'dark' : 'light'}
             </Text>

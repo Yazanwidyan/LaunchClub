@@ -10,7 +10,7 @@ const MoreLess = ({children}) => {
       <CustomText grayText>
         {isMore ? children : children.substr(0, 99)}{' '}
       </CustomText>
-      <TouchableOpacity onPress={() => setIsMore(!isMore)}>
+      <TouchableOpacity activeOpacity={0.7} onPress={() => setIsMore(!isMore)}>
         <CustomText grayText>
           {isMore ? '  - show less' : ' + show more'}
         </CustomText>

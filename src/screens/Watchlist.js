@@ -50,6 +50,7 @@ const Watchlist = () => {
         {active_tabs.map(item => {
           return (
             <TouchableOpacity
+              activeOpacity={0.7}
               key={item}
               onPress={() => selectActiveTab(item)}
               style={{

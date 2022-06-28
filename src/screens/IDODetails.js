@@ -132,7 +132,7 @@ const IDODetails = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
           justifyContent: 'space-between',
-          paddingHorizontal: 20,
+          paddingHorizontal: 16,
           paddingBottom: 10,
         }}>
         <Animated.View
@@ -150,6 +150,7 @@ const IDODetails = () => {
             }),
           }}></Animated.View>
         <TouchableOpacity
+          activeOpacity={0.7}
           onPress={() => navigation.goBack()}
           style={{
             alignItems: 'center',
@@ -170,6 +171,7 @@ const IDODetails = () => {
             justifyContent: 'space-between',
           }}>
           <TouchableOpacity
+            activeOpacity={0.7}
             style={{
               alignItems: 'center',
               justifyContent: 'center',
@@ -189,6 +191,7 @@ const IDODetails = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity
+            activeOpacity={0.7}
             style={{
               alignItems: 'center',
               justifyContent: 'center',
@@ -249,7 +252,7 @@ const IDODetails = () => {
 
   const renderRecipeInfo = () => {
     return (
-      <View style={{paddingHorizontal: 20, marginTop: 20}}>
+      <View style={{paddingHorizontal: 16, marginTop: 20}}>
         <View
           style={{
             marginBottom: 20,

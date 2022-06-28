@@ -49,7 +49,7 @@ const Search = () => {
     extrapolate: 'clamp',
   });
 
-  const [activeTab, setActiveTab] = useState('launchpads');
+  const [activeTab, setActiveTab] = useState('Launchpads');
   const {theme} = useSelector(state => state.theme);
 
   const selectActiveTab = category => {
@@ -93,13 +93,10 @@ const Search = () => {
         }}>
         <Header title={'Search'} />
       </Animated.View>
-      <Divider />
       <Animated.View
         style={[
           {
             height: 90,
-            justifyContent: 'center',
-            alignItems: 'center',
             backgroundColor:
               theme == 'light' ? COLORS.background : COLORS.backgroundDark,
             position: 'absolute',
@@ -130,7 +127,7 @@ const Search = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             paddingTop: 35,
             backgroundColor:
               theme == 'light' ? COLORS.background : COLORS.backgroundDark,
@@ -138,17 +135,17 @@ const Search = () => {
           {active_tabs.map(item => {
             return (
               <TouchableOpacity
+                activeOpacity={0.7}
                 key={item.name}
                 onPress={() => selectActiveTab(item.name)}
                 style={{
-                  marginHorizontal: 20,
                   flexDirection: 'row',
+                  flex: 1,
+                  justifyContent: 'center',
                   alignItems: 'center',
                   borderBottomColor: COLORS.primary,
                   paddingBottom: 10,
                   borderBottomWidth: activeTab == item.name ? 3 : 0,
-                  borderBottomStartRadius: 5,
-                  borderBottomEndRadius: 5,
                 }}>
                 <TabIcon
                   name={item.icon}
@@ -221,7 +218,7 @@ const Search = () => {
               }}>
               <View
                 style={{
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 16,
                   marginBottom: 20,
                   flexDirection: 'row',
                   alignItems: 'center',
@@ -257,8 +254,6 @@ const Search = () => {
               </View>
             </Animated.View>
             <Animated.FlatList
-              contentInset={{top: HEADER_HEIGHT}}
-              contentOffset={{y: -HEADER_HEIGHT}}
               bounces={false}
               scrollEventThrottle={16}
               onScroll={Animated.event(
@@ -277,7 +272,12 @@ const Search = () => {
               }}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
-                return <Text></Text>;
+                return (
+                  <Text
+                    style={{
+                      marginBottom: 200,
+                    }}></Text>
+                );
               }}
               renderItem={({item, index}) => {
                 return <LaunchpadItem item={item} index={index} />;
@@ -325,7 +325,7 @@ const Search = () => {
               }}>
               <View
                 style={{
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 16,
                   marginBottom: 20,
                   flexDirection: 'row',
                   alignItems: 'center',
@@ -385,7 +385,12 @@ const Search = () => {
               }}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
-                return <Text></Text>;
+                return (
+                  <Text
+                    style={{
+                      marginBottom: 250,
+                    }}></Text>
+                );
               }}
               renderItem={({item, index}) => {
                 return <IDOItem item={item} index={index} />;

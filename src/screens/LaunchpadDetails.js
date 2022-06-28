@@ -116,6 +116,7 @@ const LaunchpadDetails = () => {
           {tabs_detail.map((item, index) => {
             return (
               <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => onTabPress(index)}
                 key={`Tab-${index}`}
                 style={{
@@ -140,7 +141,7 @@ const LaunchpadDetails = () => {
             );
           })}
         </View>
-        <View style={{width: SIZES.width, paddingHorizontal: 20}}>
+        <View style={{width: SIZES.width, paddingHorizontal: 16}}>
           <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
           <View style={{alignItems: 'center'}}>
             <FlatList
@@ -176,7 +177,7 @@ const LaunchpadDetails = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
           justifyContent: 'space-between',
-          paddingHorizontal: 20,
+          paddingHorizontal: 16,
           paddingBottom: 10,
         }}>
         <Animated.View
@@ -225,6 +226,7 @@ const LaunchpadDetails = () => {
           />
         </Animated.View>
         <TouchableOpacity
+          activeOpacity={0.7}
           onPress={() => navigation.goBack()}
           style={{
             alignItems: 'center',
@@ -290,7 +292,7 @@ const LaunchpadDetails = () => {
 
   const renderRecipeInfo = () => {
     return (
-      <View style={{paddingHorizontal: 20, marginTop: 80}}>
+      <View style={{paddingHorizontal: 16, marginTop: 80}}>
         <View
           style={{
             marginBottom: 20,
@@ -332,6 +334,7 @@ const LaunchpadDetails = () => {
             />
           </View>
           <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => setOpen(true)}
             style={{
               position: 'absolute',

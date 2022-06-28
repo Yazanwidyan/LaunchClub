@@ -12,7 +12,7 @@ const Launchpads = () => {
 
       <FlatList
         ListHeaderComponent={
-          <View style={{paddingHorizontal: 20, marginBottom: 20}}>
+          <View style={{paddingHorizontal: 16, marginBottom: 20}}>
             <CustomTextInput
               iconName={'magnify'}
               placeholder="Search Launchpads"

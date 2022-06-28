@@ -61,18 +61,28 @@ const Gems = () => {
           <Header title="LaunchClub Gems" />
         </View>
 
-        <View style={{paddingHorizontal: 20}}>
+        <View style={{paddingHorizontal: 16}}>
           <View
             style={{
               marginTop: 40,
               alignSelf: 'center',
               backgroundColor: COLORS.primary,
-              height: 180,
+              height: 200,
               width: '100%',
               justifyContent: 'center',
               borderRadius: 10,
               padding: 20,
             }}>
+            <Image
+              source={assets.astro}
+              style={{
+                width: 120,
+                height: 120,
+                position: 'absolute',
+                right: 20,
+                top: 10,
+              }}
+            />
             <CustomText
               style={{color: 'white'}}
               size={SIZES.medium}

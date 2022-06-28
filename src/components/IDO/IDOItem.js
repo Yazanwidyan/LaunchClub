@@ -12,6 +12,7 @@ const IDOItem = ({item}) => {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       style={{
         width: SIZES.width / 2.4,
         height: 300,
