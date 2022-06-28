@@ -3,13 +3,16 @@ import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {assets, COLORS, FONTS, SIZES} from '../constants';
 import CustomText from '../components/UI/CustomText';
-import NavigationBar from 'react-native-navbar-color';
-
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 const Splash = () => {
   const navigation = useNavigation();
 
+  const setNavigationColor = color => {
+    changeNavigationBarColor(color);
+  };
+
   useEffect(() => {
-    NavigationBar.setColor('#ffab8e');
+    setNavigationColor(COLORS.primary);
     setTimeout(() => {
       navigation.replace('TabsStack');
     }, 1500);

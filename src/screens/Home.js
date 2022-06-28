@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   SafeAreaView,
@@ -17,10 +17,17 @@ import HomeFlatList from '../components/Home/HomeFlatList';
 import CustomText from '../components/UI/CustomText';
 import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousel from '../components/UI/Carousel';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 const Home = () => {
   const {theme} = useSelector(state => state.theme);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    console.log('sss');
+    const color = theme == 'light' ? '#ffffff' : '#191B1E';
+    changeNavigationBarColor(color, true);
+  }, []);
 
   return (
     <>

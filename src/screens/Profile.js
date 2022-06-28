@@ -16,7 +16,7 @@ import {setTheme} from '../redux/actions/actions';
 import Icon from 'react-native-vector-icons/AntDesign';
 import DiamondIcon from 'react-native-vector-icons/FontAwesome';
 import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Divider from '../components/UI/Divider';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import {useNavigation} from '@react-navigation/native';
 
 const OptionsCard = ({icon, name, path}) => {
@@ -67,8 +67,10 @@ const Profile = () => {
   const changeTheme = () => {
     if (theme == 'light') {
       dispatch(setTheme('dark'));
+      changeNavigationBarColor('#191B1E', true);
     } else {
       dispatch(setTheme('light'));
+      changeNavigationBarColor('#ffffff', true);
     }
   };
 
