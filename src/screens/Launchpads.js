@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, SafeAreaView, FlatList} from 'react-native';
 import React from 'react';
 import Header from '../components/common/Header';
 import CustomTextInput from '../components/UI/CustomTextInput';
-import {IDOData, PadsData} from '../constants';
+import {IDOData, PadsData, SIZES} from '../constants';
 import LaunchpadItem from '../components/Launchpads/LaunchpadItem';
 
 const Launchpads = () => {
@@ -12,7 +12,7 @@ const Launchpads = () => {
 
       <FlatList
         ListHeaderComponent={
-          <View style={{paddingHorizontal: 16, marginBottom: 20}}>
+          <View style={{paddingHorizontal: SIZES.padding, marginBottom: 20}}>
             <CustomTextInput
               iconName={'magnify'}
               placeholder="Search Launchpads"

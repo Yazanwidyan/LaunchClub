@@ -127,8 +127,8 @@ const Search = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            paddingTop: 35,
+            paddingTop: 40,
+            paddingHorizontal: SIZES.padding,
             backgroundColor:
               theme == 'light' ? COLORS.background : COLORS.backgroundDark,
           }}>
@@ -140,9 +140,8 @@ const Search = () => {
                 onPress={() => selectActiveTab(item.name)}
                 style={{
                   flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'center',
                   alignItems: 'center',
+                  marginRight: 24,
                   borderBottomColor: COLORS.primary,
                   paddingBottom: 10,
                   borderBottomWidth: activeTab == item.name ? 3 : 0,
@@ -218,11 +217,11 @@ const Search = () => {
               }}>
               <View
                 style={{
-                  paddingHorizontal: 16,
-                  marginBottom: 20,
+                  paddingHorizontal: SIZES.padding,
+                  marginBottom: 16,
                   flexDirection: 'row',
                   alignItems: 'center',
-                  paddingTop: 20,
+                  paddingTop: 16,
                 }}>
                 <View style={{flex: 1}}>
                   <CustomTextInput
@@ -232,7 +231,7 @@ const Search = () => {
                 </View>
                 <View
                   style={{
-                    borderRadius: 10,
+                    borderRadius: SIZES.radius,
                     padding: 15,
                     marginHorizontal: 5,
                     marginTop: 7,
@@ -269,13 +268,14 @@ const Search = () => {
               data={PadsData}
               contentContainerStyle={{
                 marginTop: 250,
+                paddingHorizontal: SIZES.padding,
               }}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
                 return (
                   <Text
                     style={{
-                      marginBottom: 200,
+                      marginBottom: 250,
                     }}></Text>
                 );
               }}
@@ -325,7 +325,7 @@ const Search = () => {
               }}>
               <View
                 style={{
-                  paddingHorizontal: 16,
+                  paddingHorizontal: SIZES.padding,
                   marginBottom: 20,
                   flexDirection: 'row',
                   alignItems: 'center',
@@ -339,7 +339,7 @@ const Search = () => {
                 </View>
                 <View
                   style={{
-                    borderRadius: 10,
+                    borderRadius: SIZES.radius,
                     padding: 15,
                     marginHorizontal: 5,
                     marginTop: 7,

@@ -61,7 +61,7 @@ const Gems = () => {
           <Header title="LaunchClub Gems" />
         </View>
 
-        <View style={{paddingHorizontal: 16}}>
+        <View style={{paddingHorizontal: SIZES.padding}}>
           <View
             style={{
               marginTop: 40,
@@ -70,7 +70,7 @@ const Gems = () => {
               height: 200,
               width: '100%',
               justifyContent: 'center',
-              borderRadius: 10,
+              borderRadius: SIZES.radius,
               padding: 20,
             }}>
             <Image
@@ -114,7 +114,7 @@ const Gems = () => {
                     width: 90,
                     padding: 10,
                     marginRight: 5,
-                    borderRadius: 10,
+                    borderRadius: SIZES.radius,
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     backgroundColor:
@@ -147,7 +147,7 @@ const Gems = () => {
                     width: 90,
                     padding: 10,
                     marginRight: 5,
-                    borderRadius: 10,
+                    borderRadius: SIZES.radius,
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     backgroundColor:

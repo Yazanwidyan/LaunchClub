@@ -8,11 +8,11 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import {assets, COLORS, SHADOWS} from '../../constants';
+import {assets, COLORS, SHADOWS, SIZES} from '../../constants';
 import {useSelector, useDispatch} from 'react-redux';
 
 const {width, height} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.92;
+const ITEM_WIDTH = width * 0.88;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.5;
 
 const images = [
@@ -70,14 +70,14 @@ const Carousel = () => {
                   height: ITEM_HEIGHT,
                   overflow: 'hidden',
                   alignItems: 'center',
-                  borderRadius: 10,
+                  borderRadius: SIZES.radius,
                 }}>
                 <Animated.Image
                   style={{
                     width: ITEM_WIDTH * 1.4,
                     height: ITEM_HEIGHT,
                     resizeMode: 'contain',
-                    borderRadius: 10,
+                    borderRadius: SIZES.radius,
                     transform: [
                       {
                         translateX,

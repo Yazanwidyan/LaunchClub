@@ -20,7 +20,7 @@ const Header = ({title, brand}) => {
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 30,
-        paddingHorizontal: 16,
+        paddingHorizontal: SIZES.padding,
         height: 80,
       }}>
       {brand ? (

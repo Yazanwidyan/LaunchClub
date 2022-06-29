@@ -104,7 +104,7 @@ const Profile = () => {
           <View
             style={{
               marginHorizontal: 20,
-              borderRadius: 15,
+              borderRadius: SIZES.radius,
               marginBottom: 10,
               backgroundColor:
                 theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
@@ -114,7 +114,7 @@ const Profile = () => {
           <View
             style={{
               marginHorizontal: 20,
-              borderRadius: 15,
+              borderRadius: SIZES.radius,
               marginBottom: 10,
               backgroundColor:
                 theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,

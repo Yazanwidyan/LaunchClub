@@ -3,10 +3,11 @@ import React, {useState} from 'react';
 import CustomText from '../components/UI/CustomText';
 import Header from '../components/common/Header';
 import IDOItem from '../components/IDO/IDOItem';
-import {COLORS, IDOData, SHADOWS} from '../constants';
+import {COLORS, IDOData, SHADOWS, SIZES} from '../constants';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {generateDate} from '../constants/Date';
 import {useSelector} from 'react-redux';
+import IDOBItem from '../components/IDO/IDOBItem';
 
 const Calendars = () => {
   const {theme} = useSelector(state => state.theme);
@@ -27,9 +28,8 @@ const Calendars = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, paddingHorizontal: SIZES.padding}}>
       <Header title={'Calendar'} />
-
       <FlatList
         ListHeaderComponentStyle={{alignSelf: 'stretch'}}
         ListHeaderComponent={
@@ -52,13 +52,11 @@ const Calendars = () => {
             />
           </View>
         }
-        ListFooterComponent={<View style={{marginVertical: 50}}></View>}
-        contentContainerStyle={{alignItems: 'center'}}
-        numColumns={2}
+        ListFooterComponent={<View style={{marginVertical: 20}}></View>}
         data={IDOData}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => {
-          return <IDOItem item={item} />;
+          return <IDOBItem item={item} />;
         }}
       />
     </SafeAreaView>

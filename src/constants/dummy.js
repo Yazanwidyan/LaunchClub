@@ -84,7 +84,7 @@ const IDOData = [
     name: 'Verve sajs  akusajsa nsnas shsh',
     price: 0.0023,
     mCap: '$1.62 M',
-    likes: 4,
+    likes: '5,459',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.',
     image: assets.nft01,
@@ -93,7 +93,7 @@ const IDOData = [
     id: 'NFT-03',
     name: 'NFT coins race',
     price: 0.0023,
-    likes: 95,
+    likes: '4,2959',
     mCap: '$1.62 M',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.',
@@ -104,8 +104,7 @@ const IDOData = [
     name: 'Nifty NFT',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 54,
+    likes: '237',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur.',
     image: assets.nft04,
@@ -115,8 +114,7 @@ const IDOData = [
     name: 'Colorful circlessas sjjs sisisnsnsj  shakuhsaku',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 10,
+    likes: '937',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.',
     image: assets.nft05,
@@ -126,8 +124,7 @@ const IDOData = [
     name: 'Black box model',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 20,
+    likes: '697',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.',
     image: assets.nft06,
@@ -137,8 +134,7 @@ const IDOData = [
     name: 'Abstracto soulful art',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 18,
+    likes: '8,697',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.',
     image: assets.nft07,
@@ -148,8 +144,7 @@ const IDOData = [
     name: 'Abstracto soulful art',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 18,
+    likes: '7,697',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.',
     image: assets.nft02,
@@ -159,8 +154,7 @@ const IDOData = [
     name: 'Abstracto soulful art',
     price: 0.0023,
     mCap: '$1.62 M',
-
-    likes: 18,
+    likes: '4,697',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.',
     image: assets.nft01,

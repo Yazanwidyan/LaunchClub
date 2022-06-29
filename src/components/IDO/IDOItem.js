@@ -14,15 +14,12 @@ const IDOItem = ({item}) => {
     <TouchableOpacity
       activeOpacity={0.7}
       style={{
-        width: SIZES.width / 2.4,
-        height: 300,
+        width: 181,
+        height: 250,
         marginBottom: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-        borderRadius: 10,
-        paddingHorizontal: 10,
-        paddingTop: 20,
-        paddingBottom: 20,
+        borderRadius: SIZES.radius,
         marginHorizontal: 6,
         ...SHADOWS.dark,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
@@ -32,29 +29,36 @@ const IDOItem = ({item}) => {
         resizeMode="cover"
         style={{
           width: '100%',
-          height: '60%',
-          borderRadius: 10,
+          height: '55%',
+          borderRadius: SIZES.radius,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
         }}
         source={item.image}
       />
-      <View style={{paddingVertical: 30, paddingHorizontal: 10}}>
-        <View style={{height: 50}}>
-          <CustomText size={SIZES.small} font={FONTS.bold}>
-            {item.name.substring(0, 40)}
-            {item.name.length > 40 ? '...' : null}
-          </CustomText>
-        </View>
+      <View style={{padding: 12}}>
+        <CustomText grayText size={SIZES.small} font={FONTS.regular}>
+          {item.name.substring(0, 20)}
+          {item.name.length > 20 ? '...' : null}
+        </CustomText>
+        <CustomText size={SIZES.medium} font={FONTS.regular}>
+          Likes {item.likes}
+        </CustomText>
         <View
           style={{
+            paddingTop: 8,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <CustomText size={SIZES.small} style={{marginTop: 5}}>
-            <Icon name="clockcircleo" size={13} color={COLORS.gray} /> 10h 30m
-          </CustomText>
-          <CustomText size={SIZES.small} style={{marginTop: 5}}>
-            <Icon name="like2" size={13} color={COLORS.gray} /> {item.likes}
+          <View>
+            <CustomText grayText size={SIZES.regular}>
+              Ending in
+            </CustomText>
+            <CustomText size={SIZES.medium}>10h 30m</CustomText>
+          </View>
+          <CustomText style={{alignSelf: 'flex-end'}} size={SIZES.small}>
+            <Icon name="heart" size={13} color={COLORS.gray} /> 3,229
           </CustomText>
         </View>
       </View>

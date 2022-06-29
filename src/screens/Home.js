@@ -24,7 +24,6 @@ const Home = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log('sss');
     const color = theme == 'light' ? '#ffffff' : '#191B1E';
     changeNavigationBarColor(color, true);
   }, []);
@@ -36,7 +35,7 @@ const Home = () => {
         <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
             <Carousel />
-            <View style={{paddingHorizontal: 16}}>
+            <View style={{paddingHorizontal: SIZES.padding}}>
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => navigation.navigate('Gems')}
@@ -46,7 +45,7 @@ const Home = () => {
                   justifyContent: 'space-between',
                   padding: 15,
                   marginVertical: 20,
-                  borderRadius: 10,
+                  borderRadius: SIZES.radius,
                   backgroundColor:
                     theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
                 }}>
@@ -73,34 +72,30 @@ const Home = () => {
 
             <View>
               <CustomText
-                size={SIZES.medium}
+                size={SIZES.large}
                 font={FONTS.bold}
                 style={styles.titleText}>
-                Explore Launchpads
+                Most Liked Launchpads
               </CustomText>
               <HomeFlatList dataType="launchpad" data={PadsData} />
             </View>
             <View>
               <CustomText
-                size={SIZES.medium}
+                size={SIZES.large}
                 font={FONTS.bold}
                 style={styles.titleText}>
                 Top IDOs
               </CustomText>
-              <View style={{marginLeft: -10}}>
-                <HomeFlatList dataType="ido" data={IDOData} />
-              </View>
+              <HomeFlatList dataType="ido" data={IDOData} />
             </View>
             <View>
               <CustomText
-                size={SIZES.medium}
+                size={SIZES.large}
                 font={FONTS.bold}
                 style={styles.titleText}>
                 New Projects
               </CustomText>
-              <View style={{marginLeft: -10}}>
-                <HomeFlatList dataType="ido" data={IDOData} />
-              </View>
+              <HomeFlatList dataType="ido" data={IDOData} />
             </View>
             <View>
               <CustomText
@@ -109,9 +104,7 @@ const Home = () => {
                 style={styles.titleText}>
                 Author's Choice
               </CustomText>
-              <View style={{marginLeft: -10}}>
-                <HomeFlatList dataType="ido" data={IDOData} />
-              </View>
+              <HomeFlatList dataType="ido" data={IDOData} />
             </View>
           </View>
         </ScrollView>
@@ -126,5 +119,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  titleText: {paddingHorizontal: 16, marginTop: 5},
+  titleText: {paddingHorizontal: SIZES.padding, marginTop: 5},
 });

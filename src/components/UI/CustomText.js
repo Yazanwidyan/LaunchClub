@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {COLORS, FONTS} from '../../constants';
+import {COLORS, FONTS, SIZES} from '../../constants';
 
 const CustomText = props => {
   const {theme} = useSelector(state => state.theme);

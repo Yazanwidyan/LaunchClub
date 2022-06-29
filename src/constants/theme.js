@@ -8,7 +8,7 @@ export const COLORS = {
   secondary: '#ffff',
   secondaryDark: '#191B1E',
   white: '#FFFFFFDE',
-  gray: '#84868C',
+  gray: '#BFBFBF',
   black: '#000000',
   black100: '#121212',
   white100: '#f0f0f0',
@@ -21,11 +21,16 @@ export const COLORS = {
 export const SIZES = {
   xSmall: 8,
   base: 10,
-  small: 12,
   font: 14,
-  medium: 16,
+
+  small: 12,
+  regular: 10,
+  medium: 14,
+  bold: 16,
   large: 18,
-  extraLarge: 21,
+  extraLarge: 24,
+  padding: 24,
+  radius: 3,
   width,
   height,
 };

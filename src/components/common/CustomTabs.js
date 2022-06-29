@@ -13,7 +13,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 16,
+        paddingHorizontal: SIZES.padding,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         height: 70,

@@ -91,7 +91,7 @@ const IDODetails = () => {
         <View
           style={{
             marginHorizontal: 20,
-            borderRadius: 15,
+            borderRadius: SIZES.radius,
             marginBottom: 10,
             backgroundColor:
               theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
@@ -110,7 +110,7 @@ const IDODetails = () => {
         <View
           style={{
             marginHorizontal: 20,
-            borderRadius: 15,
+            borderRadius: SIZES.radius,
             backgroundColor:
               theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
           }}>
@@ -132,7 +132,7 @@ const IDODetails = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
           justifyContent: 'space-between',
-          paddingHorizontal: 16,
+          paddingHorizontal: SIZES.padding,
           paddingBottom: 10,
         }}>
         <Animated.View
@@ -252,7 +252,7 @@ const IDODetails = () => {
 
   const renderRecipeInfo = () => {
     return (
-      <View style={{paddingHorizontal: 16, marginTop: 20}}>
+      <View style={{paddingHorizontal: SIZES.padding, marginTop: 20}}>
         <View
           style={{
             marginBottom: 20,

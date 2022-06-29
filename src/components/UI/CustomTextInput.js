@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/theme';
+import {COLORS, SIZES} from '../../constants/theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -33,7 +33,7 @@ const CustomTextInput = ({
               ? 'transparent'
               : 'transparent',
             alignItems: 'center',
-            borderRadius: 10,
+            borderRadius: SIZES.radius,
           },
         ]}>
         <Icon

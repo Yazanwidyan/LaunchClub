@@ -15,7 +15,6 @@ import IconWeb from 'react-native-vector-icons/MaterialCommunityIcons';
 import LikeIcon from 'react-native-vector-icons/AntDesign';
 import HeartIcon from 'react-native-vector-icons/Ionicons';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {
   COLORS,
@@ -28,7 +27,7 @@ import {
 import CustomText from '../components/UI/CustomText';
 import MoreLess from '../components/UI/MoreLess';
 import CustomTextInput from '../components/UI/CustomTextInput';
-import IDOItem from '../components/IDO/IDOItem';
+import IDOBItem from '../components/IDO/IDOBItem';
 import useToggle from '../components/common/hooks/useToggle';
 import BottomSheet from '../components/UI/BottomSheet';
 import {addToWatchlist} from '../redux/actions/actions';
@@ -80,6 +79,8 @@ const LaunchpadDetails = () => {
           paddingTop: 1000,
           alignItems: 'center',
           overflow: 'hidden',
+          borderBottomColor: COLORS.white,
+          borderBottomWidth: 2,
         }}>
         <Animated.Image
           source={data.image}
@@ -141,21 +142,18 @@ const LaunchpadDetails = () => {
             );
           })}
         </View>
-        <View style={{width: SIZES.width, paddingHorizontal: 16}}>
+        <View style={{width: SIZES.width, paddingHorizontal: SIZES.padding}}>
           <CustomTextInput iconName={'magnify'} placeholder="Search IDOs" />
-          <View style={{alignItems: 'center'}}>
+          <View>
             <FlatList
               data={IDOData}
-              numColumns={2}
-              contentContainerStyle={{
-                alignItems: 'center',
-              }}
+              contentContainerStyle={{}}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
                 return <Text></Text>;
               }}
               renderItem={({item, index}) => {
-                return <IDOItem item={item} index={index} />;
+                return <IDOBItem item={item} index={index} />;
               }}
               keyExtractor={item => item.id}
             />
@@ -177,7 +175,7 @@ const LaunchpadDetails = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
           justifyContent: 'space-between',
-          paddingHorizontal: 16,
+          paddingHorizontal: SIZES.padding,
           paddingBottom: 10,
         }}>
         <Animated.View
@@ -292,21 +290,31 @@ const LaunchpadDetails = () => {
 
   const renderRecipeInfo = () => {
     return (
-      <View style={{paddingHorizontal: 16, marginTop: 80}}>
+      <View
+        style={{
+          paddingHorizontal: SIZES.padding,
+          marginTop: 90,
+        }}>
         <View
           style={{
-            marginBottom: 20,
+            alignItems: 'center',
           }}>
-          <CustomText style={{marginBottom: 5}} size={SIZES.font}>
-            by {data.owner ? data.owner : data.name}
-          </CustomText>
           <CustomText
             font={FONTS.bold}
-            style={{marginBottom: 5}}
+            style={{marginBottom: 8}}
             size={SIZES.extraLarge}>
             {data.name}
           </CustomText>
-          <View
+          <CustomText
+            style={{marginBottom: 16}}
+            font={FONTS.regular}
+            size={SIZES.small}>
+            created by{' '}
+            <CustomText style={{color: COLORS.primary}}>
+              {data.owner ? data.owner : data.name}
+            </CustomText>
+          </CustomText>
+          {/* <View
             style={{
               flexDirection: 'row',
               width: '50%',
@@ -332,8 +340,8 @@ const LaunchpadDetails = () => {
               color={theme == 'light' ? COLORS.black : COLORS.white}
               size={23}
             />
-          </View>
-          <TouchableOpacity
+          </View> */}
+          {/* <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => setOpen(true)}
             style={{
@@ -349,49 +357,35 @@ const LaunchpadDetails = () => {
                 setOpen(false);
               }}
               enableBackdropDismiss></BottomSheet>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            marginBottom: 16,
+          }}>
+          <View style={{alignItems: 'center'}}>
+            <CustomText font={FONTS.bold} size={SIZES.bold}>
+              2.1k
+            </CustomText>
+            <CustomText font={FONTS.regular} size={SIZES.small} grayText>
+              likes
+            </CustomText>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <CustomText font={FONTS.bold} size={SIZES.bold}>
+              2.1k
+            </CustomText>
+            <CustomText font={FONTS.regular} size={SIZES.small} grayText>
+              watchlist
+            </CustomText>
+          </View>
         </View>
         <MoreLess>
           cnewkjcenw jdnekjndkejnddujewd dewhudwei jlsajxje oijdoewjido jghhgjhb
           jahekqjhe ekwhekw hwekwekxnekjnk
         </MoreLess>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginBottom: 40,
-          }}>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>likes</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>watchlist</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              BSC
-            </CustomText>
-            <CustomText grayText>chain</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>likes</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>likes</CustomText>
-          </View>
-        </View>
       </View>
     );
   };
@@ -412,11 +406,13 @@ const LaunchpadDetails = () => {
             {renderCardHeader()}
             <Animated.View
               style={{
+                backgroundColor: COLORS.white,
+                borderRadius: 100,
+                padding: 2,
                 position: 'absolute',
                 zIndex: 1,
-                left: 30,
+                left: SIZES.width / 2.88,
                 top: 110,
-                right: 30,
                 height: 130,
                 width: 130,
                 opacity: scrollY.interpolate({
@@ -433,8 +429,8 @@ const LaunchpadDetails = () => {
                   },
                   {
                     translateX: scrollY.interpolate({
-                      inputRange: [0, 60, 90],
-                      outputRange: [0, 90, 100],
+                      inputRange: [0, 0, 0],
+                      outputRange: [0, 0, 0],
                       extrapolate: 'clamp',
                     }),
                   },
@@ -447,26 +443,16 @@ const LaunchpadDetails = () => {
                 ],
               }}>
               <Image
-                style={{width: '100%', height: '100%', borderRadius: 100}}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: 100,
+                }}
                 source={data.image}
                 resizeMode="contain"
               />
             </Animated.View>
-            <LinearGradient
-              colors={[
-                'transparent',
-                theme == 'light' ? COLORS.background : '#2021227F',
-                theme == 'light' ? COLORS.background : COLORS.backgroundDark,
-              ]}
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                top: 0,
-                height: 180,
-                width: '100%',
-              }}
-            />
+
             {renderRecipeInfo()}
           </View>
         }

@@ -12,72 +12,72 @@ const LaunchpadItem = ({item, index}) => {
   const navigation = useNavigation();
 
   return (
-    <View
+    <TouchableOpacity
       style={{
-        borderBottomColor:
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+        padding: 12,
+        borderRadius: SIZES.radius,
+        backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-        borderBottomWidth: 1,
-        marginBottom: 30,
+      }}
+      activeOpacity={0.7}
+      onPress={() => {
+        navigation.navigate('LaunchpadDetails', {item: item});
       }}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => {
-          navigation.navigate('LaunchpadDetails', {item: item});
-        }}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <CustomText grayText font={FONTS.medium} size={SIZES.medium}>
+          {index + 1}
+        </CustomText>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingBottom: 30,
-            paddingHorizontal: 10,
+            width: 50,
+            height: 50,
+            borderRadius: 50,
+            marginHorizontal: 12,
           }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <CustomText font={FONTS.semiBold} style={{marginRight: 20}}>
-              {index + 1}
-            </CustomText>
-            <View
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 50,
-                marginRight: 20,
-              }}>
-              <Image
-                resizeMode="cover"
-                style={{width: '100%', height: '100%', borderRadius: 50}}
-                source={item.image}
-              />
-            </View>
-            <View>
-              <CustomText font={FONTS.semiBold} style={{marginBottom: 5}}>
-                {item.name}
-              </CustomText>
-              <CustomText grayText>
-                <IconLike name="like2" size={13} color={COLORS.gray} />{' '}
-                {item.likes}
-              </CustomText>
-            </View>
-          </View>
-          <View
+          <Image
+            resizeMode="cover"
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <View style={{marginHorizontal: 20}}>
-              <CustomText
-                font={FONTS.semiBold}
-                style={{textAlign: 'right', marginBottom: 5}}>
-                ${item.price}
-              </CustomText>
-              <CustomText size={SIZES.base} style={{textAlign: 'right'}}>
-                MCap {item.mCap}
-              </CustomText>
-            </View>
-          </View>
+              width: '100%',
+              height: '100%',
+              borderRadius: 50,
+            }}
+            source={item.image}
+          />
         </View>
-      </TouchableOpacity>
-    </View>
+        <View>
+          <CustomText
+            style={{marginBottom: 4}}
+            font={FONTS.medium}
+            size={SIZES.medium}>
+            {item.name}
+          </CustomText>
+          <CustomText font={FONTS.regular} size={SIZES.regular} grayText>
+            Likes {item.likes}
+          </CustomText>
+        </View>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <View>
+          <CustomText
+            font={FONTS.bold}
+            size={SIZES.bold}
+            style={{textAlign: 'right', marginBottom: 4}}>
+            ${item.price}
+          </CustomText>
+          <CustomText grayText size={SIZES.small} style={{textAlign: 'right'}}>
+            MCap {item.mCap}
+          </CustomText>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
