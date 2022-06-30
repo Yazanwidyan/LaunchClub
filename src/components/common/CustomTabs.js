@@ -12,6 +12,8 @@ const CustomTabs = ({state, descriptors, navigation}) => {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
+        borderTopColor: theme == 'light' ? COLORS.line : COLORS.lineDark,
+        borderTopWidth: 1,
         justifyContent: 'space-between',
         paddingHorizontal: SIZES.padding,
         backgroundColor:
@@ -58,7 +60,14 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{flex: 1, alignItems: 'center'}}>
+            style={{
+              width: 60,
+              marginHorizontal: 10,
+              paddingTop: isFocused ? 15 : 18,
+              alignItems: 'center',
+              borderTopColor: isFocused ? COLORS.primary : 'red',
+              borderTopWidth: isFocused ? 3 : 0,
+            }}>
             {label == 'Home' ? (
               <Icon
                 name="home-outline"
@@ -120,7 +129,7 @@ const CustomTabs = ({state, descriptors, navigation}) => {
               //   }
               // />
               <Image
-                source={assets.nft01}
+                source={assets.person01}
                 style={{
                   width: 26,
                   height: 26,

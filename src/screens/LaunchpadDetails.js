@@ -32,7 +32,7 @@ import useToggle from '../components/common/hooks/useToggle';
 import BottomSheet from '../components/UI/BottomSheet';
 import {addToWatchlist} from '../redux/actions/actions';
 
-const HEADER_HEIGHT = 180;
+const HEADER_HEIGHT = 230;
 
 const tabs_detail = tabs_details.map(tabs_details => ({
   ...tabs_details,
@@ -79,11 +79,9 @@ const LaunchpadDetails = () => {
           paddingTop: 1000,
           alignItems: 'center',
           overflow: 'hidden',
-          borderBottomColor: COLORS.white,
-          borderBottomWidth: 2,
         }}>
         <Animated.Image
-          source={data.image}
+          source={data.logo}
           resizeMode="cover"
           style={{
             height: HEADER_HEIGHT,
@@ -408,11 +406,11 @@ const LaunchpadDetails = () => {
               style={{
                 backgroundColor: COLORS.white,
                 borderRadius: 100,
-                padding: 2,
+                padding: 3,
                 position: 'absolute',
                 zIndex: 1,
                 left: SIZES.width / 2.88,
-                top: 110,
+                top: 160,
                 height: 130,
                 width: 130,
                 opacity: scrollY.interpolate({

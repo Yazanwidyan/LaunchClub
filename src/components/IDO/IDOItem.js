@@ -14,8 +14,8 @@ const IDOItem = ({item}) => {
     <TouchableOpacity
       activeOpacity={0.7}
       style={{
-        width: 181,
-        height: 250,
+        width: 155,
+        height: 240,
         marginBottom: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,

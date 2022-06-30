@@ -80,7 +80,7 @@ const Profile = () => {
         <Header title="Profile" />
         <View style={{alignItems: 'center'}}>
           <Image
-            source={assets.nft01}
+            source={assets.person01}
             style={{
               width: 100,
               height: 100,

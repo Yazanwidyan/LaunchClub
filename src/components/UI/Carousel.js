@@ -12,16 +12,16 @@ import {assets, COLORS, SHADOWS, SIZES} from '../../constants';
 import {useSelector, useDispatch} from 'react-redux';
 
 const {width, height} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.88;
+const ITEM_WIDTH = width * 0.92;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.5;
 
 const images = [
+  assets.nft01,
   assets.nft02,
   assets.nft03,
   assets.nft04,
   assets.nft05,
   assets.nft06,
-  assets.nft07,
 ];
 const data = images.map((image, index) => ({
   key: String(index),

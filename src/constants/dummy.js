@@ -14,6 +14,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo06,
   },
   {
     id: 'pad-07',
@@ -22,6 +23,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo07,
   },
   {
     id: 'pad-04',
@@ -31,6 +33,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo04,
   },
   {
     id: 'pad-08',
@@ -39,6 +42,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo08,
   },
   {
     id: 'pad-03',
@@ -48,6 +52,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo03,
   },
   {
     id: 'pad-01',
@@ -57,6 +62,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo01,
   },
   {
     id: 'pad-02',
@@ -66,6 +72,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo02,
   },
   {
     id: 'pad-05',
@@ -75,6 +82,7 @@ const PadsData = [
     price: 0.0023,
     likes: 95,
     mCap: '$1.62 M',
+    logo: assets.padLogo05,
   },
 ];
 
@@ -88,6 +96,16 @@ const IDOData = [
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.',
     image: assets.nft01,
+  },
+  {
+    id: 'NFT-02',
+    name: 'Verve sajs  akusajsa nsnas shsh',
+    price: 0.0023,
+    mCap: '$1.62 M',
+    likes: '5,459',
+    description:
+      'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.',
+    image: assets.nft02,
   },
   {
     id: 'NFT-03',
@@ -147,17 +165,7 @@ const IDOData = [
     likes: '7,697',
     description:
       'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.',
-    image: assets.nft02,
-  },
-  {
-    id: 'NFT-09',
-    name: 'Abstracto soulful art',
-    price: 0.0023,
-    mCap: '$1.62 M',
-    likes: '4,697',
-    description:
-      'The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.',
-    image: assets.nft01,
+    image: assets.nft08,
   },
 ];
 

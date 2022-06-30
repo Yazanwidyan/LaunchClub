@@ -1,6 +1,6 @@
 import {StyleSheet, Image, View} from 'react-native';
 import React from 'react';
-import {assets, COLORS, SHADOWS, SIZES} from '../../constants';
+import {assets, COLORS, FONTS, SHADOWS, SIZES} from '../../constants';
 import CustomText from '../UI/CustomText';
 import {useSelector} from 'react-redux';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -11,31 +11,59 @@ const ExploreLaunchpads = ({item}) => {
   const navigation = useNavigation();
 
   return (
-    <View style={{alignItems: 'center', marginRight: 10}}>
-      <TouchableOpacity
-        activeOpacity={0.7}
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={{
+        width: 140,
+        height: 185,
+        marginBottom: 20,
+        backgroundColor:
+          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
+        borderRadius: SIZES.radius,
+        marginHorizontal: 6,
+        ...SHADOWS.dark,
+        shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
+      }}
+      onPress={() => navigation.navigate('LaunchpadDetails', {item: item})}>
+      <Image
+        resizeMode="cover"
         style={{
-          width: 80,
-          height: 80,
-          ...SHADOWS.dark,
-          shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
-          padding: 5,
-          borderRadius: 50,
+          width: '100%',
+          height: '55%',
+          borderRadius: SIZES.radius,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
         }}
-        onPress={() => {
-          navigation.navigate('LaunchpadDetails', {item: item});
-        }}>
+        source={item.logo}
+      />
+
+      <View style={{padding: 12, paddingTop: 40}}>
         <Image
           resizeMode="cover"
-          style={{width: '100%', height: '100%', borderRadius: 50}}
+          style={{
+            width: 50,
+            height: 50,
+            top: -26,
+            right: '39%',
+            position: 'absolute',
+            borderRadius: 100,
+          }}
           source={item.image}
         />
-      </TouchableOpacity>
-      <CustomText size={SIZES.small} style={{marginTop: 15}}>
-        {item.name.substring(0, 12)}
-        {item.name.length > 12 ? '...' : null}
-      </CustomText>
-    </View>
+        <View style={{alignItems: 'center'}}>
+          <CustomText size={SIZES.medium} font={FONTS.regular}>
+            {item.name}
+          </CustomText>
+        </View>
+        <View
+          style={{
+            paddingTop: 8,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}></View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
