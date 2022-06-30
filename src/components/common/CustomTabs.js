@@ -16,9 +16,9 @@ const CustomTabs = ({state, descriptors, navigation}) => {
         borderTopWidth: 1,
         justifyContent: 'space-between',
         paddingHorizontal: SIZES.padding,
+        paddingHorizontal: 40,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-        height: 70,
       }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
@@ -61,17 +61,18 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             onPress={onPress}
             onLongPress={onLongPress}
             style={{
-              width: 60,
-              marginHorizontal: 10,
-              paddingTop: isFocused ? 15 : 18,
+              paddingBottom: 15,
               alignItems: 'center',
-              borderTopColor: isFocused ? COLORS.primary : 'red',
-              borderTopWidth: isFocused ? 3 : 0,
             }}>
             {label == 'Home' ? (
               <Icon
                 name="home-outline"
-                size={23}
+                size={26}
+                style={{
+                  paddingTop: 13,
+                  borderTopColor: isFocused ? COLORS.primary : 'red',
+                  borderTopWidth: isFocused ? 3 : 0,
+                }}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -83,7 +84,12 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Search' ? (
               <Icon
                 name="search-outline"
-                size={23}
+                size={26}
+                style={{
+                  paddingTop: 13,
+                  borderTopColor: isFocused ? COLORS.primary : 'red',
+                  borderTopWidth: isFocused ? 3 : 0,
+                }}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -95,7 +101,12 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Calendar' ? (
               <Icon
                 name="ios-calendar-sharp"
-                size={23}
+                size={26}
+                style={{
+                  paddingTop: 13,
+                  borderTopColor: isFocused ? COLORS.primary : 'red',
+                  borderTopWidth: isFocused ? 3 : 0,
+                }}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -107,7 +118,12 @@ const CustomTabs = ({state, descriptors, navigation}) => {
             ) : label == 'Watchlist' ? (
               <Icon
                 name="heart-outline"
-                size={23}
+                size={26}
+                style={{
+                  paddingTop: 13,
+                  borderTopColor: isFocused ? COLORS.primary : 'red',
+                  borderTopWidth: isFocused ? 3 : 0,
+                }}
                 color={
                   isFocused
                     ? theme == 'dark'
@@ -117,27 +133,32 @@ const CustomTabs = ({state, descriptors, navigation}) => {
                 }
               />
             ) : label == 'Profile' ? (
-              // <Icon
-              //   name="person-circle-outline"
-              //   size={23}
-              //   color={
-              //     isFocused
-              //       ? theme == 'dark'
-              //         ? COLORS.white
-              //         : COLORS.black
-              //       : COLORS.gray
-              //   }
-              // />
-              <Image
-                source={assets.person01}
+              <Icon
+                name="person-circle-outline"
+                size={26}
                 style={{
-                  width: 26,
-                  height: 26,
-                  resizeMode: 'cover',
-                  borderRadius: 30,
+                  paddingTop: 13,
+                  borderTopColor: isFocused ? COLORS.primary : 'red',
+                  borderTopWidth: isFocused ? 3 : 0,
                 }}
+                color={
+                  isFocused
+                    ? theme == 'dark'
+                      ? COLORS.white
+                      : COLORS.black
+                    : COLORS.gray
+                }
               />
-            ) : null}
+            ) : // <Image
+            //   source={assets.person01}
+            //   style={{
+            //     width: 26,
+            //     height: 26,
+            //     resizeMode: 'cover',
+            //     borderRadius: 30,
+            //   }}
+            // />
+            null}
             <CustomText
               size={SIZES.small}
               style={{

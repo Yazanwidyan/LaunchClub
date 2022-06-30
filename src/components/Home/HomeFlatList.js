@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 import React from 'react';
 import HomeLaunchpadItem from './HomeLaunchpadItem';
 import IDOItem from '../IDO/IDOItem';
+import {SIZES} from '../../constants';
 
 const HomeFlatList = ({data, dataType}) => {
   return (
@@ -10,7 +11,8 @@ const HomeFlatList = ({data, dataType}) => {
       data={data}
       contentContainerStyle={{
         alignItems: 'center',
-        padding: 20,
+        paddingHorizontal: 10,
+        paddingTop: 24,
       }}
       showsHorizontalScrollIndicator={false}
       ListFooterComponent={() => {
