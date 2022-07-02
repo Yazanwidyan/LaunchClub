@@ -1,405 +1,233 @@
 import {
   SafeAreaView,
-  Animated,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
   FlatList,
+  useWindowDimensions,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {useSelector} from 'react-redux';
 import CustomText from '../components/UI/CustomText';
 import Header from '../components/common/Header';
 import {COLORS, FONTS, IDOData, PadsData, SIZES} from '../constants';
-import Divider from '../components/UI/Divider';
 import LaunchpadItem from '../components/Launchpads/LaunchpadItem';
 import IDOItem from '../components/IDO/IDOItem';
-import CustomTextInput from '../components/UI/CustomTextInput';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import TabIcon from 'react-native-vector-icons/Fontisto';
-
-const active_tabs = [
-  {name: 'Launchpads', icon: 'rocket'},
-  {name: 'IDOs', icon: 'fire'},
-];
-const HEADER_HEIGHT = 70;
+import CustomTextInput from '../components/UI/CustomTextInput';
 
 const Search = () => {
-  const [scrollAnim] = useState(new Animated.Value(0));
-  const [offsetAnim] = useState(new Animated.Value(0));
-  const [clampedScroll, setClampedScroll] = useState(
-    Animated.diffClamp(
-      Animated.add(
-        scrollAnim.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 1],
-          extrapolateLeft: 'clamp',
-        }),
-        offsetAnim,
-      ),
-      0,
-      1,
-    ),
-  );
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    {key: 'launchpads', title: 'Launchpads'},
+    {key: 'idos', title: 'IDOs'},
+  ]);
 
-  const navbarTranslate = clampedScroll.interpolate({
-    inputRange: [0, HEADER_HEIGHT],
-    outputRange: [0, -HEADER_HEIGHT],
-    extrapolate: 'clamp',
-  });
-
-  const [activeTab, setActiveTab] = useState('Launchpads');
   const {theme} = useSelector(state => state.theme);
+  const watchlist = useSelector(state => state.watchlist);
 
-  const selectActiveTab = category => {
-    setActiveTab(category);
-  };
+  const layout = useWindowDimensions();
 
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <Animated.View
-        style={[
-          {
-            height: 80,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor:
-              theme == 'light' ? COLORS.background : COLORS.backgroundDark,
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            zIndex: 10000,
-            transform: [{translateY: navbarTranslate}],
-          },
-        ]}
-        onLayout={event => {
-          let {height} = event.nativeEvent.layout;
-          setClampedScroll(
-            Animated.diffClamp(
-              Animated.add(
-                scrollAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 1],
-                  extrapolateLeft: 'clamp',
-                }),
-                offsetAnim,
-              ),
-              0,
-              height,
-            ),
-          );
-        }}>
-        <Header title={'Search'} />
-      </Animated.View>
-      <Animated.View
-        style={[
-          {
-            height: 90,
-            backgroundColor:
-              theme == 'light' ? COLORS.background : COLORS.backgroundDark,
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 70,
-            zIndex: 500,
-            transform: [{translateY: navbarTranslate}],
-          },
-        ]}
-        onLayout={event => {
-          let {height} = event.nativeEvent.layout;
-          setClampedScroll(
-            Animated.diffClamp(
-              Animated.add(
-                scrollAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 1],
-                  extrapolateLeft: 'clamp',
-                }),
-                offsetAnim,
-              ),
-              0,
-              height,
-            ),
-          );
-        }}>
+  const FirstRoute = () => {
+    return (
+      <>
         <View
           style={{
             flexDirection: 'row',
-            paddingTop: 40,
-            paddingHorizontal: SIZES.padding,
-            backgroundColor:
-              theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingVertical: 5,
           }}>
-          {active_tabs.map(item => {
-            return (
-              <TouchableOpacity
-                activeOpacity={0.7}
-                key={item.name}
-                onPress={() => selectActiveTab(item.name)}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginRight: 24,
-                  borderBottomColor: COLORS.primary,
-                  paddingBottom: 10,
-                  borderBottomWidth: activeTab == item.name ? 3 : 0,
-                }}>
-                <TabIcon
-                  name={item.icon}
-                  color={
-                    activeTab == item.name
-                      ? theme == 'light'
-                        ? COLORS.black
-                        : COLORS.white
-                      : COLORS.gray
-                  }
-                  size={18}
-                  style={{marginTop: -4, marginRight: 10}}
-                />
-                <CustomText
-                  size={SIZES.font}
-                  font={FONTS.bold}
-                  style={{
-                    color:
-                      activeTab == item.name
-                        ? theme == 'light'
-                          ? COLORS.black
-                          : COLORS.white
-                        : COLORS.gray,
-                  }}>
-                  {item.name}
-                </CustomText>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      </Animated.View>
-
-      <View>
-        {activeTab == 'Launchpads' && (
-          <>
-            <Animated.View
-              style={[
-                {
-                  height: 90,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor:
-                    theme == 'light'
-                      ? COLORS.background
-                      : COLORS.backgroundDark,
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  top: 150,
-                  zIndex: 600,
-                  transform: [{translateY: navbarTranslate}],
-                },
-              ]}
-              onLayout={event => {
-                let {height} = event.nativeEvent.layout;
-                setClampedScroll(
-                  Animated.diffClamp(
-                    Animated.add(
-                      scrollAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [0, 1],
-                        extrapolateLeft: 'clamp',
-                      }),
-                      offsetAnim,
-                    ),
-                    0,
-                    height,
-                  ),
-                );
-              }}>
-              <View
-                style={{
-                  paddingHorizontal: SIZES.padding,
-                  marginBottom: 16,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingTop: 16,
-                }}>
-                <View style={{flex: 1}}>
-                  <CustomTextInput
-                    iconName={'magnify'}
-                    placeholder="Search Launchpads"
-                  />
-                </View>
-                <View
-                  style={{
-                    borderRadius: SIZES.radius,
-                    padding: 15,
-                    marginHorizontal: 5,
-                    marginTop: 7,
-                    backgroundColor:
-                      theme === 'light'
-                        ? COLORS.secondary
-                        : COLORS.secondaryDark,
-                  }}>
-                  <Icon
-                    name="filter-list"
-                    color={
-                      theme === 'light'
-                        ? COLORS.secondaryDark
-                        : COLORS.secondary
-                    }
-                    size={23}
-                  />
-                </View>
-              </View>
-            </Animated.View>
-            <Animated.FlatList
-              bounces={false}
-              scrollEventThrottle={16}
-              onScroll={Animated.event(
-                [
-                  {
-                    nativeEvent: {
-                      contentOffset: {y: scrollAnim},
-                    },
-                  },
-                ],
-                {useNativeDriver: true},
-              )}
-              data={PadsData}
-              contentContainerStyle={{
-                marginTop: 250,
-                paddingHorizontal: SIZES.padding,
-              }}
-              showsVerticalScrollIndicator={false}
-              ListFooterComponent={() => {
-                return (
-                  <Text
-                    style={{
-                      marginBottom: 250,
-                    }}></Text>
-                );
-              }}
-              renderItem={({item, index}) => {
-                return <LaunchpadItem item={item} index={index} />;
-              }}
-              keyExtractor={item => item.id}
+          <TouchableOpacity
+            style={{flexDirection: 'row', alignItems: 'center'}}>
+            <CustomText size={SIZES.medium}>Recent activity</CustomText>
+            <Icon
+              style={{marginTop: -3, marginHorizontal: 2}}
+              name="arrow-drop-down"
+              color={
+                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+              }
+              size={20}
             />
-          </>
-        )}
-        {activeTab == 'IDOs' && (
-          <>
-            <Animated.View
-              style={[
-                {
-                  height: 90,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor:
-                    theme == 'light'
-                      ? COLORS.background
-                      : COLORS.backgroundDark,
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  top: 150,
-                  zIndex: 600,
-                  transform: [{translateY: navbarTranslate}],
-                },
-              ]}
-              onLayout={event => {
-                let {height} = event.nativeEvent.layout;
-                setClampedScroll(
-                  Animated.diffClamp(
-                    Animated.add(
-                      scrollAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [0, 1],
-                        extrapolateLeft: 'clamp',
-                      }),
-                      offsetAnim,
-                    ),
-                    0,
-                    height,
-                  ),
-                );
+          </TouchableOpacity>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={{
+                marginRight: 5,
+                padding: 7,
               }}>
-              <View
-                style={{
-                  paddingHorizontal: SIZES.padding,
-                  marginBottom: 20,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingTop: 20,
-                }}>
-                <View style={{flex: 1}}>
-                  <CustomTextInput
-                    iconName={'magnify'}
-                    placeholder="Search IDOs"
-                  />
-                </View>
-                <View
-                  style={{
-                    borderRadius: SIZES.radius,
-                    padding: 15,
-                    marginHorizontal: 5,
-                    marginTop: 7,
-                    backgroundColor:
-                      theme === 'light'
-                        ? COLORS.secondary
-                        : COLORS.secondaryDark,
-                  }}>
-                  <Icon
-                    name="filter-list"
-                    color={
-                      theme === 'light'
-                        ? COLORS.secondaryDark
-                        : COLORS.secondary
-                    }
-                    size={23}
-                  />
-                </View>
-              </View>
-            </Animated.View>
-            <Animated.FlatList
-              contentInset={{top: HEADER_HEIGHT}}
-              contentOffset={{y: -HEADER_HEIGHT}}
-              bounces={false}
-              scrollEventThrottle={16}
-              onScroll={Animated.event(
-                [
-                  {
-                    nativeEvent: {
-                      contentOffset: {y: scrollAnim},
-                    },
-                  },
-                ],
-                {useNativeDriver: true},
-              )}
-              ListHeaderComponentStyle={{alignSelf: 'stretch'}}
-              data={IDOData}
-              numColumns={2}
-              contentContainerStyle={{
-                paddingHorizontal: 10,
+              <Icon
+                style={{marginTop: -3, marginHorizontal: 2}}
+                name="search"
+                color={
+                  theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                }
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={{
+                backgroundColor: COLORS.secondaryDark,
+                flexDirection: 'row',
                 alignItems: 'center',
-                marginTop: 250,
-              }}
-              showsVerticalScrollIndicator={false}
-              ListFooterComponent={() => {
-                return (
-                  <Text
-                    style={{
-                      marginBottom: 250,
-                    }}></Text>
-                );
-              }}
-              renderItem={({item, index}) => {
-                return <IDOItem item={item} index={index} />;
-              }}
-              keyExtractor={item => item.id}
+                padding: 7,
+                borderRadius: 3,
+              }}>
+              <Icon
+                style={{marginTop: -3, marginHorizontal: 2}}
+                name="filter-list"
+                color={
+                  theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                }
+                size={18}
+              />
+              <CustomText size={SIZES.medium}>Filter</CustomText>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={PadsData}
+          contentContainerStyle={{
+            marginVertical: 10,
+          }}
+          renderItem={({item, index}) => {
+            return <LaunchpadItem item={item} index={index} />;
+          }}
+        />
+      </>
+    );
+  };
+
+  const SecondRoute = () => {
+    return (
+      <>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingVertical: 5,
+          }}>
+          <TouchableOpacity
+            style={{flexDirection: 'row', alignItems: 'center'}}>
+            <CustomText size={SIZES.medium}>Recent activity</CustomText>
+            <Icon
+              style={{marginTop: -3, marginHorizontal: 2}}
+              name="arrow-drop-down"
+              color={
+                theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+              }
+              size={20}
             />
-          </>
-        )}
-      </View>
+          </TouchableOpacity>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={{
+                marginRight: 5,
+                padding: 7,
+              }}>
+              <Icon
+                style={{marginTop: -3, marginHorizontal: 2}}
+                name="search"
+                color={
+                  theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                }
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={{
+                backgroundColor: COLORS.secondaryDark,
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 7,
+                borderRadius: 3,
+              }}>
+              <Icon
+                style={{marginTop: -3, marginHorizontal: 2}}
+                name="filter-list"
+                color={
+                  theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
+                }
+                size={18}
+              />
+              <CustomText size={SIZES.medium}>Filter</CustomText>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={IDOData}
+          numColumns={2}
+          contentContainerStyle={{
+            paddingHorizontal: 10,
+            alignItems: 'center',
+          }}
+          renderItem={({item, index}) => {
+            return <IDOItem item={item} index={index} />;
+          }}
+        />
+      </>
+    );
+  };
+
+  const renderScene = SceneMap({
+    launchpads: FirstRoute,
+    idos: SecondRoute,
+  });
+
+  const renderTabBar = props => (
+    <TabBar
+      renderLabel={({route, focused, color}) => (
+        <CustomText size={SIZES.large} font={FONTS.bold} style={{color}}>
+          {route.title}
+        </CustomText>
+      )}
+      {...props}
+      tabStyle={{
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        width: 140,
+        marginLeft: -10,
+      }}
+      indicatorStyle={{
+        backgroundColor:
+          theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+      }}
+      style={{
+        elevation: 0,
+        width: 270,
+        backgroundColor: COLORS.backgroundDark,
+        marginTop: 40,
+      }}
+    />
+  );
+
+  return (
+    <SafeAreaView style={{flex: 1, marginHorizontal: SIZES.padding}}>
+      <TabView
+        renderTabBar={renderTabBar}
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{width: layout.width}}
+      />
     </SafeAreaView>
   );
 };

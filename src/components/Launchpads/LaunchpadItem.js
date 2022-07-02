@@ -28,9 +28,6 @@ const LaunchpadItem = ({item, index}) => {
         navigation.navigate('LaunchpadDetails', {item: item});
       }}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <CustomText grayText font={FONTS.medium} size={SIZES.medium}>
-          {index + 1}
-        </CustomText>
         <View
           style={{
             width: 50,
@@ -65,7 +62,7 @@ const LaunchpadItem = ({item, index}) => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <View>
+        <View style={{marginRight: 12}}>
           <CustomText
             font={FONTS.bold}
             size={SIZES.bold}

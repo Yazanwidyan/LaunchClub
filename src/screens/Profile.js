@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Header from '../components/common/Header';
-import {assets, COLORS, SIZES} from '../constants';
+import {assets, COLORS, FONTS, SIZES} from '../constants';
 import CustomText from '../components/UI/CustomText';
 import {useSelector, useDispatch} from 'react-redux';
 import {setTheme} from '../redux/actions/actions';
@@ -28,7 +28,7 @@ const OptionsCard = ({icon, name, path}) => {
       activeOpacity={0.7}
       onPress={() => navigation.navigate(path)}
       style={{
-        padding: 20,
+        padding: 24,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -47,14 +47,15 @@ const OptionsCard = ({icon, name, path}) => {
             size={19}
           />
         )}
-        <CustomText style={{marginHorizontal: 30}} size={SIZES.large}>
+        <CustomText style={{marginHorizontal: 30}} size={SIZES.medium}>
           {name}
         </CustomText>
       </View>
       <ChevronIcon
+        style={{marginTop: -5}}
         name="chevron-right"
         color={theme === 'light' ? COLORS.secondaryDark : COLORS.secondary}
-        size={30}
+        size={22}
       />
     </TouchableOpacity>
   );
@@ -76,7 +77,9 @@ const Profile = () => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{flex: 1, marginHorizontal: SIZES.padding, marginBottom: 40}}>
         <Header title="Profile" />
         <View style={{alignItems: 'center'}}>
           <Image
@@ -101,27 +104,64 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <View>
+          <CustomText
+            style={{paddingBottom: 32}}
+            size={SIZES.large}
+            font={FONTS.bold}>
+            Account
+          </CustomText>
           <View
             style={{
-              marginHorizontal: 20,
               borderRadius: SIZES.radius,
               marginBottom: 10,
               backgroundColor:
                 theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
+            <OptionsCard
+              path="Account"
+              name="Account Information"
+              icon="diamond"
+            />
             <OptionsCard path="Gems" name="Collect Gems" icon="diamond" />
+            <OptionsCard
+              path="Notifications"
+              name="Notifications"
+              icon="diamond"
+            />
           </View>
+          <CustomText
+            style={{paddingVertical: 32}}
+            size={SIZES.large}
+            font={FONTS.bold}>
+            Privacy
+          </CustomText>
           <View
             style={{
-              marginHorizontal: 20,
               borderRadius: SIZES.radius,
-              marginBottom: 10,
+              marginBottom: 30,
               backgroundColor:
                 theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <OptionsCard path="logout" name="Logout" icon="logout" />
+            <OptionsCard
+              path="ChangePassword"
+              name="Change Password"
+              icon="logout"
+            />
           </View>
         </View>
+        <TouchableOpacity
+          style={{
+            backgroundColor: COLORS.primary,
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 16,
+            borderRadius: SIZES.radius,
+            marginBottom: 40,
+          }}>
+          <CustomText size={SIZES.bold} font={FONTS.bold}>
+            Logout
+          </CustomText>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

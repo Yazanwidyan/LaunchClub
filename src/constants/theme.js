@@ -30,7 +30,7 @@ export const SIZES = {
   large: 18,
   extraLarge: 24,
   padding: 16,
-  radius: 3,
+  radius: 8,
   width,
   height,
 };

@@ -20,6 +20,8 @@ import Profile from '../screens/Profile';
 import Gems from '../screens/Gems';
 import Search from '../screens/Search';
 import Splash from '../screens/Splash';
+import {TabBar} from '../components/common/TabBar';
+import Account from '../screens/Account';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,7 +41,7 @@ const Router = () => {
   const TabsStack = () => {
     return (
       <Tab.Navigator
-        tabBar={props => <CustomTabs {...props} />}
+        tabBar={props => <TabBar {...props} />}
         screenOptions={{
           headerShown: false,
         }}>
@@ -71,6 +73,8 @@ const Router = () => {
           <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
           <Stack.Screen name="IDODetails" component={IDODetails} />
           <Stack.Screen name="Gems" component={Gems} />
+          <Stack.Screen name="Notifications" component={Notifications} />
+          <Stack.Screen name="Account" component={Account} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
