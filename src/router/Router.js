@@ -22,6 +22,7 @@ import Search from '../screens/Search';
 import Splash from '../screens/Splash';
 import {TabBar} from '../components/common/TabBar';
 import Account from '../screens/Account';
+import Test from '../screens/Test';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -70,7 +71,7 @@ const Router = () => {
           initialRouteName="Splash">
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="TabsStack" component={TabsStack} />
-          <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
+          <Stack.Screen name="LaunchpadDetails" component={Test} />
           <Stack.Screen name="IDODetails" component={IDODetails} />
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Notifications" component={Notifications} />
