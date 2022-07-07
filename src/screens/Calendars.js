@@ -28,8 +28,13 @@ const Calendars = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, paddingHorizontal: SIZES.padding}}>
-      <Header title={'Calendar'} />
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        marginVertical: 10,
+        paddingBottom: 40,
+      }}>
       <FlatList
         ListHeaderComponentStyle={{alignSelf: 'stretch'}}
         ListHeaderComponent={

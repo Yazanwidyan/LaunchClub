@@ -71,7 +71,7 @@ const Router = () => {
           initialRouteName="Splash">
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="TabsStack" component={TabsStack} />
-          <Stack.Screen name="LaunchpadDetails" component={Test} />
+          <Stack.Screen name="LaunchpadDetails" component={LaunchpadDetails} />
           <Stack.Screen name="IDODetails" component={IDODetails} />
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Notifications" component={Notifications} />

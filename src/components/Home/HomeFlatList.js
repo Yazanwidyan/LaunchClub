@@ -11,7 +11,7 @@ const HomeFlatList = ({data, dataType}) => {
       data={data}
       contentContainerStyle={{
         alignItems: 'center',
-        paddingHorizontal: 10,
+        paddingHorizontal: SIZES.padding,
         paddingTop: 24,
       }}
       showsHorizontalScrollIndicator={false}

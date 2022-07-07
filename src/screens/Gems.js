@@ -58,7 +58,6 @@ const Gems = () => {
             }}>
             <ChevronIcon name="chevron-left" color={COLORS.gray} size={35} />
           </TouchableOpacity>
-          <Header title="LaunchClub Gems" />
         </View>
 
         <View style={{paddingHorizontal: SIZES.padding}}>

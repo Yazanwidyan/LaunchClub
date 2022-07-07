@@ -16,7 +16,7 @@ import Header from '../components/common/Header';
 import {COLORS, FONTS, IDOData, PadsData, SIZES} from '../constants';
 import LaunchpadItem from '../components/Launchpads/LaunchpadItem';
 import IDOItem from '../components/IDO/IDOItem';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from '../components/UI/Icon';
 import CustomTextInput from '../components/UI/CustomTextInput';
 
 const Search = () => {
@@ -39,18 +39,20 @@ const Search = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingVertical: 5,
+            marginVertical: 16,
+            paddingHorizontal: SIZES.padding,
           }}>
           <TouchableOpacity
             style={{flexDirection: 'row', alignItems: 'center'}}>
             <CustomText size={SIZES.medium}>Recent activity</CustomText>
             <Icon
+              library="MaterialIcons"
               style={{marginTop: -3, marginHorizontal: 2}}
-              name="arrow-drop-down"
-              color={
+              nameIcon="arrow-drop-down"
+              colorIcon={
                 theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
               }
-              size={20}
+              sizeIcon={20}
             />
           </TouchableOpacity>
           <View
@@ -66,11 +68,12 @@ const Search = () => {
               }}>
               <Icon
                 style={{marginTop: -3, marginHorizontal: 2}}
-                name="search"
-                color={
+                library="Feather"
+                nameIcon="search"
+                colorIcon={
                   theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
                 }
-                size={25}
+                sizeIcon={20}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -79,18 +82,17 @@ const Search = () => {
                 backgroundColor: COLORS.secondaryDark,
                 flexDirection: 'row',
                 alignItems: 'center',
-                padding: 7,
                 borderRadius: 3,
               }}>
               <Icon
-                style={{marginTop: -3, marginHorizontal: 2}}
-                name="filter-list"
-                color={
+                library="MaterialIcons"
+                style={{marginTop: -3}}
+                nameIcon="filter-list"
+                colorIcon={
                   theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
                 }
-                size={18}
+                sizeIcon={25}
               />
-              <CustomText size={SIZES.medium}>Filter</CustomText>
             </TouchableOpacity>
           </View>
         </View>
@@ -98,7 +100,8 @@ const Search = () => {
           showsVerticalScrollIndicator={false}
           data={PadsData}
           contentContainerStyle={{
-            marginVertical: 10,
+            paddingBottom: 70,
+            paddingHorizontal: SIZES.padding,
           }}
           renderItem={({item, index}) => {
             return <LaunchpadItem item={item} index={index} />;
@@ -116,18 +119,20 @@ const Search = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingVertical: 5,
+            marginVertical: 16,
+            paddingHorizontal: SIZES.padding,
           }}>
           <TouchableOpacity
             style={{flexDirection: 'row', alignItems: 'center'}}>
             <CustomText size={SIZES.medium}>Recent activity</CustomText>
             <Icon
+              library="MaterialIcons"
               style={{marginTop: -3, marginHorizontal: 2}}
-              name="arrow-drop-down"
-              color={
+              nameIcon="arrow-drop-down"
+              colorIcon={
                 theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
               }
-              size={20}
+              sizeIcon={20}
             />
           </TouchableOpacity>
           <View
@@ -143,11 +148,12 @@ const Search = () => {
               }}>
               <Icon
                 style={{marginTop: -3, marginHorizontal: 2}}
-                name="search"
-                color={
+                library="Feather"
+                nameIcon="search"
+                colorIcon={
                   theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
                 }
-                size={25}
+                sizeIcon={20}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -156,18 +162,17 @@ const Search = () => {
                 backgroundColor: COLORS.secondaryDark,
                 flexDirection: 'row',
                 alignItems: 'center',
-                padding: 7,
                 borderRadius: 3,
               }}>
               <Icon
-                style={{marginTop: -3, marginHorizontal: 2}}
-                name="filter-list"
-                color={
+                library="MaterialIcons"
+                style={{marginTop: -3}}
+                nameIcon="filter-list"
+                colorIcon={
                   theme === 'light' ? COLORS.secondaryDark : COLORS.secondary
                 }
-                size={18}
+                sizeIcon={25}
               />
-              <CustomText size={SIZES.medium}>Filter</CustomText>
             </TouchableOpacity>
           </View>
         </View>
@@ -176,11 +181,12 @@ const Search = () => {
           data={IDOData}
           numColumns={2}
           contentContainerStyle={{
-            paddingHorizontal: 10,
             alignItems: 'center',
+            paddingHorizontal: SIZES.padding,
+            paddingBottom: 70,
           }}
           renderItem={({item, index}) => {
-            return <IDOItem item={item} index={index} />;
+            return <IDOItem wideWidth item={item} index={index} />;
           }}
         />
       </>
@@ -204,7 +210,7 @@ const Search = () => {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         width: 140,
-        marginLeft: -10,
+        marginLeft: 5,
       }}
       indicatorStyle={{
         backgroundColor:
@@ -220,7 +226,7 @@ const Search = () => {
   );
 
   return (
-    <SafeAreaView style={{flex: 1, marginHorizontal: SIZES.padding}}>
+    <SafeAreaView style={{flex: 1, marginTop: 10}}>
       <TabView
         renderTabBar={renderTabBar}
         navigationState={{index, routes}}

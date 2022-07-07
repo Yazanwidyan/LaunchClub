@@ -14,14 +14,11 @@ const ExploreLaunchpads = ({item}) => {
     <TouchableOpacity
       activeOpacity={0.7}
       style={{
-        width: 140,
+        width: 185,
         height: 185,
         marginBottom: 20,
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderRadius: SIZES.radius,
-        marginHorizontal: 6,
-        ...SHADOWS.dark,
+        marginRight: 18,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}
       onPress={() => navigation.navigate('LaunchpadDetails', {item: item})}>
@@ -31,8 +28,6 @@ const ExploreLaunchpads = ({item}) => {
           width: '100%',
           height: '55%',
           borderRadius: SIZES.radius,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
         }}
         source={item.logo}
       />
@@ -51,7 +46,7 @@ const ExploreLaunchpads = ({item}) => {
           source={item.image}
         />
         <View style={{alignItems: 'center'}}>
-          <CustomText size={SIZES.medium} font={FONTS.regular}>
+          <CustomText size={SIZES.medium} font={FONTS.semiBold}>
             {item.name}
           </CustomText>
         </View>

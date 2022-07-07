@@ -1,27 +1,34 @@
-import {StyleSheet, Image, TouchableOpacity, View} from 'react-native';
+import {
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../../constants';
 import {useSelector} from 'react-redux';
 import CustomText from '../UI/CustomText';
-import Icon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import Icon from '../UI/Icon';
 
-const IDOItem = ({item}) => {
+const IDOItem = ({wideWidth, item}) => {
   const {theme} = useSelector(state => state.theme);
   const navigation = useNavigation();
+  const totalWidth = Dimensions.get('window').width;
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       style={{
-        width: 155,
+        width: wideWidth ? totalWidth * 0.44 : 150,
         height: 240,
         marginBottom: 20,
         backgroundColor:
           theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderRadius: SIZES.radius,
-        marginHorizontal: 6,
-        ...SHADOWS.dark,
+        marginRight: wideWidth ? 8 : 18,
+        marginLeft: wideWidth ? 8 : 0,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
       }}
       onPress={() => navigation.navigate('IDODetails', {item: item})}>
@@ -31,18 +38,13 @@ const IDOItem = ({item}) => {
           width: '100%',
           height: '55%',
           borderRadius: SIZES.radius,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
         }}
         source={item.image}
       />
-      <View style={{padding: 12}}>
-        <CustomText grayText size={SIZES.small} font={FONTS.regular}>
+      <View style={{paddingTop: 12}}>
+        <CustomText size={SIZES.small} font={FONTS.regular}>
           {item.name.substring(0, 20)}
           {item.name.length > 20 ? '...' : null}
-        </CustomText>
-        <CustomText size={SIZES.medium} font={FONTS.regular}>
-          Likes {item.likes}
         </CustomText>
         <View
           style={{
@@ -52,13 +54,34 @@ const IDOItem = ({item}) => {
             justifyContent: 'space-between',
           }}>
           <View>
-            <CustomText grayText size={SIZES.regular}>
+            <CustomText
+              style={{marginBottom: 3}}
+              grayText
+              size={SIZES.regular}
+              font={FONTS.regular}>
               Ending in
             </CustomText>
-            <CustomText size={SIZES.medium}>10h 30m</CustomText>
+            <CustomText size={SIZES.medium} font={FONTS.medium}>
+              <Icon
+                library={'AntDesign'}
+                nameIcon="clockcircleo"
+                sizeIcon={12}
+                color={theme == 'light' ? COLORS.black : COLORS.white}
+              />{' '}
+              10h 30m
+            </CustomText>
           </View>
-          <CustomText style={{alignSelf: 'flex-end'}} size={SIZES.small}>
-            <Icon name="heart" size={13} color={COLORS.gray} /> 3,229
+          <CustomText
+            style={{alignSelf: 'flex-end'}}
+            size={SIZES.small}
+            font={FONTS.medium}>
+            <Icon
+              library={'FontAwesome'}
+              nameIcon="heart-o"
+              sizeIcon={12}
+              color={theme == 'light' ? COLORS.black : COLORS.white}
+            />{' '}
+            3,229
           </CustomText>
         </View>
       </View>

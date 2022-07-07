@@ -68,7 +68,7 @@ const Profile = () => {
   const changeTheme = () => {
     if (theme == 'light') {
       dispatch(setTheme('dark'));
-      changeNavigationBarColor('#191B1E', true);
+      changeNavigationBarColor('#14141B', true);
     } else {
       dispatch(setTheme('light'));
       changeNavigationBarColor('#ffffff', true);
@@ -76,11 +76,10 @@ const Profile = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, marginVertical: 40}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{flex: 1, marginHorizontal: SIZES.padding, marginBottom: 40}}>
-        <Header title="Profile" />
         <View style={{alignItems: 'center'}}>
           <Image
             source={assets.person01}

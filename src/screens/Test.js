@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import CustomText from '../components/UI/CustomText';
-import {Tabs} from 'react-native-collapsible-tab-view';
+import {Tabs, MaterialTabItem} from 'react-native-collapsible-tab-view';
 import IDOBItem from '../components/IDO/IDOBItem';
 import {COLORS, FONTS, IDOData, SIZES} from '../constants';
 import MoreLess from '../components/UI/MoreLess';
@@ -150,6 +150,22 @@ const Test = () => {
             watchlist
           </CustomText>
         </View>
+        <View style={{alignItems: 'center'}}>
+          <CustomText font={FONTS.bold} size={SIZES.bold}>
+            GZONE
+          </CustomText>
+          <CustomText font={FONTS.regular} size={SIZES.small} grayText>
+            token
+          </CustomText>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <CustomText font={FONTS.bold} size={SIZES.bold}>
+            #1259
+          </CustomText>
+          <CustomText font={FONTS.regular} size={SIZES.small} grayText>
+            CMcap Rank
+          </CustomText>
+        </View>
       </View>
       <MoreLess>
         cnewkjcenw jdnekjndkejnddujewd dewhudwei jlsajxje oijdoewjido jghhgjhb
@@ -288,7 +304,15 @@ const Test = () => {
     );
   };
   const ScreenB = () => {
-    return <CustomText>ahskjlasajnsksajgaj</CustomText>;
+    return (
+      <Tabs.FlatList
+        data={IDOData}
+        renderItem={({item, index}) => {
+          return <View></View>;
+        }}
+        keyExtractor={item => item.id}
+      />
+    );
   };
 
   return (

@@ -21,91 +21,51 @@ import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 const Home = () => {
   const {theme} = useSelector(state => state.theme);
-  const navigation = useNavigation();
 
   useEffect(() => {
-    const color = theme == 'light' ? '#ffffff' : '#191B1E';
+    const color = theme == 'light' ? '#ffffff' : '#14141B';
     changeNavigationBarColor(color, true);
   }, []);
 
   return (
     <>
-      <SafeAreaView style={{flex: 1}}>
-        <Header brand title={'LaunchClub'} />
-        <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+      <SafeAreaView style={{flex: 1, marginTop: 10}}>
+        <Header title={'LaunchClub'} />
+        <ScrollView
+          style={{flex: 1, marginBottom: 50}}
+          showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
-            <Carousel />
-            <View style={{paddingHorizontal: SIZES.padding}}>
-              <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={() => navigation.navigate('Gems')}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: 15,
-                  marginVertical: 20,
-                  borderRadius: SIZES.radius,
-                  backgroundColor:
-                    theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-                }}>
-                <View>
-                  <CustomText
-                    size={SIZES.small}
-                    style={{color: COLORS.gray, marginBottom: 5}}>
-                    LaunchClub Gems
-                  </CustomText>
-                  <CustomText font={FONTS.bold} size={SIZES.medium}>
-                    Your total Gems 0
-                  </CustomText>
-                  <CustomText size={SIZES.base}>
-                    Collect more LaunchClub Gems here
-                  </CustomText>
-                </View>
-                <ChevronIcon
-                  name="chevron-right"
-                  color={COLORS.gray}
-                  size={30}
-                />
-              </TouchableOpacity>
+            <View style={{marginBottom: 20}}>
+              <Carousel />
             </View>
-
-            <View>
-              <CustomText
-                size={SIZES.large}
-                font={FONTS.bold}
-                style={styles.titleText}>
-                Most Liked Launchpads
-              </CustomText>
-              <HomeFlatList dataType="launchpad" data={PadsData} />
-            </View>
-            <View>
-              <CustomText
-                size={SIZES.large}
-                font={FONTS.bold}
-                style={styles.titleText}>
-                Top IDOs
-              </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
-            </View>
-            <View>
-              <CustomText
-                size={SIZES.large}
-                font={FONTS.bold}
-                style={styles.titleText}>
-                New Projects
-              </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
-            </View>
-            <View>
-              <CustomText
-                size={SIZES.large}
-                font={FONTS.bold}
-                style={styles.titleText}>
-                Author's Choice
-              </CustomText>
-              <HomeFlatList dataType="ido" data={IDOData} />
-            </View>
+            <CustomText
+              size={SIZES.large}
+              font={FONTS.bold}
+              style={styles.titleText}>
+              Most Liked Launchpads
+            </CustomText>
+            <HomeFlatList dataType="launchpad" data={PadsData} />
+            <CustomText
+              size={SIZES.large}
+              font={FONTS.bold}
+              style={styles.titleText}>
+              Top IDOs
+            </CustomText>
+            <HomeFlatList dataType="ido" data={IDOData} />
+            <CustomText
+              size={SIZES.large}
+              font={FONTS.bold}
+              style={styles.titleText}>
+              New Projects
+            </CustomText>
+            <HomeFlatList dataType="ido" data={IDOData} />
+            <CustomText
+              size={SIZES.large}
+              font={FONTS.bold}
+              style={styles.titleText}>
+              Author's Choice
+            </CustomText>
+            <HomeFlatList dataType="ido" data={IDOData} />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -119,5 +79,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  titleText: {paddingHorizontal: SIZES.padding, marginTop: 5},
+  titleText: {paddingHorizontal: SIZES.padding, marginVertical: 10},
 });

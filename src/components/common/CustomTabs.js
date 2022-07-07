@@ -17,8 +17,6 @@ const CustomTabs = ({state, descriptors, navigation}) => {
         justifyContent: 'space-between',
         paddingHorizontal: SIZES.padding,
         paddingHorizontal: 40,
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
       }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];

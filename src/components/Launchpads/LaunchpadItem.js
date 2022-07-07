@@ -17,11 +17,8 @@ const LaunchpadItem = ({item, index}) => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 16,
-        padding: 12,
+        marginBottom: 30,
         borderRadius: SIZES.radius,
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
       }}
       activeOpacity={0.7}
       onPress={() => {
@@ -32,8 +29,10 @@ const LaunchpadItem = ({item, index}) => {
           style={{
             width: 50,
             height: 50,
-            borderRadius: 50,
-            marginHorizontal: 12,
+            borderRadius: 100,
+            marginRight: 12,
+            padding: 2,
+            backgroundColor: theme == 'light' ? COLORS.background : '#24242F',
           }}>
           <Image
             resizeMode="cover"
@@ -52,7 +51,7 @@ const LaunchpadItem = ({item, index}) => {
             size={SIZES.medium}>
             {item.name}
           </CustomText>
-          <CustomText font={FONTS.regular} size={SIZES.regular} grayText>
+          <CustomText font={FONTS.medium} size={SIZES.regular} grayText>
             Likes {item.likes}
           </CustomText>
         </View>
@@ -62,14 +61,18 @@ const LaunchpadItem = ({item, index}) => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <View style={{marginRight: 12}}>
+        <View>
           <CustomText
-            font={FONTS.bold}
-            size={SIZES.bold}
+            font={FONTS.semiBold}
+            size={SIZES.medium}
             style={{textAlign: 'right', marginBottom: 4}}>
             ${item.price}
           </CustomText>
-          <CustomText grayText size={SIZES.small} style={{textAlign: 'right'}}>
+          <CustomText
+            grayText
+            font={FONTS.medium}
+            size={SIZES.small}
+            style={{textAlign: 'right'}}>
             MCap {item.mCap}
           </CustomText>
         </View>

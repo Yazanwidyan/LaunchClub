@@ -6,11 +6,11 @@ import {
   Animated,
   StyleSheet,
 } from 'react-native';
-import {COLORS, SIZES} from '../../constants';
+import {COLORS, FONTS, SIZES} from '../../constants';
 import {BottomMenuItem} from './BottomMenuItem';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 import CustomText from '../UI/CustomText';
+import Icon from '../UI/Icon';
 
 export const TabBar = ({state, descriptors, navigation}) => {
   const [translateValue] = useState(new Animated.Value(0));
@@ -32,14 +32,24 @@ export const TabBar = ({state, descriptors, navigation}) => {
   }, [state.index]);
 
   return (
-    <View style={[style.tabContainer, {width: totalWidth}]}>
+    <View
+      style={[
+        style.tabContainer,
+        {
+          width: totalWidth,
+          borderTopColor: '#1E1E30',
+          borderTopWidth: 1,
+          backgroundColor:
+            theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+        },
+      ]}>
       <View style={{flexDirection: 'row'}}>
         <Animated.View
           style={[
             style.slider,
             {
               transform: [{translateX: translateValue}],
-              width: tabWidth - 50,
+              width: tabWidth - 60,
             },
           ]}
         />
@@ -91,13 +101,14 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   height: '100%',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  marginTop: 7,
+                  paddingTop: 3,
                 }}>
                 {label == 'Home' ? (
                   <Icon
-                    name="home-outline"
-                    size={24}
-                    color={
+                    library={'AntDesign'}
+                    nameIcon="home"
+                    sizeIcon={22}
+                    colorIcon={
                       isFocused
                         ? theme == 'dark'
                           ? COLORS.white
@@ -107,9 +118,10 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   />
                 ) : label == 'Search' ? (
                   <Icon
-                    name="search-outline"
-                    size={24}
-                    color={
+                    library={'Feather'}
+                    nameIcon="search"
+                    sizeIcon={22}
+                    colorIcon={
                       isFocused
                         ? theme == 'dark'
                           ? COLORS.white
@@ -119,9 +131,10 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   />
                 ) : label == 'Calendar' ? (
                   <Icon
-                    name="ios-calendar-sharp"
-                    size={24}
-                    color={
+                    library={'Entypo'}
+                    nameIcon="calendar"
+                    sizeIcon={22}
+                    colorIcon={
                       isFocused
                         ? theme == 'dark'
                           ? COLORS.white
@@ -131,9 +144,10 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   />
                 ) : label == 'Watchlist' ? (
                   <Icon
-                    name="heart-outline"
-                    size={24}
-                    color={
+                    library={'AntDesign'}
+                    nameIcon="hearto"
+                    sizeIcon={22}
+                    colorIcon={
                       isFocused
                         ? theme == 'dark'
                           ? COLORS.white
@@ -143,9 +157,10 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   />
                 ) : label == 'Profile' ? (
                   <Icon
-                    name="person-circle-outline"
-                    size={24}
-                    color={
+                    library={'Ionicons'}
+                    nameIcon="person-circle-outline"
+                    sizeIcon={22}
+                    colorIcon={
                       isFocused
                         ? theme == 'dark'
                           ? COLORS.white
@@ -155,7 +170,8 @@ export const TabBar = ({state, descriptors, navigation}) => {
                   />
                 ) : null}
                 <CustomText
-                  size={SIZES.base}
+                  size={SIZES.small}
+                  font={FONTS.medium}
                   style={{
                     marginTop: 7,
                     color: isFocused
@@ -184,8 +200,6 @@ const style = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 4.0,
-    backgroundColor: COLORS.secondaryDark,
-    elevation: 10,
     position: 'absolute',
     bottom: 0,
   },
@@ -193,8 +207,9 @@ const style = StyleSheet.create({
     height: 4,
     position: 'absolute',
     top: 0,
-    left: 25,
+    left: 29,
+    borderBottomRightRadius: 100,
+    borderBottomLeftRadius: 100,
     backgroundColor: COLORS.primary,
-    borderRadius: 100,
   },
 });

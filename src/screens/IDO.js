@@ -8,7 +8,6 @@ import IDOItem from '../components/IDO/IDOItem';
 const IDO = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Header title={'IDOs'} />
       <FlatList
         ListHeaderComponentStyle={{alignSelf: 'stretch'}}
         ListHeaderComponent={

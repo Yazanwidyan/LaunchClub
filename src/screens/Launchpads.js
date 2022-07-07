@@ -8,8 +8,6 @@ import LaunchpadItem from '../components/Launchpads/LaunchpadItem';
 const Launchpads = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Header title={'Launchpads'} />
-
       <FlatList
         ListHeaderComponent={
           <View style={{paddingHorizontal: SIZES.padding, marginBottom: 20}}>
