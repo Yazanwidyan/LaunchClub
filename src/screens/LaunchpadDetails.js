@@ -31,6 +31,8 @@ import IDOBItem from '../components/IDO/IDOBItem';
 import useToggle from '../components/common/hooks/useToggle';
 import BottomSheet from '../components/UI/BottomSheet';
 import {addToWatchlist} from '../redux/actions/actions';
+import LinearGradient from 'react-native-linear-gradient';
+import Icon from '../components/UI/Icon';
 
 const HEADER_HEIGHT = 230;
 
@@ -38,6 +40,8 @@ const tabs_detail = tabs_details.map(tabs_details => ({
   ...tabs_details,
   ref: React.createRef(),
 }));
+
+const top_tabs_headers = ['Contract', 'Tiers system', 'Markets'];
 
 const LaunchpadDetails = () => {
   const [tabIndicatorIndex, setTabIndicatorIndex] = useState(0);
@@ -49,6 +53,7 @@ const LaunchpadDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [data, setData] = useState(route.params.item);
+  const [activetab, setActivetab] = useState('Contract');
 
   useEffect(() => {
     setData(route.params.item);
@@ -286,7 +291,7 @@ const LaunchpadDetails = () => {
     );
   };
 
-  const renderRecipeInfo = () => {
+  const renderInfo = () => {
     return (
       <View
         style={{
@@ -303,42 +308,12 @@ const LaunchpadDetails = () => {
             size={SIZES.extraLarge}>
             {data.name}
           </CustomText>
-          <CustomText
-            style={{marginBottom: 16}}
-            font={FONTS.regular}
-            size={SIZES.small}>
+          <CustomText font={FONTS.regular} size={SIZES.small}>
             created by{' '}
             <CustomText style={{color: COLORS.primary}}>
               {data.owner ? data.owner : data.name}
             </CustomText>
           </CustomText>
-          {/* <View
-            style={{
-              flexDirection: 'row',
-              width: '50%',
-              justifyContent: 'space-between',
-            }}>
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-          </View> */}
           {/* <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => setOpen(true)}
@@ -360,30 +335,85 @@ const LaunchpadDetails = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            marginBottom: 16,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginVertical: 20,
           }}>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.bold}>
-              2.1k
-            </CustomText>
-            <CustomText font={FONTS.regular} size={SIZES.small} grayText>
-              likes
-            </CustomText>
+          <CustomText grayText font={FONTS.regular} size={SIZES.regular}>
+            822 Likes
+          </CustomText>
+          <CustomText
+            grayText
+            font={FONTS.regular}
+            size={SIZES.regular}
+            style={{marginHorizontal: 20}}>
+            On 8322 watchlists
+          </CustomText>
+          <CustomText
+            grayText
+            font={FONTS.regular}
+            size={SIZES.regular}
+            style={{marginHorizontal: 20}}>
+            token GZONE
+          </CustomText>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <MoreLess>
+            cnewkjcenw jdnekjndkejnddujewd dewhudwei jlsajxje oijdoewjido
+            jghhgjhb jahekqjhe ekwhekw hwekwekxnekjnk
+          </MoreLess>
+        </View>
+        <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            {top_tabs_headers.map(tab => {
+              return (
+                <TouchableOpacity
+                  onPress={() => setActivetab(tab)}
+                  style={{
+                    padding: 20,
+                    borderRadius: SIZES.radius,
+                    backgroundColor:
+                      tab == activetab ? '#24242F' : COLORS.backgroundDark,
+                  }}>
+                  <CustomText>{tab}</CustomText>
+                </TouchableOpacity>
+              );
+            })}
           </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.bold}>
-              2.1k
-            </CustomText>
-            <CustomText font={FONTS.regular} size={SIZES.small} grayText>
-              watchlist
-            </CustomText>
+          <View>
+            {activetab == 'Contract' && (
+              <View style={{alignItems: 'center', paddingVertical: 50}}>
+                <View style={{marginVertical: 10}}>
+                  <CustomText
+                    grayText
+                    font={FONTS.regular}
+                    size={SIZES.regular}>
+                    BNB smart chain (BEP 20)
+                  </CustomText>
+                  <CustomText font={FONTS.semiBold} size={SIZES.medium}>
+                    0xb6adb74efb5801160ff749b19...
+                  </CustomText>
+                </View>
+                <View>
+                  <CustomText
+                    grayText
+                    font={FONTS.regular}
+                    size={SIZES.regular}>
+                    Ethereum
+                  </CustomText>
+                  <CustomText font={FONTS.semiBold} size={SIZES.medium}>
+                    0xb6adb74efb5801160ff749b19...
+                  </CustomText>
+                </View>
+              </View>
+            )}
           </View>
         </View>
-        <MoreLess>
-          cnewkjcenw jdnekjndkejnddujewd dewhudwei jlsajxje oijdoewjido jghhgjhb
-          jahekqjhe ekwhekw hwekwekxnekjnk
-        </MoreLess>
       </View>
     );
   };
@@ -402,17 +432,30 @@ const LaunchpadDetails = () => {
         ListHeaderComponent={
           <View>
             {renderCardHeader()}
+            <LinearGradient
+              colors={[
+                'transparent',
+                'transparent',
+                theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+              ]}
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                height: 230,
+                width: '100%',
+              }}
+            />
             <Animated.View
               style={{
-                backgroundColor: COLORS.white,
                 borderRadius: 100,
-                padding: 3,
                 position: 'absolute',
                 zIndex: 1,
-                left: SIZES.width / 2.88,
+                left: SIZES.width / 3,
                 top: 160,
-                height: 130,
-                width: 130,
+                height: 140,
+                width: 140,
                 opacity: scrollY.interpolate({
                   inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 90],
                   outputRange: [1, 0],
@@ -451,7 +494,7 @@ const LaunchpadDetails = () => {
               />
             </Animated.View>
 
-            {renderRecipeInfo()}
+            {renderInfo()}
           </View>
         }
         scrollEventThrottle={16}

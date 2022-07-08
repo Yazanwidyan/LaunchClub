@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import CustomText from './CustomText';
 import {TouchableOpacity, View} from 'react-native';
-import {SIZES} from '../../constants';
+import {FONTS, SIZES} from '../../constants';
 
 const MoreLess = ({children}) => {
   const [isMore, setIsMore] = useState(false);
 
   return (
     <View style={{marginBottom: 20}}>
-      <CustomText size={SIZES.small} grayText>
+      <CustomText size={SIZES.regular} font={FONTS.regular} grayText>
         {isMore ? children : children.substr(0, 99)}{' '}
       </CustomText>
       <TouchableOpacity activeOpacity={0.7} onPress={() => setIsMore(!isMore)}>

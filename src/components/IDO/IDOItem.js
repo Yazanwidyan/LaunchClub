@@ -41,7 +41,7 @@ const IDOItem = ({wideWidth, item}) => {
         }}
         source={item.image}
       />
-      <View style={{paddingTop: 12}}>
+      <View style={{paddingTop: 12, paddingHorizontal: 5}}>
         <CustomText size={SIZES.small} font={FONTS.regular}>
           {item.name.substring(0, 20)}
           {item.name.length > 20 ? '...' : null}

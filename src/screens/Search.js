@@ -209,7 +209,7 @@ const Search = () => {
       tabStyle={{
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        width: 140,
+        width: 160,
         marginLeft: 5,
       }}
       indicatorStyle={{

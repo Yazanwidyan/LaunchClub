@@ -9,13 +9,10 @@ import {
 } from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
-import ChevronIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconWeb from 'react-native-vector-icons/MaterialCommunityIcons';
-import LikeIcon from 'react-native-vector-icons/AntDesign';
-import HeartIcon from 'react-native-vector-icons/Ionicons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {addToWatchlist} from '../redux/actions/actions';
+import Icon from '../components/UI/Icon';
 import {
   COLORS,
   assets,
@@ -26,44 +23,8 @@ import {
 } from '../constants';
 import CustomText from '../components/UI/CustomText';
 import MoreLess from '../components/UI/MoreLess';
-import Divider from '../components/UI/Divider';
 
-const HEADER_HEIGHT = 180;
-
-const LaunchpadsCard = ({image, name}) => {
-  return (
-    <View
-      style={{
-        padding: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}>
-      <Image
-        style={{width: 50, height: 50, borderRadius: 50, marginRight: 20}}
-        source={image}
-      />
-      <View>
-        <CustomText size={SIZES.large}>{name}</CustomText>
-        <CustomText>Click here to apply</CustomText>
-      </View>
-    </View>
-  );
-};
-
-const InfoCard = ({title, subtitle}) => {
-  return (
-    <View
-      style={{
-        padding: 20,
-        justifyContent: 'center',
-      }}>
-      <View>
-        <CustomText grayText>{title}</CustomText>
-        <CustomText size={SIZES.large}>{subtitle}</CustomText>
-      </View>
-    </View>
-  );
-};
+const HEADER_HEIGHT = 300;
 
 const IDODetails = () => {
   const {theme} = useSelector(state => state.theme);
@@ -86,37 +47,39 @@ const IDODetails = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   const renderContent = () => {
+    const detailsCard = (title, content) => {
+      return (
+        <View style={{paddingVertical: 10}}>
+          <CustomText grayText font={FONTS.medium} size={SIZES.regular}>
+            {title}
+          </CustomText>
+          {content.map(item => {
+            return (
+              <CustomText font={FONTS.medium} Size={SIZES.medium} key={item}>
+                {item}
+              </CustomText>
+            );
+          })}
+        </View>
+      );
+    };
+
     return (
-      <>
-        <View
-          style={{
-            marginHorizontal: 20,
-            borderRadius: SIZES.radius,
-            marginBottom: 10,
-            backgroundColor:
-              theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-          }}>
-          <View
-            style={{
-              padding: 20,
-              justifyContent: 'center',
-            }}>
-            <CustomText>Click here to apply</CustomText>
-          </View>
-          <Divider />
-          <LaunchpadsCard name={'BSCPAD'} image={assets.pad01} />
-          <Divider />
-        </View>
-        <View
-          style={{
-            marginHorizontal: 20,
-            borderRadius: SIZES.radius,
-            backgroundColor:
-              theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
-          }}>
-          <InfoCard title={'Sale network'} subtitle={'solana, smart chain'} />
-        </View>
-      </>
+      <View style={{marginTop: 50, paddingHorizontal: SIZES.padding}}>
+        <CustomText
+          style={{marginBottom: 16}}
+          font={FONTS.bold}
+          size={SIZES.bold}>
+          Details
+        </CustomText>
+        {detailsCard('Listing Info', [
+          'Pancake swap on 9, 2022 at 9 am',
+          'Binance on 9, 2022 at 9 am',
+        ])}
+        {detailsCard('Sale network', ['solana, binance smart chain'])}
+        {detailsCard('Hard cap', ['$350,000'])}
+        {detailsCard('Vesting', ['25% TGE, vested over 3 months'])}
+      </View>
     );
   };
 
@@ -162,7 +125,12 @@ const IDODetails = () => {
             backgroundColor:
               theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
           }}>
-          <ChevronIcon name="chevron-left" color={COLORS.gray} size={30} />
+          <Icon
+            library="Entypo"
+            nameIcon="chevron-small-left"
+            colorIcon={COLORS.gray}
+            sizeIcon={30}
+          />
         </TouchableOpacity>
         <View
           style={{
@@ -183,11 +151,12 @@ const IDODetails = () => {
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <LikeIcon
+            <Icon
+              library="AntDesign"
               style={{marginTop: -2}}
-              name="like1"
-              size={20}
-              color={COLORS.gray}
+              nameIcon="like1"
+              sizeIcon={20}
+              colorIcon={COLORS.gray}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -202,11 +171,12 @@ const IDODetails = () => {
               backgroundColor:
                 theme === 'light' ? COLORS.secondary : COLORS.secondaryDark,
             }}>
-            <HeartIcon
+            <Icon
+              library="AntDesign"
               onPress={() => addRemoveWatchlist(data)}
-              name="ios-heart-sharp"
-              size={22}
-              color={
+              nameIcon="heart"
+              sizeIcon={22}
+              colorIcon={
                 watchlist.some(e => e.id === data.id) ? COLORS.red : COLORS.gray
               }
             />
@@ -250,45 +220,49 @@ const IDODetails = () => {
     );
   };
 
-  const renderRecipeInfo = () => {
+  const renderInfo = () => {
     return (
-      <View style={{paddingHorizontal: SIZES.padding, marginTop: 20}}>
+      <View
+        style={{
+          paddingHorizontal: SIZES.padding,
+          backgroundColor:
+            theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+          paddingTop: 20,
+          marginTop: -20,
+          borderRadius: 16,
+        }}>
         <View
           style={{
             marginBottom: 20,
           }}>
           <CustomText
             font={FONTS.bold}
-            style={{marginBottom: 5}}
-            size={SIZES.extraLarge}>
+            style={{marginBottom: 40}}
+            size={SIZES.large}>
             {data.name}
           </CustomText>
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '50%',
-              justifyContent: 'space-between',
-            }}>
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
-            <IconWeb
-              name="web"
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-              size={23}
-            />
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <CustomText font={FONTS.regular} size={SIZES.regular}>
+              <Icon
+                library="AntDesign"
+                nameIcon="like2"
+                sizeIcon={17}
+                colorIcon={COLORS.gray}
+              />{' '}
+              822 Likes
+            </CustomText>
+            <CustomText
+              font={FONTS.regular}
+              size={SIZES.regular}
+              style={{marginHorizontal: 20}}>
+              <Icon
+                library="AntDesign"
+                nameIcon="hearto"
+                sizeIcon={16}
+                colorIcon={COLORS.gray}
+              />{' '}
+              On 8322 watchlists
+            </CustomText>
           </View>
         </View>
         <MoreLess>
@@ -298,38 +272,37 @@ const IDODetails = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginBottom: 40,
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
+          <View>
+            <CustomText
+              style={{marginBottom: 12}}
+              size={SIZES.regular}
+              font={FONTS.regular}
+              grayText>
+              Token address
             </CustomText>
-            <CustomText grayText>likes</CustomText>
+            <View>
+              <Image />
+              <CustomText font={FONTS.bold} size={SIZES.medium}>
+                0x330...8b7c
+              </CustomText>
+            </View>
           </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
+          <View>
+            <CustomText
+              style={{marginBottom: 12, textAlign: 'right'}}
+              size={SIZES.regular}
+              font={FONTS.regular}
+              grayText>
+              Ending in
             </CustomText>
-            <CustomText grayText>watchlist</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              BSC
-            </CustomText>
-            <CustomText grayText>chain</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>likes</CustomText>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <CustomText font={FONTS.bold} size={SIZES.large}>
-              2.1k
-            </CustomText>
-            <CustomText grayText>likes</CustomText>
+            <View>
+              <CustomText font={FONTS.bold} size={SIZES.medium}>
+                3h : 25m : 45s
+              </CustomText>
+            </View>
           </View>
         </View>
       </View>
@@ -343,29 +316,33 @@ const IDODetails = () => {
         backgroundColor:
           theme === 'light' ? COLORS.background : COLORS.backgroundDark,
       }}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          height: 60,
+          width: '93%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: SIZES.radius,
+          marginHorizontal: SIZES.padding,
+          zIndex: 1000,
+          backgroundColor: COLORS.primary,
+        }}>
+        <CustomText font={FONTS.bold} size={SIZES.bold}>
+          Apply now
+        </CustomText>
+      </TouchableOpacity>
       <Animated.FlatList
         data={[1]}
         keyExtractor={item => `${item.id}`}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 100}}
         ListHeaderComponent={
           <View>
             {renderCardHeader()}
-            <LinearGradient
-              colors={[
-                'transparent',
-                'transparent',
-                theme == 'light' ? COLORS.background : COLORS.backgroundDark,
-              ]}
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                top: 0,
-                height: 185,
-                width: '100%',
-              }}
-            />
-            {renderRecipeInfo()}
+            {renderInfo()}
           </View>
         }
         scrollEventThrottle={16}
