@@ -12,7 +12,7 @@ const HomeFlatList = ({data, dataType}) => {
       contentContainerStyle={{
         alignItems: 'center',
         paddingHorizontal: SIZES.padding,
-        paddingTop: 24,
+        paddingTop: 16,
       }}
       showsHorizontalScrollIndicator={false}
       ListFooterComponent={() => {

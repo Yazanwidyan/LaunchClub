@@ -8,6 +8,24 @@ const tabs_details = [
 
 const PadsData = [
   {
+    id: 'pad-09',
+    name: 'Polkastarter',
+    image: assets.pad09,
+    price: 0.0023,
+    likes: 95,
+    mCap: '$1.62 M',
+    logo: assets.padLogo09,
+  },
+  {
+    id: 'pad-10',
+    name: 'Game Zone',
+    image: assets.pad10,
+    price: 0.0023,
+    likes: 95,
+    mCap: '$1.62 M',
+    logo: assets.padLogo10,
+  },
+  {
     id: 'pad-06',
     name: 'DAO Maker',
     image: assets.pad06,

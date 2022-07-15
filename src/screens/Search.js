@@ -79,7 +79,6 @@ const Search = () => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={{
-                backgroundColor: COLORS.secondaryDark,
                 flexDirection: 'row',
                 alignItems: 'center',
                 borderRadius: 3,
@@ -159,7 +158,6 @@ const Search = () => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={{
-                backgroundColor: COLORS.secondaryDark,
                 flexDirection: 'row',
                 alignItems: 'center',
                 borderRadius: 3,

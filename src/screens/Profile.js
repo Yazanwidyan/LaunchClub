@@ -68,7 +68,7 @@ const Profile = () => {
   const changeTheme = () => {
     if (theme == 'light') {
       dispatch(setTheme('dark'));
-      changeNavigationBarColor('#14141B', true);
+      changeNavigationBarColor('#191B1D', true);
     } else {
       dispatch(setTheme('light'));
       changeNavigationBarColor('#ffffff', true);

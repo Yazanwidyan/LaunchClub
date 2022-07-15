@@ -14,9 +14,8 @@ const ExploreLaunchpads = ({item}) => {
     <TouchableOpacity
       activeOpacity={0.7}
       style={{
-        width: 185,
-        height: 185,
-        marginBottom: 20,
+        width: 200,
+        height: 200,
         borderRadius: SIZES.radius,
         marginRight: 18,
         shadowColor: theme == 'light' ? COLORS.gray : COLORS.black,
@@ -26,37 +25,40 @@ const ExploreLaunchpads = ({item}) => {
         resizeMode="cover"
         style={{
           width: '100%',
-          height: '55%',
+          height: '50%',
           borderRadius: SIZES.radius,
         }}
         source={item.logo}
       />
 
-      <View style={{padding: 12, paddingTop: 40}}>
-        <Image
-          resizeMode="cover"
-          style={{
-            width: 50,
-            height: 50,
-            top: -26,
-            right: '39%',
-            position: 'absolute',
-            borderRadius: 100,
-          }}
-          source={item.image}
-        />
-        <View style={{alignItems: 'center'}}>
-          <CustomText size={SIZES.medium} font={FONTS.semiBold}>
-            {item.name}
-          </CustomText>
-        </View>
+      <View style={{paddingTop: 10}}>
         <View
           style={{
-            paddingTop: 8,
-            flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between',
-          }}></View>
+            flexDirection: 'row',
+          }}>
+          <Image
+            resizeMode="cover"
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 100,
+              marginRight: 10,
+            }}
+            source={item.image}
+          />
+          <View>
+            <CustomText
+              style={{marginBottom: 5}}
+              size={SIZES.medium}
+              font={FONTS.semiBold}>
+              {item.name}
+            </CustomText>
+            <CustomText size={SIZES.base} font={FONTS.medium} grayText>
+              on 3000 watchlist
+            </CustomText>
+          </View>
+        </View>
       </View>
     </TouchableOpacity>
   );

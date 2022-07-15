@@ -11,7 +11,7 @@ const Header = ({title}) => {
     <View
       style={{
         backgroundColor:
-          theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+          theme == 'light' ? COLORS.background : COLORS.secondaryDark,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

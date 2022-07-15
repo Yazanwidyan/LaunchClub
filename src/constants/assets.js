@@ -27,6 +27,8 @@ import pad05 from '../assets/images/pad05.jpg';
 import pad06 from '../assets/images/pad06.jpg';
 import pad07 from '../assets/images/pad07.jpg';
 import pad08 from '../assets/images/pad08.jpg';
+import pad09 from '../assets/images/pad09.jpg';
+import pad10 from '../assets/images/pad10.jpg';
 
 import padLogo01 from '../assets/images/padLogo01.jpg';
 import padLogo02 from '../assets/images/padLogo02.jpg';
@@ -36,6 +38,8 @@ import padLogo05 from '../assets/images/padLogo05.jpg';
 import padLogo06 from '../assets/images/padLogo06.jpg';
 import padLogo07 from '../assets/images/padLogo07.jpg';
 import padLogo08 from '../assets/images/padLogo08.jpg';
+import padLogo09 from '../assets/images/padLogo09.jpg';
+import padLogo10 from '../assets/images/padLogo10.jpg';
 
 import person01 from '../assets/images/person01.png';
 import person02 from '../assets/images/person02.png';
@@ -71,6 +75,8 @@ export default {
   pad06,
   pad07,
   pad08,
+  pad09,
+  pad10,
 
   padLogo01,
   padLogo02,
@@ -80,6 +86,8 @@ export default {
   padLogo06,
   padLogo07,
   padLogo08,
+  padLogo09,
+  padLogo10,
 
   person01,
   person02,

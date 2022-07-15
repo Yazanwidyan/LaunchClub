@@ -23,9 +23,6 @@ const IDOItem = ({wideWidth, item}) => {
       style={{
         width: wideWidth ? totalWidth * 0.44 : 150,
         height: 240,
-        marginBottom: 20,
-        backgroundColor:
-          theme == 'light' ? COLORS.secondary : COLORS.secondaryDark,
         borderRadius: SIZES.radius,
         marginRight: wideWidth ? 8 : 18,
         marginLeft: wideWidth ? 8 : 0,
@@ -42,9 +39,9 @@ const IDOItem = ({wideWidth, item}) => {
         source={item.image}
       />
       <View style={{paddingTop: 12, paddingHorizontal: 5}}>
-        <CustomText size={SIZES.small} font={FONTS.regular}>
-          {item.name.substring(0, 20)}
-          {item.name.length > 20 ? '...' : null}
+        <CustomText size={SIZES.medium} font={FONTS.semiBold}>
+          {item.name.substring(0, 15)}
+          {item.name.length > 15 ? '...' : null}
         </CustomText>
         <View
           style={{
@@ -57,32 +54,14 @@ const IDOItem = ({wideWidth, item}) => {
             <CustomText
               style={{marginBottom: 3}}
               grayText
-              size={SIZES.regular}
+              size={SIZES.base}
               font={FONTS.regular}>
               Ending in
             </CustomText>
-            <CustomText size={SIZES.medium} font={FONTS.medium}>
-              <Icon
-                library={'AntDesign'}
-                nameIcon="clockcircleo"
-                sizeIcon={12}
-                color={theme == 'light' ? COLORS.black : COLORS.white}
-              />{' '}
-              10h 30m
+            <CustomText size={SIZES.regular} font={FONTS.medium}>
+              13D : 03h : 25m : 45s
             </CustomText>
           </View>
-          <CustomText
-            style={{alignSelf: 'flex-end'}}
-            size={SIZES.small}
-            font={FONTS.medium}>
-            <Icon
-              library={'FontAwesome'}
-              nameIcon="heart-o"
-              sizeIcon={12}
-              color={theme == 'light' ? COLORS.black : COLORS.white}
-            />{' '}
-            3,229
-          </CustomText>
         </View>
       </View>
     </TouchableOpacity>

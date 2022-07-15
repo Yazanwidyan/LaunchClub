@@ -22,7 +22,6 @@ import Search from '../screens/Search';
 import Splash from '../screens/Splash';
 import {TabBar} from '../components/common/TabBar';
 import Account from '../screens/Account';
-import Test from '../screens/Test';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();

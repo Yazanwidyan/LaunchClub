@@ -1,10 +1,7 @@
 import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import CustomText from '../components/UI/CustomText';
-import Header from '../components/common/Header';
-import IDOItem from '../components/IDO/IDOItem';
-import {COLORS, IDOData, SHADOWS, SIZES} from '../constants';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {COLORS, IDOData, SIZES} from '../constants';
+import {Calendar} from 'react-native-calendars';
 import {generateDate} from '../constants/Date';
 import {useSelector} from 'react-redux';
 import IDOBItem from '../components/IDO/IDOBItem';
@@ -50,7 +47,7 @@ const Calendars = () => {
                   theme == 'light' ? COLORS.background : COLORS.backgroundDark,
               }}
               markedDates={date}
-              initialDate={'2022-06-16'}
+              initialDate={generatedDate}
               onDayPress={day => {
                 onSelectDate(day);
               }}

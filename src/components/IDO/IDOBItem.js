@@ -55,34 +55,9 @@ const IDOBItem = ({item}) => {
             {item.name.length > 35 ? '...' : null}
           </CustomText>
           <CustomText font={FONTS.regular} size={SIZES.regular} grayText>
-            Ending in 10h 30m
+            13D : 03h : 25m : 45s
           </CustomText>
         </View>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <CustomText
-          font={FONTS.regular}
-          size={SIZES.medium}
-          style={{
-            backgroundColor: '#DBEAFE',
-            paddingHorizontal: 8,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: SIZES.radius,
-            marginBottom: 8,
-            textAlign: 'right',
-            alignSelf: 'flex-end',
-            color: COLORS.primary,
-          }}>
-          Likes
-        </CustomText>
-        <CustomText
-          grayText
-          size={SIZES.medium}
-          font={FONTS.bold}
-          style={{textAlign: 'right'}}>
-          {item.likes}
-        </CustomText>
       </View>
     </TouchableOpacity>
   );

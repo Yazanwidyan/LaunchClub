@@ -40,7 +40,7 @@ export const TabBar = ({state, descriptors, navigation}) => {
           borderTopColor: '#1E1E30',
           borderTopWidth: 1,
           backgroundColor:
-            theme == 'light' ? COLORS.background : COLORS.backgroundDark,
+            theme == 'light' ? COLORS.background : COLORS.secondaryDark,
         },
       ]}>
       <View style={{flexDirection: 'row'}}>

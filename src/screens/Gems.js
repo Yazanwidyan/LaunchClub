@@ -37,13 +37,12 @@ const Gems = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, marginTop: 10}}>
       <ScrollView style={{flex: 1}}>
         <View>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={{
-              position: 'absolute',
               left: 17,
               top: 38,
               zIndex: 500,
@@ -60,28 +59,28 @@ const Gems = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={{paddingHorizontal: SIZES.padding}}>
+        <View style={{paddingHorizontal: SIZES.padding, marginTop: 50}}>
+          <CustomText
+            size={SIZES.extraLarge}
+            font={FONTS.bold}
+            style={{alignSelf: 'center'}}>
+            Daily Check-In Rewards
+          </CustomText>
+          <CustomText
+            font={FONTS.medium}
+            size={SIZES.medium}
+            style={{alignSelf: 'center'}}>
+            Come back everyday to earn extra reward coins
+          </CustomText>
           <View
             style={{
-              marginTop: 40,
+              marginTop: 20,
               alignSelf: 'center',
-              backgroundColor: COLORS.primary,
-              height: 200,
               width: '100%',
               justifyContent: 'center',
-              borderRadius: SIZES.radius,
+              alignItems: 'center',
               padding: 20,
             }}>
-            <Image
-              source={assets.astro}
-              style={{
-                width: 120,
-                height: 120,
-                position: 'absolute',
-                right: 20,
-                top: 10,
-              }}
-            />
             <CustomText
               style={{color: 'white'}}
               size={SIZES.medium}
@@ -91,13 +90,7 @@ const Gems = () => {
             <CustomText style={{color: 'white'}} size={50} font={FONTS.bold}>
               0
             </CustomText>
-            <CustomText style={{color: 'white'}} size={SIZES.medium}>
-              Collect LaunchClub Gems to get a chance in free IDO spot 🎉🎉
-            </CustomText>
           </View>
-          <CustomText grayText size={SIZES.medium} style={{marginVertical: 20}}>
-            Collect your Gems every day
-          </CustomText>
           <View
             style={{
               flexDirection: 'row',
@@ -164,9 +157,24 @@ const Gems = () => {
               );
             })}
           </View>
-          <CustomText grayText style={{marginVertical: 30}}>
-            What are LaunchClub Gems?{' '}
-            <CustomText style={{color: COLORS.primary}}>read more</CustomText>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={{
+              marginTop: 20,
+              alignSelf: 'center',
+              height: 60,
+              width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: SIZES.radius,
+              backgroundColor: COLORS.primary,
+            }}>
+            <CustomText font={FONTS.bold} size={SIZES.bold}>
+              Claim coins
+            </CustomText>
+          </TouchableOpacity>
+          <CustomText style={{marginVertical: 20}}>
+            Collect LaunchClub Gems to get a chance in free IDO spot
           </CustomText>
         </View>
       </ScrollView>

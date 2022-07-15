@@ -378,7 +378,9 @@ const LaunchpadDetails = () => {
                     padding: 20,
                     borderRadius: SIZES.radius,
                     backgroundColor:
-                      tab == activetab ? '#24242F' : COLORS.backgroundDark,
+                      tab == activetab
+                        ? COLORS.backgroundDark
+                        : COLORS.backgroundDark,
                   }}>
                   <CustomText>{tab}</CustomText>
                 </TouchableOpacity>

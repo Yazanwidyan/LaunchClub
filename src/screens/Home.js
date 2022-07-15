@@ -23,26 +23,26 @@ const Home = () => {
   const {theme} = useSelector(state => state.theme);
 
   useEffect(() => {
-    const color = theme == 'light' ? '#ffffff' : '#14141B';
+    const color = theme == 'light' ? '#ffffff' : '#191B1D';
     changeNavigationBarColor(color, true);
   }, []);
 
   return (
     <>
-      <SafeAreaView style={{flex: 1, marginTop: 10}}>
+      <SafeAreaView style={{flex: 1}}>
         <Header title={'LaunchClub'} />
         <ScrollView
           style={{flex: 1, marginBottom: 50}}
           showsVerticalScrollIndicator={false}>
           <View style={styles.mainContainer}>
-            <View style={{marginBottom: 20}}>
+            <View style={{marginBottom: 30}}>
               <Carousel />
             </View>
             <CustomText
               size={SIZES.large}
               font={FONTS.bold}
               style={styles.titleText}>
-              Most Liked Launchpads
+              Explore Launchpads
             </CustomText>
             <HomeFlatList dataType="launchpad" data={PadsData} />
             <CustomText
