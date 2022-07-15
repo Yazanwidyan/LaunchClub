@@ -29,8 +29,7 @@ const Calendars = () => {
       style={{
         flex: 1,
         paddingHorizontal: SIZES.padding,
-        marginVertical: 10,
-        paddingBottom: 40,
+        marginVertical: 40,
       }}>
       <FlatList
         ListHeaderComponentStyle={{alignSelf: 'stretch'}}

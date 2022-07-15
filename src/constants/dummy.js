@@ -187,4 +187,42 @@ const IDOData = [
   },
 ];
 
-export {IDOData, PadsData, tabs_details};
+const whitelistData = [
+  {
+    id: 'NFT-01',
+    name: 'Wombat (WOMBAT)',
+    status: 'open',
+    launchpad: 'Binstarter',
+    image: assets.nft01,
+  },
+  {
+    id: 'NFT-02',
+    name: 'SubQuery (SQT)',
+    status: 'open',
+    launchpad: 'Binstarter',
+    image: assets.nft02,
+  },
+  {
+    id: 'NFT-03',
+    name: 'Astra Protocol (ASTR)',
+    status: 'open',
+    launchpad: 'Binstarter',
+    image: assets.nft03,
+  },
+  {
+    id: 'NFT-04',
+    name: 'Wombat (WOMBAT)',
+    status: 'open',
+    launchpad: 'Binstarter',
+    image: assets.nft04,
+  },
+  {
+    id: 'NFT-05',
+    name: 'Wombat (WOMBAT)',
+    status: 'open',
+    launchpad: 'Binstarter',
+    image: assets.nft05,
+  },
+];
+
+export {IDOData, PadsData, whitelistData, tabs_details};

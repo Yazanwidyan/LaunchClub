@@ -155,10 +155,10 @@ export const TabBar = ({state, descriptors, navigation}) => {
                         : COLORS.gray
                     }
                   />
-                ) : label == 'Profile' ? (
+                ) : label == 'Whitelist' ? (
                   <Icon
-                    library={'Ionicons'}
-                    nameIcon="person-circle-outline"
+                    library={'Octicons'}
+                    nameIcon="list-unordered"
                     sizeIcon={22}
                     colorIcon={
                       isFocused

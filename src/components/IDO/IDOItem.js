@@ -51,14 +51,7 @@ const IDOItem = ({wideWidth, item}) => {
             justifyContent: 'space-between',
           }}>
           <View>
-            <CustomText
-              style={{marginBottom: 3}}
-              grayText
-              size={SIZES.base}
-              font={FONTS.regular}>
-              Ending in
-            </CustomText>
-            <CustomText size={SIZES.regular} font={FONTS.medium}>
+            <CustomText grayText size={SIZES.regular} font={FONTS.medium}>
               13D : 03h : 25m : 45s
             </CustomText>
           </View>

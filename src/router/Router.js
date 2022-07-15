@@ -22,6 +22,7 @@ import Search from '../screens/Search';
 import Splash from '../screens/Splash';
 import {TabBar} from '../components/common/TabBar';
 import Account from '../screens/Account';
+import Whitelist from '../screens/Whitelist';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -47,9 +48,9 @@ const Router = () => {
         }}>
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="Calendar" component={Calendars} />
+        <Tab.Screen name="Whitelist" component={Whitelist} />
         <Tab.Screen name="Watchlist" component={Watchlist} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Calendar" component={Calendars} />
       </Tab.Navigator>
     );
   };
@@ -75,6 +76,7 @@ const Router = () => {
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Notifications" component={Notifications} />
           <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

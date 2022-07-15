@@ -13,6 +13,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {addToWatchlist} from '../redux/actions/actions';
 import Icon from '../components/UI/Icon';
+import Divider from '../components/UI/Divider';
 import {
   COLORS,
   assets,
@@ -49,36 +50,57 @@ const IDODetails = () => {
   const renderContent = () => {
     const detailsCard = (title, content) => {
       return (
-        <View style={{paddingVertical: 10}}>
-          <CustomText grayText font={FONTS.medium} size={SIZES.regular}>
-            {title}
-          </CustomText>
-          {content.map(item => {
-            return (
-              <CustomText font={FONTS.medium} Size={SIZES.medium} key={item}>
-                {item}
-              </CustomText>
-            );
-          })}
-        </View>
+        <>
+          <View style={{paddingVertical: 16, paddingHorizontal: SIZES.padding}}>
+            <CustomText grayText font={FONTS.medium} size={SIZES.regular}>
+              {title}
+            </CustomText>
+            {content.map(item => {
+              return (
+                <CustomText font={FONTS.medium} Size={SIZES.medium} key={item}>
+                  {item}
+                </CustomText>
+              );
+            })}
+          </View>
+          <Divider />
+        </>
       );
     };
 
     return (
-      <View style={{marginTop: 50, paddingHorizontal: SIZES.padding}}>
+      <View style={{paddingHorizontal: SIZES.padding, marginTop: 50}}>
         <CustomText
           style={{marginBottom: 16}}
           font={FONTS.bold}
           size={SIZES.bold}>
           Details
         </CustomText>
-        {detailsCard('Listing Info', [
-          'Pancake swap on 9, 2022 at 9 am',
-          'Binance on 9, 2022 at 9 am',
-        ])}
-        {detailsCard('Sale network', ['solana, binance smart chain'])}
-        {detailsCard('Hard cap', ['$350,000'])}
-        {detailsCard('Vesting', ['25% TGE, vested over 3 months'])}
+        <View
+          style={{
+            paddingVertical: 16,
+            backgroundColor: COLORS.secondaryDark,
+            borderRadius: SIZES.radius,
+          }}>
+          {detailsCard('Date', ['9 JUN - 28 JUL'])}
+          {detailsCard('Listing info', ['July 29th, 2022 13:00 UTC Quickswap'])}
+          {detailsCard('Ticker', ['WOMBAT'])}
+          {detailsCard('Token type', ['ERC-20'])}
+          {detailsCard('Sale price info', [
+            'PUBLIC  1 WRT = 0.45 USD',
+            'PRESALE  1 WRT = 0.35 USD',
+            'PRIVATE  1 WRT = 0.4 USD',
+          ])}
+          {detailsCard('Accepted Currency', ['USDC'])}
+          {detailsCard('Min/Max Personal Cap', ['Min TBA / Max 2,000 USD'])}
+          {detailsCard('Vesting info', [
+            'PUBLIC 15% at TGE, 2 month lock up, 12m vesting',
+            'PRESALE 5% at TGE, 3 month lock up, 24m vesting',
+            'PRIVATE 10% at TGE, 3 month lock up, 24m vesting',
+          ])}
+          {detailsCard('Announcements', ['Announcement on ImpossibleFinance'])}
+          {detailsCard('Links', ['Token sale details on ImpossibleFinance'])}
+        </View>
       </View>
     );
   };
@@ -316,29 +338,59 @@ const IDODetails = () => {
         backgroundColor:
           theme === 'light' ? COLORS.background : COLORS.backgroundDark,
       }}>
-      <TouchableOpacity
-        activeOpacity={0.7}
+      <View
         style={{
           position: 'absolute',
-          bottom: 20,
-          height: 60,
-          width: '93%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: SIZES.radius,
-          marginHorizontal: SIZES.padding,
+          bottom: 0,
+          height: 100,
+          width: '100%',
           zIndex: 1000,
-          backgroundColor: COLORS.primary,
+          backgroundColor: COLORS.secondaryDark,
+          paddingHorizontal: SIZES.padding,
+          flexDirection: 'row',
+          alignItems: 'center',
         }}>
-        <CustomText font={FONTS.bold} size={SIZES.bold}>
-          Apply now
-        </CustomText>
-      </TouchableOpacity>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: COLORS.white,
+            borderRadius: SIZES.radius,
+            padding: 16,
+          }}>
+          <TouchableOpacity onPress={() => addRemoveWatchlist(data)}>
+            <Icon
+              library="AntDesign"
+              nameIcon="heart"
+              sizeIcon={22}
+              colorIcon={
+                watchlist.some(e => e.id === data.id) ? COLORS.red : COLORS.gray
+              }
+            />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={{
+            flex: 2,
+            height: 60,
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: SIZES.radius,
+            marginHorizontal: SIZES.padding,
+            backgroundColor: COLORS.primary,
+          }}>
+          <CustomText font={FONTS.bold} size={SIZES.bold}>
+            Apply now
+          </CustomText>
+        </TouchableOpacity>
+      </View>
+
       <Animated.FlatList
         data={[1]}
         keyExtractor={item => `${item.id}`}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 100}}
+        contentContainerStyle={{paddingBottom: 120}}
         ListHeaderComponent={
           <View>
             {renderCardHeader()}

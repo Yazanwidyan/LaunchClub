@@ -76,10 +76,10 @@ const Profile = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, marginVertical: 40}}>
+    <SafeAreaView style={{flex: 1, marginTop: 40}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{flex: 1, marginHorizontal: SIZES.padding, marginBottom: 40}}>
+        style={{flex: 1, marginHorizontal: SIZES.padding}}>
         <View style={{alignItems: 'center'}}>
           <Image
             source={assets.person01}
